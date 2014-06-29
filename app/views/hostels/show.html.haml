@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Address:
+  = @hostel.address
+%p
+  %b Latitude:
+  = @hostel.latitude
+%p
+  %b Longitude:
+  = @hostel.longitude
+
+= link_to 'Edit', edit_hostel_path(@hostel)
+\|
+= link_to 'Back', hostels_path

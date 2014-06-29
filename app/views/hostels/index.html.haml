@@ -1,0 +1,23 @@
+%h1 Listing hostels
+
+%table
+  %tr
+    %th Address
+    %th Latitude
+    %th Longitude
+    %th
+    %th
+    %th
+
+  - @hostels.each do |hostel|
+    %tr
+      %td= hostel.address
+      %td= hostel.latitude
+      %td= hostel.longitude
+      %td= link_to 'Show', hostel
+      %td= link_to 'Edit', edit_hostel_path(hostel)
+      %td= link_to 'Destroy', hostel, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Hostel', new_hostel_path
