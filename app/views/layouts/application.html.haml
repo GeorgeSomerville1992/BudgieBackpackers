@@ -24,20 +24,31 @@
 
     /   - flash.each do |name, msg|
     /     = content_tag :div, msg, :id => "flash_#{name}"
-    .row
-      .large-3.columns
-        %h1
-          %img{src: "http://placehold.it/400x100&text=Logo"}/
-    .large-9.columns
-      %ul.button-group.right
-        %li
-          %a.button{href: "#"} Link 1
-        %li
-          %a.button{href: "#"} Link 2
-        %li
-          %a.button{href: "#"} Link 3
-        %li
-          %a.button{href: "#"} Link 4
+    %nav.top-bar{"data-topbar" => ""}
+      %ul.title-area
+        %li.name
+          %h1
+            %a{href: "#"} My Site
+      %section.top-bar-section
+        %ul.right
+          - if user_signed_in?
+            %li.has-dropdown
+              = current_user.email
+              %ul.dropdown
+                %li
+                  = link_to 'Logout', destroy_user_session_path, method: 'delete'
+                %li
+                  = link_to 'Edit Profile', edit_user_registration_path  
+          - else
+            %li
+              = link_to 'Login', new_user_session_path
+            %li.active
+              = link_to 'Sign Up', new_user_registration_path          
+            
+
+        %ul.left 
+          %img{src: "http://placehold.it/100x45&text=Logo"}/         
+      
 
     .row
       .large-12.columns
