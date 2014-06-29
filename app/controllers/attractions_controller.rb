@@ -1,4 +1,5 @@
 class AttractionsController < ApplicationController
+  before_filter :authenticate_user!
   # GET /attractions
   # GET /attractions.json
   def index

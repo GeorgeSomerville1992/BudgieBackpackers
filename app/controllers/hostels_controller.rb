@@ -1,4 +1,5 @@
 class HostelsController < ApplicationController
+  before_filter :authenticate_user!
   # GET /hostels
   # GET /hostels.json
   def index

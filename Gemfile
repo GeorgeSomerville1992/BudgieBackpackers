@@ -17,15 +17,15 @@ group :assets do
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
-  gem 'pry-rails'
-  gem 'pry-byebug'
-  gem 'letter_opener'
-  gem 'uglifier', '>= 1.0.3'
+  
 end
 
 group :development do
-
-  end 
+gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'letter_opener'
+  gem 'uglifier', '>= 1.0.3'
+end 
 gem 'haml-rails'
 gem 'devise'
 gem 'geocoder'
