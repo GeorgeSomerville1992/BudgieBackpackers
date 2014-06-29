@@ -13,3 +13,7 @@
 = link_to 'Edit', edit_hostel_path(@hostel)
 \|
 = link_to 'Back', hostels_path
+
+%h3 nearby saved hostels
+- for location in @hostel.nearbys(10)
+  %li = link_to hostel.address, hostel (hostel.distance.round(10) miles)

@@ -13,3 +13,7 @@
 = link_to 'Edit', edit_attraction_path(@attraction)
 \|
 = link_to 'Back', attractions_path
+
+%h3 nearby saved attractions
+- for location in @attraction.nearbys(10)
+  %li = link_to attraction.address, attraction (attraction.distance.round(10) miles)
