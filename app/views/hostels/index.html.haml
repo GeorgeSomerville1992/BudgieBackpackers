@@ -17,7 +17,7 @@
       %td= link_to 'Show', hostel
       %td= link_to 'Edit', edit_hostel_path(hostel)
       %td= link_to 'Destroy', hostel, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+= link_to 'New hostel', new_hostel_path
 %br
 %h1 listing attractions
 
@@ -29,13 +29,13 @@
     %th
     %th
     %th
-  - @attractions.each do |attraction|
-    %tr
-      %td= attraction.address
-      %td= attraction.latitude
-      %td= attraction.longitude
-      %td= link_to 'Show', attraction
-      %td= link_to 'Edit', edit_attraction_path(attraction)
-      %td= link_to 'Destroy', attraction, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  / - @attractions.each do |attraction|
+  /   %tr
+  /     %td= attraction.address
+  /     %td= attraction.latitude
+  /     %td= attraction.longitude
+  /     %td= link_to 'Show', attraction
+  /     %td= link_to 'Edit', edit_attraction_path(attraction)
+  /     %td= link_to 'Destroy', attraction, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-= link_to 'New attraction', new_attraction_path
+/ = link_to 'New attraction', new_attraction_path

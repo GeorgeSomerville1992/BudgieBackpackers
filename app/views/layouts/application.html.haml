@@ -62,7 +62,12 @@
       .large-4.columns
         %img{src: "http://placehold.it/400x300&text=[img]"}/
       .large-8.columns
-        %h4 This is a content section.      
+        %h4 This is a content section.  
+        .container    
+          -flash.each do |name, message|
+            %div{class: "alert alert-info alert-dismissable"}
+              %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"} &#215;
+              = message        
         = yield
         = javascript_include_tag "application"
 
