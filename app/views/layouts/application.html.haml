@@ -47,8 +47,12 @@
             
 
         %ul.left 
-          %img{src: "http://placehold.it/100x45&text=Logo"}/         
-      
+          %li
+            %img{src: "http://placehold.it/100x45&text=Logo"}/         
+          %li
+            = link_to 'Hostels', hostels_path
+          %li 
+            = link_to 'Attractions', attractions_path  
 
     .row
       .large-12.columns
