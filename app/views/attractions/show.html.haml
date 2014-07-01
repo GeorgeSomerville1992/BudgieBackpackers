@@ -1,12 +1,16 @@
+.row
+  .large-12.columns
+    #map-canvas{:style => "width: 400px; height: 300px"}
+    %hr/
 %p#notice= notice
 
 %p
   %b Address:
   = @attraction.address
-%p
+= content_tag "p", id: "latitude", data: {hostels: @attraction.latitude} do   
   %b Latitude:
   = @attraction.latitude
-%p
+= content_tag "p", id: "longitude", data: {hostels: @attraction.longitude} do 
   %b Longitude:
   = @attraction.longitude
 

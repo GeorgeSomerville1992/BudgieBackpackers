@@ -1,14 +1,20 @@
-%p#notice= notice
+.row
+  .large-12.columns
+    #map-canvas{:style => "width: 400px; height: 300px"}
+    %hr/
 
+%p#notice= notice
 %p
   %b Address:
   = @hostel.address
-%p
+= content_tag "p", id: "latitude", data: {hostels: @hostel.latitude} do 
   %b Latitude:
   = @hostel.latitude
-%p
+= content_tag "p", id: "longitude", data: {hostels: @hostel.longitude} do 
   %b Longitude:
   = @hostel.longitude
+
+
 
 = link_to 'Edit', edit_hostel_path(@hostel)
 \|

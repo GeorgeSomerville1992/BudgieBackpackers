@@ -173,6 +173,7 @@ DEPENDENCIES
   haml-rails
   jquery-rails
   letter_opener
+  oauth
   pg
   pry-byebug
   pry-rails

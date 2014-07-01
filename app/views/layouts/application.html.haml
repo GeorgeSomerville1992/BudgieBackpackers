@@ -6,8 +6,9 @@
     %title BudgieBackpackers
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "vendor/modernizr"
-    
     = csrf_meta_tags
+    %script{src: "http://maps.googleapis.com/maps/api/js?libraries=places", type: "text/javascript"}
+    = include_gon
   %body
     / #container
     /   .user-nav
@@ -54,22 +55,15 @@
           %li 
             = link_to 'Attractions', attractions_path  
 
+    
     .row
-      .large-12.columns
-        %img{src: "http://placehold.it/1000x400&text=[img]"}/
-        %hr/
-    .row
-      .large-4.columns
-        %img{src: "http://placehold.it/400x300&text=[img]"}/
-      .large-8.columns
-        %h4 This is a content section.  
-        .container    
-          -flash.each do |name, message|
-            %div{class: "alert alert-info alert-dismissable"}
-              %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"} &#215;
-              = message        
-        = yield
-        = javascript_include_tag "application"
+      .container    
+        -flash.each do |name, message|
+          %div{class: "alert alert-info alert-dismissable"}
+            %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"} &#215;
+            = message        
+      = yield
+      = javascript_include_tag "application"
 
 
    

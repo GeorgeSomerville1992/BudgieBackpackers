@@ -32,6 +32,7 @@ gem 'geocoder'
 gem 'gon'
 gem 'expedia'
 gem 'yelpster'
+gem 'oauth'
 
 
 
