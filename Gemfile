@@ -33,6 +33,8 @@ gem 'gon'
 gem 'expedia'
 gem 'yelpster'
 gem 'oauth'
+gem 'omniauth-google-oauth2'
+
 
 
 

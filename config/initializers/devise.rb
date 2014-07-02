@@ -220,6 +220,17 @@ Devise.setup do |config|
   # If you have any extra navigational formats, like :iphone or :mobile, you
   # should add them to the navigational formats lists.
   #
+  config.omniauth :google_oauth2,
+    "598865985506-gbhce6ctiuv31t3uhjl1mkv3hg2tk9sj.apps.googleusercontent.com"  ,
+    "SOqsEwthg0qGO3dJI4i-IdNM",
+    scope: 'email, profile',
+    client_options: {
+      image_aspect_ratio: "square",
+      image_size: 30
+    }
+
+
+  
   # The "*/*" below is required to match Internet Explorer requests.
   # config.navigational_formats = ['*/*', :html]
 

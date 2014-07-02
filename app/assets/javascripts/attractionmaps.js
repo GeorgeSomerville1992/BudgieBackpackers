@@ -20,14 +20,16 @@ $(function(){
                 + '<li>' + ' ' + attractiondeals.title + '</li>' + '</br>'
                 // + '<li>' + ' ' + '<img src='+attractiondeals.image_url +'>' + '</li>' + '</br>'
                 + '<li>' + ' ' + attractiondeals.time_start + '</li>' + '</br>'
-                + '<li>' + ' ' + attractiondeals.url + '</li>' + '</br>'
+                + '<li>' + ' ' + attractiondeals.url + '</li>' + '</br>' 
         $('#attractionDeals').append(attractiondeals)        
     }) 
-}
+
 // specfiy these thr RIGHT WAY ROUND.......!!!!!
+  
 attractionLong = gon.attractions.region.center.longitude
 attractionLat = gon.attractions.region.center.latitude
 attractions = gon.attractions.businesses
+
 var fetchlatitude = $('#latitude').data('attractions') // data is the instance variable!!!
 var fetchlongitude = $('#longitude').data('attractions')
 var map;
@@ -67,4 +69,5 @@ function initialize() {
    // built in service near by - calling function and request
 }      // the main part for genreateing the markers 
 initialize()
+} else {gon = "somethin" };
 })

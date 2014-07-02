@@ -19,13 +19,13 @@ module Apis
 
     def get_hostels (hostel, hostelarrivalDate, hosteldepartureDate)
       
-      result = @api.get_list({ :destinationString => hostel,
+      @api.get_list({ :destinationString => hostel,
                       :propertyCategory => 1,
                       :arrivalDate => hostelarrivalDate.strftime("%m/%d/%Y"),
                       :departureDate => hosteldepartureDate.strftime("%m/%d/%Y"),
                       :sort => "PRICE_AVERAGE",
                       :numberOfResults => 20
-                       })
+                       }).body
       #show error handling!!!
       # if result? APIError
     end
