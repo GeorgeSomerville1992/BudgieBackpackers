@@ -1,16 +1,16 @@
 .row
   .large-12.columns
-    #map-canvas{:style => "width: 400px; height: 300px"}
+    #map-canvas{:style => "width: 1000px; height: 400px"}
     %hr/
 %p#notice= notice
 
 %p
   %b Address:
   = @attraction.address
-= content_tag "p", id: "latitude", data: {hostels: @attraction.latitude} do   
+= content_tag "p", id: "latitude", data: {attractions: @attraction.latitude} do   
   %b Latitude:
   = @attraction.latitude
-= content_tag "p", id: "longitude", data: {hostels: @attraction.longitude} do 
+= content_tag "p", id: "longitude", data: {attractions: @attraction.longitude} do 
   %b Longitude:
   = @attraction.longitude
 
@@ -21,3 +21,15 @@
 %h3 nearby saved attractions
 - for location in @attraction.nearbys(10)
   %li = link_to attraction.address, attraction (attraction.distance.round(10) miles)
+
+
+.row
+  .large-4.columns
+    %h3 attraction views and ratings
+    #attractionResults
+  .large-4.columns
+    %h3 deals!
+    #attractionDeals     
+
+%h3 test 
+= @attractions

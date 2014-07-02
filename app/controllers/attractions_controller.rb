@@ -16,6 +16,10 @@ class AttractionsController < ApplicationController
   def show
     @attraction = Attraction.find(params[:id])
 
+    yelp = Apis::Yelp.new(@attraction.address)
+    @attractions = yelp.attractions
+    gon.attractions = JSON.parse @attractions
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @attraction }
