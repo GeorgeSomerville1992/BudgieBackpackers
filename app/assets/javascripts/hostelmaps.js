@@ -7,7 +7,7 @@ $(function(){
     $.each(hostels, function(i, hostel){
     searchresult = '<li>' + 'hotel name' + hostel.name + ' '  + 'hostellowrate' + ' ' + 
     ' ' + hostel.lowRate + ' ' + 'hostelhighrate' + ' ' + hostel.highRate + 'hostel.lattude' +
-    + hostel.latitude + '</li>' 
+    + hostel.latitude + '</li>' + $("input").attr("type", "button").click(function(){console.log('clicked')})
 
     $('#hostelResults').append(searchresult)
     })
@@ -63,5 +63,7 @@ function initialize() {
 }   
 }
 
-initialize()
+google.maps.event.addDomListener(window, "load", initialize);
 })
+
+

@@ -4,11 +4,12 @@
     %meta{charset: "utf-8"}/
     %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
     %title BudgieBackpackers
+    = include_gon(:init => true)
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
     %script{src: "http://maps.googleapis.com/maps/api/js?libraries=places", type: "text/javascript"}
-    = include_gon
+    
   %body
     / #container
     /   .user-nav
