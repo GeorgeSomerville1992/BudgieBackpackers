@@ -15,7 +15,20 @@ class HostelsController < ApplicationController
   # GET /hostels/1.json
   def show
     @hostel = Hostel.find(params[:id])
+      #gpo straight to the apis module then on to wgo- create a new object of it
+      # call the address from wego... 
+    # yelp = Apis::Yelp.new(@location.address)
+    # @places = yelp.addresses
+    # gon.places = JSON.parse @places
+    expedia = Apis::ExpediaApi.new(@hostel.address,@hostel.arrivalDate,@hostel.departureDate)
+    @api = expedia.get_hostels(@hostel.address,@hostel.arrivalDate,@hostel.departureDate)
 
+    serialized = JSON.generate(@api)
+
+    # JSON generator converts symbols to strings because JSON does not support symbols.
+    # passing json document will produce a ruby hash with string keys inside
+    # since we already have thus we can use symbols
+    gon.hostels = JSON.parse(serialized, {:symbolize_names => true})
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @hostel }

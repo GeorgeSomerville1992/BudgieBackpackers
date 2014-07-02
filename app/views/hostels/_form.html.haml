@@ -15,5 +15,11 @@
   .field
     = f.label :longitude
     = f.text_field :longitude
+  .field
+    = f.label :arrivaldate
+    = f.date_select :arrivalDate
+  .field
+    = f.label :departureDate
+    = f.date_select :departureDate 
   .actions
     = f.submit 'Save'

@@ -13,6 +13,10 @@
 = content_tag "p", id: "longitude", data: {hostels: @hostel.longitude} do 
   %b Longitude:
   = @hostel.longitude
+  %b arrivaldate: 
+  = @hostel.arrivalDate
+  %b departedate: 
+  = @hostel.departureDate
 
 
 
@@ -23,3 +27,6 @@
 %h3 nearby saved hostels
 - for location in @hostel.nearbys(10)
   %li = link_to hostel.address, hostel (hostel.distance.round(10) miles)
+
+%h3 hostels 
+= @api  
