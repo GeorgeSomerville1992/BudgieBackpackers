@@ -1,3 +1,20 @@
+- content_for :templates do
+  %script#hostel-show-template{type: "text/template"}
+    %ul
+      %li Name: <%= name %>
+      
+      %li Longitude: <%= longitude %>
+      %li Latitude: <%= latitude %>
+      %li
+        %button.hostel-info-button{"data-hotelId" => "<%= hotelId %>".html_safe}
+  %script#hostel-show-detailed-template{type: "text/template"}
+    %ul
+      %li Low Rate: <%= lowRate %>
+      %li High Rate: <%= highRate %>
+      %li hotelRating: <%= hotelRating %>
+      
+
+           
 .row
   .large-12.columns
     #map-canvas{:style => "width: 400px; height: 300px"}
@@ -32,3 +49,5 @@
 / = @api  
 
 #hostelResults
+
+#hostelDetailedResults

@@ -37,7 +37,7 @@ gem 'omniauth-google-oauth2'
 
 
 
-
+gem 'jquery-ui-rails'
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
