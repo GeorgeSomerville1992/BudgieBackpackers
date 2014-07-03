@@ -4,7 +4,7 @@ module Apis
 
     API_KEY = "m5zs97x99nkugvee8pmadv7c"
 
-    def initialize(hostel,hostelarrivalDate,hosteldepartureDate)
+    def initialize(hostellatitude,hostellongitude,hostelarrivalDate,hosteldepartureDate)
       Expedia::Utils.logger = Rails.logger
 
       Expedia.cid = 55505
@@ -17,14 +17,17 @@ module Apis
       # @locations
     end 
 
-    def get_hostels (hostel, hostelarrivalDate, hosteldepartureDate)
+    def get_hostels (hostellatitude,hostellongitude, hostelarrivalDate, hosteldepartureDate)
       
-      @api.get_list({ :destinationString => hostel,
+      @api.get_list({ 
+                      :latitude => hostellatitude,
+                      :longitude => hostellongitude,
                       :propertyCategory => 1,
                       :arrivalDate => hostelarrivalDate.strftime("%m/%d/%Y"),
                       :departureDate => hosteldepartureDate.strftime("%m/%d/%Y"),
-                      :sort => "PRICE_AVERAGE",
-                      :numberOfResults => 20
+                      :searchRadius => 5,
+                      :sort => "PRICE"
+
                        }).body
       #show error handling!!!
       # if result? APIError

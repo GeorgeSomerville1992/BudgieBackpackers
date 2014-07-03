@@ -1,4 +1,6 @@
-$(function(){  
+$(function(){ 
+  var map;
+  var infowindow;
   if (gon.hostels){
     hostels = gon.hostels.HotelListResponse.HotelList.HotelSummary
     hostellatitude = hostels.latitude
@@ -64,53 +66,46 @@ $(function(){
 
 var fetchLatitude = $('#latitude').data('hostels') // data is the instance variable!!!
 var fetchLongitude = $('#longitude').data('hostels')
-var map;
-var infowindow;
+
 var hotelRed = new google.maps.MarkerImage('/assets/hotel_0star_red.png');
 var hotelGreen = new google.maps.MarkerImage('/assets/hotel_0star_green.png')
 var hotelYellow = new google.maps.MarkerImage('/assets/hotel_0star_yellow.png')
 var hotelOrange = new google.maps.MarkerImage('/assets/hotel_0star_orange.png')
-hostels = gon.hostels.HotelListResponse.HotelList.HotelSummary
-hostelLatitude = gon.hostels.HotelListResponse.HotelList.HotelSummary.latitude
-hostelLongitude = gon.hostels.HotelListResponse.HotelList.HotelSummary.longitude
-var hostelLowrate = gon.hostels.HotelListResponse.HotelList.HotelSummary.lowRate
-//
-function createMarkerForhostel(hostel, lowrate){
-    var latLng = new google.maps.LatLng(hostel.latitude,hostel.longitude);
-    var lowRate = lowrate;
-    console.log(lowRate);
-    if(hostel.lowRate <= 40){
-      var marker = new google.maps.Marker({
+
+  function createMarkerForhostel(hostel, lowrate){
+      var latLng = new google.maps.LatLng(hostel.latitude,hostel.longitude);
+      var lowRate = lowrate;
+      console.log(lowRate);
+      if(hostel.lowRate <= 40){
+        var marker = new google.maps.Marker({
+          position: latLng,
+          map: window.map,
+          title: "hi",
+          icon: hotelGreen
+        })
+      }else if(hostel.lowRate <= 50){
+        var marker = new google.maps.Marker({
         position: latLng,
         map: window.map,
         title: "hi",
-        icon: hotelGreen
-      })
-    }else if(hostel.lowRate <= 50){
-      var marker = new google.maps.Marker({
-      position: latLng,
-      map: window.map,
-      title: "hi",
-      icon: hotelYellow
-      })
-    }else if(hostel.lowRate <= 70){
-      var marker = new google.maps.Marker({
-      position: latLng,
-      map: window.map,
-      title: "hi",
-      icon: hotelOrange
-      })
-     }else if(hostel.lowRate <= 90){
-      var marker = new google.maps.Marker({
-      position: latLng,
-      map: window.map,
-      title: "hi",
-      icon: hotelRed
-      })
-    }     
-
-
-
+        icon: hotelYellow
+        })
+      }else if(hostel.lowRate <= 70){
+        var marker = new google.maps.Marker({
+        position: latLng,
+        map: window.map,
+        title: "hi",
+        icon: hotelOrange
+        })
+       }else if(hostel.lowRate <= 90){
+        var marker = new google.maps.Marker({
+        position: latLng,
+        map: window.map,
+        title: "hi",
+        icon: hotelRed
+        })
+      }     
+    };  
     // var marker = new google.maps.Marker({
     //   // if hostel low rate - ....then display yello or red or green!!!
     //   if(hostelLowrate <= 50){
@@ -131,7 +126,7 @@ function createMarkerForhostel(hostel, lowrate){
   
     // call mapoattractions
     //addInfoWindowForCamera(marker, camera)
-  }
+
   // what are we actualky passing into the attaction
   function maphostels(hostels){
     // _(attactions).each(createMarkerForAttraction)
@@ -146,7 +141,7 @@ function createMarkerForhostel(hostel, lowrate){
       var mapOptions = {
         zoom: 12,                     // hostel based on what user has typed in
         center: new google.maps.LatLng(fetchLatitude, fetchLongitude),
-        mapTypeId: google.maps.MapTypeId.SATELLITE
+        mapTypeId: google.maps.MapTypeId.ROADMAP
       }
         // do i need ajax for this??? 
       // $.ajax({
@@ -161,8 +156,7 @@ function createMarkerForhostel(hostel, lowrate){
      // built in service near by - calling function and request
   }   
 
-
  google.maps.event.addDomListener(window, "load", initialize)
-})
+ });
 
 
