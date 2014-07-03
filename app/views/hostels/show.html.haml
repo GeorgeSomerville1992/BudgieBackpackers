@@ -53,6 +53,81 @@
 %h3 hostels 
 / = @api  
 
-#hostelResults
+#hostelResults.accordion
 
 #hostelDetailedResults
+
+%ul#accordion
+  %li
+    %a.heading{href: "#recent"} Recent Entries
+    %ul#recent
+      %li
+        %span.date 01.19.2009
+        %a{href: "#"} Recent Entry Title
+      %li
+        %span.date 01.15.2009
+        %a{href: "#"} Recent Entry Title
+      %li
+        %span.date 01.13.2009
+        %a{href: "#"} Recent Entry Title
+      %li
+        %span.date 01.11.2009
+        %a{href: "#"} Recent Entry Title
+      %li
+        %span.date 01.10.2009
+        %a{href: "#"} Recent Entry Title
+  %li
+    %a.heading{href: "#popular"} Popular Entries
+    %ul#popular
+      %li
+        %span.date 08.16.2008
+        %a{href: "#"} Popular Entry Title
+      %li
+        %span.date 06.12.2008
+        %a{href: "#"} Popular Entry Title
+      %li
+        %span.date 04.12.2008
+        %a{href: "#"} Popular Entry Title
+      %li
+        %span.date 06.12.2007
+        %a{href: "#"} Popular Entry Title
+      %li
+        %span.date 03.12.2007
+        %a{href: "#"} Popular Entry Title
+  %li
+    %a.heading{href: "#categories"} Categories
+    %ul#categories
+      %li
+        %a{href: "#"} Category Name
+        %span.count 7
+      %li
+        %a{href: "#"} Category Name
+        %span.count 4
+      %li
+        %a{href: "#"} Category Name
+        %span.count 15
+      %li
+        %a{href: "#"} Category Name
+        %span.count 29
+      %li
+        %a{href: "#"} Category Name
+        %span.count 8
+  %li
+    %a.heading{href: "#archive"} Archive
+    %ul#archive
+      %li
+        %a{href: "#"} January 2009
+        %span.count 4
+      %li
+        %a{href: "#"} December 2008
+        %span.count 14
+      %li
+        %a{href: "#"} November 2008
+        %span.count 12
+      %li
+        %a{href: "#"} October 2008
+        %span.count 8
+      %li
+        %a{href: "#"} September 2008
+        %span.count 18
+
