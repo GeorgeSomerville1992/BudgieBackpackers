@@ -1,26 +1,81 @@
-- content_for :templates do
+- content_for :templates do      
   %script#hostel-show-template{type: "text/template"}
-    %ul
+    %dl.accordion{"data-accordion" => ""}
+      %dd.accordion-navigation
+        %a{href: "#panel1"} <%= name %>
+        #panel1.content.active
+          %dl.tabs{"data-tab" => ""}
+            %dd.active
+              %a{href: "#panel2-1"} Address
+            %dd
+              %a{href: "#panel2-2"} Rates
+            %dd
+              %a{href: "#panel2-3"} Tab 3
+          
+          .tabs-content
+            #panel2-1.content.active
+              %li Address: <%= address1 %>
+              %li Postal Code: <%= postalCode %>
+              %li Latitude: <%= latitude %>
+            #panel2-2.content
+              %li Low Rate: <%= lowRate %>
+              %li High Rate: <%= highRate %>
+              %li hotelRating: <%= hotelRating %>
+            #panel2-3.content
+              %p Third panel content goes here...
+            #panel2-4.content
+              %p Fourth panel content goes here...
+  %script#hostel-show-cheapest-hotels{type: "text/template"}
+    .row{"data-equalizer" => ""}
+      .large-6.columns
+        %ul.pricing-table{"data-equalizer-watch" => ""}
+          %li test
+          %li test 2 
+          %li.cta-button
+            %a.button{href: "#"} Buy Now
+      .large-6.columns
+        %ul.pricing-table{"data-equalizer-watch" => ""}
+          
+          %li.cta-button
+            %a.button{href: "#"} Buy Now    
+  
+  / script goes inside here 
+    
+      
+
+      
+  / %dd.accordion-navigation
+  /   %a{href: "#panel2"} Accordion 2
+  /   #panel2.content
+  /     Panel 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  / %dd.accordion-navigation
+  /   %a{href: "#panel3"} Accordion 3
+  /   #panel3.content
+  /     Panel 3. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+
+
+  %script#hostel-show-template{type: "text/template"}
+    %ul  
       %li Name: <%= name %>
       
       %li Longitude: <%= longitude %>
       %li Latitude: <%= latitude %>
       %li
         %button.hostel-info-button{"data-hotelId" => "<%= hotelId %>".html_safe}
-  %script#hostel-show-detailed-template{type: "text/template"}
-    %ul
-      %li Low Rate: <%= lowRate %>
-      %li High Rate: <%= highRate %>
-      %li hotelRating: <%= hotelRating %>
+        // put this insdie an accordion!!! for each one. then paginate it 
+  
       
 
            
 .row
   .large-12.columns
     .large-4.columns
-      #map-canvas{:style => "width: 100%; height: 300px"}
-    .large-5.columns  
-      #hostelResults
+      #map-canvas{:style => "width: 543px; height: 300px"}
+    .large-6.columns  
+      .accordioncontainer
+        #hostelResults  
+
   %br    
   %hr/
 
@@ -46,88 +101,55 @@
 \|
 = link_to 'Back', hostels_path
 
-%h3 nearby saved hostels
-- for hostel in @hostel.nearbys(10)
-  %li = link_to hostel.address, hostel (hostel.distance.round(10) miles)
+/ %h3 nearby saved hostels
+/ - for hostel in @hostel.nearbys(10)
+/   %li = link_to hostel.address, hostel (hostel.distance.round(10) miles)
 
 %h3 hostels 
 / = @api  
 
-#hostelResults.accordion
 
-#hostelDetailedResults
+/ %dl.accordion{"data-accordion" => ""}
+/   %dd.accordion-navigation
+/     %a{href: "#panel1"} Accordion 1
+/     #panel1.content.active
+/       %dl.tabs{"data-tab" => ""}
+/         %dd.active
+/           %a{href: "#panel2-1"} Tab 1
+/         %dd
+/           %a{href: "#panel2-2"} Tab 2
+/         %dd
+/           %a{href: "#panel2-3"} Tab 3
+/         %dd
+/           %a{href: "#panel2-4"} Tab 4
+/       .tabs-content
+/         #panel2-1.content.active
+/           #hostelResults
+/         #panel2-2.content
+/           %p Second panel content goes here...
+/         #panel2-3.content
+/           %p Third panel content goes here...
+/         #panel2-4.content
+/           %p Fourth panel content goes here...
+/   %dd.accordion-navigation
+/     %a{href: "#panel2"} Accordion 2
+/     #panel2.content
+/       Panel 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+/   %dd.accordion-navigation
+/     %a{href: "#panel3"} Accordion 3
+/     #panel3.content
+/       Panel 3. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+.row{"data-equalizer" => ""}
+  .large-6.columns
+    %ul.pricing-table{"data-equalizer-watch" => ""}
+      \...
+      %li.cta-button
+        %a.button{href: "#"} Buy Now
+  .large-6.columns
+    %ul.pricing-table{"data-equalizer-watch" => ""}
+      \...
+      %li.cta-button
+        %a.button{href: "#"} Buy Now    
 
-%ul#accordion
-  %li
-    %a.heading{href: "#recent"} Recent Entries
-    %ul#recent
-      %li
-        %span.date 01.19.2009
-        %a{href: "#"} Recent Entry Title
-      %li
-        %span.date 01.15.2009
-        %a{href: "#"} Recent Entry Title
-      %li
-        %span.date 01.13.2009
-        %a{href: "#"} Recent Entry Title
-      %li
-        %span.date 01.11.2009
-        %a{href: "#"} Recent Entry Title
-      %li
-        %span.date 01.10.2009
-        %a{href: "#"} Recent Entry Title
-  %li
-    %a.heading{href: "#popular"} Popular Entries
-    %ul#popular
-      %li
-        %span.date 08.16.2008
-        %a{href: "#"} Popular Entry Title
-      %li
-        %span.date 06.12.2008
-        %a{href: "#"} Popular Entry Title
-      %li
-        %span.date 04.12.2008
-        %a{href: "#"} Popular Entry Title
-      %li
-        %span.date 06.12.2007
-        %a{href: "#"} Popular Entry Title
-      %li
-        %span.date 03.12.2007
-        %a{href: "#"} Popular Entry Title
-  %li
-    %a.heading{href: "#categories"} Categories
-    %ul#categories
-      %li
-        %a{href: "#"} Category Name
-        %span.count 7
-      %li
-        %a{href: "#"} Category Name
-        %span.count 4
-      %li
-        %a{href: "#"} Category Name
-        %span.count 15
-      %li
-        %a{href: "#"} Category Name
-        %span.count 29
-      %li
-        %a{href: "#"} Category Name
-        %span.count 8
-  %li
-    %a.heading{href: "#archive"} Archive
-    %ul#archive
-      %li
-        %a{href: "#"} January 2009
-        %span.count 4
-      %li
-        %a{href: "#"} December 2008
-        %span.count 14
-      %li
-        %a{href: "#"} November 2008
-        %span.count 12
-      %li
-        %a{href: "#"} October 2008
-        %span.count 8
-      %li
-        %a{href: "#"} September 2008
-        %span.count 18
 
+// cheapest three hotels using foundation eqlizier - include price - room avliblty and book now!!!

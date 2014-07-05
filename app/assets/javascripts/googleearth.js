@@ -15,9 +15,7 @@ var ge;
       ge.getLayerRoot().enableLayerById(ge.LAYER_BORDERS, true);
       ge.getLayerRoot().enableLayerById(ge.LAYER_ROADS, true);
 
-      // just for debugging purposes
-      document.getElementById('installed-plugin-version').innerHTML =
-        ge.getPluginVersion().toString();
+      
         }
 
     function failureCB(errorCode) {

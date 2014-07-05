@@ -1,3 +1,11 @@
+- content_for :templates do 
+  %script#attraction-show-template{type: "text/template"}
+    %li Address: <%= rating %>
+    %li Postal Code: <%= name %>
+    %li Latitude: <%= latitude %>
+    / %input                                                   id of yelp attaction
+    %button.attraction-info-button{"data-attractionId" => "<%= attractionId %>".html_safe}
+
 .row
   .large-12.columns
     #map-canvas{:style => "width: 1000px; height: 400px"}
@@ -30,7 +38,7 @@
   .large-4.columns
     %h3 deals!
     #attractionDeals     
-
+#attractions
 %h3 test 
 = @attractions
 

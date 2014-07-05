@@ -29,8 +29,8 @@ class HostelsController < ApplicationController
     # JSON generator converts symbols to strings because JSON does not support symbols.
     # passing json document will produce a ruby hash with string keys inside
     # since we already have thus we can use symbols
-
     gon.hostels = JSON.parse(serialized, {:symbolize_names => true})
+    
     gon.preference = "hello"
     respond_to do |format|
       format.html # show.html.erb

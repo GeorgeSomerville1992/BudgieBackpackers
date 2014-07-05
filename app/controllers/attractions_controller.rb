@@ -16,7 +16,7 @@ class AttractionsController < ApplicationController
   def show
     @attraction = Attraction.find(params[:id])
 
-    yelp = Apis::Yelp.new(@attraction.address)
+    yelp = Apis::Yelp.new(@attraction.address, @attraction.attraction_type)
     @attractions = yelp.attractions
     gon.attractions = JSON.parse @attractions
     
