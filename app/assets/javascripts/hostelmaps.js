@@ -5,6 +5,7 @@ $(function(){
     hostellongitude = gon.hostels.HotelListResponse.HotelList.HotelSummary.longitude
      //var hostelId = gon.hostels.HotelListResponse.HotelList.HotelSummary[i].hotelId
     hostelLowrate = gon.hostels.HotelListResponse.HotelList.HotelSummary.lowRate
+    hostelOffers = hostels.slice(0,4)
     // for(i=0; i<20; i++){
       // this will go in a window from google
     // render into erb.....
@@ -15,6 +16,22 @@ $(function(){
       $('#hostelResults').append(hostelTemplate(hostel))
       
     })
+    hostelOfferTemplate = _.template($('#hostel-show-cheapest-hotels').text())
+
+    // for(i=0; i>3; i++){
+    //   function(i, hostel){
+    //     $('#hotelOfferResults').append(hostelOfferTemplate(hostel))
+    //   }
+
+    // }
+      
+    $.each(hostelOffers, function(i, hostel){
+
+      $('#hotelOfferResults').append(hostelOfferTemplate(hostel))
+
+    })
+
+
 
     $('.hostel-info-button').on("click", function(hostelId){
       //console.log("clicked hostel info button with hotelId: " + $(this).data("hotelId"))
@@ -70,10 +87,10 @@ var hotelRed = new google.maps.MarkerImage('/assets/hotel_0star_red.png');
 var hotelGreen = new google.maps.MarkerImage('/assets/hotel_0star_green.png')
 var hotelYellow = new google.maps.MarkerImage('/assets/hotel_0star_yellow.png')
 var hotelOrange = new google.maps.MarkerImage('/assets/hotel_0star_orange.png')
-hostels = gon.hostels.HotelListResponse.HotelList.HotelSummary
-hostelLatitude = gon.hostels.HotelListResponse.HotelList.HotelSummary.latitude
-hostelLongitude = gon.hostels.HotelListResponse.HotelList.HotelSummary.longitude
-var hostelLowrate = gon.hostels.HotelListResponse.HotelList.HotelSummary.lowRate
+//hostels = gon.hostels.HotelListResponse.HotelList.HotelSummary
+//hostelLatitude = gon.hostels.HotelListResponse.HotelList.HotelSummary.latitude
+//hostelLongitude = gon.hostels.HotelListResponse.HotelList.HotelSummary.longitude
+//var hostelLowrate = gon.hostels.HotelListResponse.HotelList.HotelSummary.lowRate
 //
 function createMarkerForhostel(hostel, lowrate){
     var latLng = new google.maps.LatLng(hostel.latitude,hostel.longitude);
@@ -154,11 +171,17 @@ function createMarkerForhostel(hostel, lowrate){
       //   dataType: "json",
       //   success: mapattractions
       // });
-    
+    map_container = document.getElementById('map-canvas')
+      if(map_container != undefined){
+        window.map = new google.maps.Map(map_container, mapOptions) 
+        maphostels(hostels)
+        // gon.hostels is was messing everything up
+        //infowindow = new google.maps.InfoWindow(); 
+      }
 
 
-    window.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions) 
-    maphostels(hostels)
+    //window.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions) 
+    //maphostels(hostels)
     
     infowindow = new google.maps.InfoWindow(); // put informaiton from api in here??? create a new function from this
      // built in service near by - calling function and request

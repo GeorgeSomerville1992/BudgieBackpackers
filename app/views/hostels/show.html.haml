@@ -3,7 +3,7 @@
     %dl.accordion{"data-accordion" => ""}
       %dd.accordion-navigation
         %a{href: "#panel1"} <%= name %>
-        #panel1.content.active
+        #panel1.content
           %dl.tabs{"data-tab" => ""}
             %dd.active
               %a{href: "#panel2-1"} Address
@@ -26,18 +26,27 @@
             #panel2-4.content
               %p Fourth panel content goes here...
   %script#hostel-show-cheapest-hotels{type: "text/template"}
-    .row{"data-equalizer" => ""}
-      .large-6.columns
-        %ul.pricing-table{"data-equalizer-watch" => ""}
-          %li test
-          %li test 2 
-          %li.cta-button
-            %a.button{href: "#"} Buy Now
-      .large-6.columns
-        %ul.pricing-table{"data-equalizer-watch" => ""}
+    .large-3.columns
+      %ul.pricing-table{"data-equalizer-watch" => ""}
+        %li.title <%= name %>
+        %li.price $<%= lowRate %>
+        %li.bullet-item <%= address1 %>
+        %li.bullet-item <%= postalCode %>
+        %li 
+        %img{src: "http://images.travelnow.com<%= thumbNailUrl %>"}
+        %li.cta-button
+          %a.button{href: "#"} Buy Now
+      / .large-3.columns
+      /   %ul.pricing-table{"data-equalizer-watch" => ""}
           
-          %li.cta-button
-            %a.button{href: "#"} Buy Now    
+      /     %li.cta-button
+      /       %a.button{href: "#"} Buy Now    
+      / .large-3.columns
+      /   %ul.pricing-table{"data-equalizer-watch" => ""}
+      /     %li test
+      /     %li test 2 
+      /     %li.cta-button
+      /       %a.button{href: "#"} Buy Now      
   
   / script goes inside here 
     
@@ -78,7 +87,9 @@
 
   %br    
   %hr/
-
+%h3 best hotel deals
+.row{"data-equalizer" => ""}
+  #hotelOfferResults
 
 %p#notice= notice
 %p
@@ -139,17 +150,17 @@
 /     %a{href: "#panel3"} Accordion 3
 /     #panel3.content
 /       Panel 3. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-.row{"data-equalizer" => ""}
-  .large-6.columns
-    %ul.pricing-table{"data-equalizer-watch" => ""}
-      \...
-      %li.cta-button
-        %a.button{href: "#"} Buy Now
-  .large-6.columns
-    %ul.pricing-table{"data-equalizer-watch" => ""}
-      \...
-      %li.cta-button
-        %a.button{href: "#"} Buy Now    
+/ .row{"data-equalizer" => ""}
+/   .large-6.columns
+/     %ul.pricing-table{"data-equalizer-watch" => ""}
+/       \...
+/       %li.cta-button
+/         %a.button{href: "#"} Buy Now
+/   .large-6.columns
+/     %ul.pricing-table{"data-equalizer-watch" => ""}
+/       \...
+/       %li.cta-button
+/         %a.button{href: "#"} Buy Now    
 
 
 // cheapest three hotels using foundation eqlizier - include price - room avliblty and book now!!!
