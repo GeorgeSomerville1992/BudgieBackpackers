@@ -154,6 +154,9 @@ function createMarkerForhostel(hostel, lowrate){
       //   dataType: "json",
       //   success: mapattractions
       // });
+    
+
+
     window.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions) 
     maphostels(hostels)
     
