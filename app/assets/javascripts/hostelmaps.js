@@ -161,6 +161,27 @@ var hotelOrange = new google.maps.MarkerImage('/assets/hotel_0star_orange.png')
           // add a specfic id to this marker
     })    //iterate through this marker 
   }       // then pass this marker back to the server end instead of the hotel marker itself. 
+
+// function maphostels(hostels){
+//     // _(attactions).each(createMarkerForAttraction)
+//     $.each(hostels,function(i,hostel){
+
+//         var hostelLowrate = gon.hostels.HotelListResponse.HotelList.HotelSummary[i].lowRate
+//         createMarkerForhostel(hostel, hostelLowrate)
+//           // add a specfic id to this marker
+//     })    //iterate through this marker 
+//   }       // then pass this marker back to the server end instead of the hotel marker itself. 
+
+
+
+
+
+
+
+
+
+
+  
   function initialize() { 
       var mapOptions = {
         zoom: 12,                     // hostel based on what user has typed in
