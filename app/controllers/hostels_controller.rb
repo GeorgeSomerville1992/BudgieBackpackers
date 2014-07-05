@@ -23,8 +23,15 @@ class HostelsController < ApplicationController
     # gon.places = JSON.parse @places
     expedia = Apis::ExpediaApi.new(@hostel.latitude, @hostel.longitude,@hostel.arrivalDate,@hostel.departureDate)
     @api = expedia.get_hostels(@hostel.latitude,@hostel.longitude,@hostel.arrivalDate,@hostel.departureDate)
-    
     serialized = JSON.generate(@api)
+
+    yelp = Apis::Yelp.new(@hostel.address)
+    binding.pry
+    @hostel_attractions = yelp.hostel_attractions
+    #gon.hostel_attractions = JSON.parse @hostel_attractions
+
+
+
 
     # JSON generator converts symbols to strings because JSON does not support symbols.
     # passing json document will produce a ruby hash with string keys inside

@@ -1,77 +1,56 @@
 $(function(){  
-  if (gon.hostels){
-    hostels = gon.hostels.HotelListResponse.HotelList.HotelSummary
-    hostellatitude = hostels.latitude
-    hostellongitude = gon.hostels.HotelListResponse.HotelList.HotelSummary.longitude
-     //var hostelId = gon.hostels.HotelListResponse.HotelList.HotelSummary[i].hotelId
-    hostelLowrate = gon.hostels.HotelListResponse.HotelList.HotelSummary.lowRate
-    hostelOffers = hostels.slice(0,4)
-    // for(i=0; i<20; i++){
-      // this will go in a window from google
-    // render into erb.....
-    hostelTemplate = _.template($('#hostel-show-template').text())
-    hostelDetailedTemplate = _.template($('#hostel-show-detailed-template').text())
-    $.each(hostels, function(i, hostel){ // hidden form?  put this inside one then user submit - will this data be able to show???
-      
-      $('#hostelResults').append(hostelTemplate(hostel))
-      
-    })
-    hostelOfferTemplate = _.template($('#hostel-show-cheapest-hotels').text())
-
-    // for(i=0; i>3; i++){
-    //   function(i, hostel){
-    //     $('#hotelOfferResults').append(hostelOfferTemplate(hostel))
-    //   }
-
-    // }
-      
-    $.each(hostelOffers, function(i, hostel){
-
-      $('#hotelOfferResults').append(hostelOfferTemplate(hostel))
-
-    })
-
-
-
-    $('.hostel-info-button').on("click", function(hostelId){
-      //console.log("clicked hostel info button with hotelId: " + $(this).data("hotelId"))
-      hotelId = $(this).attr('data-hotelid');
-      console.log(hotelId);
-
-      $.ajax({
-        url: "/hostels#show",
-        type: "GET",
-        data: hotelId, // admit sucessucion get 
-        dataType: "json",
-        success:function(){
-          displayDetailedResults();
-        }
+    if (gon.hostels){
+      hostels = gon.hostels.HotelListResponse.HotelList.HotelSummary
+      hostellatitude = hostels.latitude
+      hostellongitude = gon.hostels.HotelListResponse.HotelList.HotelSummary.longitude
+       //var hostelId = gon.hostels.HotelListResponse.HotelList.HotelSummary[i].hotelId
+      hostelLowrate = gon.hostels.HotelListResponse.HotelList.HotelSummary.lowRate
+      hostelOffers = hostels.slice(0,4)
+      // for(i=0; i<20; i++){
+        // this will go in a window from google
+      // render into erb.....
+      hostelTemplate = _.template($('#hostel-show-template').text())
+      hostelDetailedTemplate = _.template($('#hostel-show-detailed-template').text())
+      hostelOfferTemplate = _.template($('#hostel-show-cheapest-hotels').text())
+      $.each(hostels, function(i, hostel){ // hidden form?  put this inside one then user submit - will this data be able to show???
+        
+        $('#hostelResults').append(hostelTemplate(hostel))
+        
       })
-    })
-    displayDetailedResults = function(){
-      $.each(hostels, function(i, hostel){
-        var hostelId = gon.hostels.HotelListResponse.HotelList.HotelSummary[i].hotelId
-        console.log('ajax success')
-        $('#hostelDetailedResults').append(hostelDetailedTemplate(hostel))
+      $.each(hostelOffers, function(i, hostel){
+
+        $('#hotelOfferResults').append(hostelOfferTemplate(hostel))
+
       })
+      $('.hostel-info-button').on("click", function(hostelId){
+        //console.log("clicked hostel info button with hotelId: " + $(this).data("hotelId"))
+        hotelId = $(this).attr('data-hotelid');
+        console.log(hotelId);
+
+        $.ajax({
+          url: "/hostels#show",
+          type: "GET",
+          data: hotelId, // admit sucessucion get 
+          dataType: "json",
+          success:function(){
+            displayDetailedResults();
+          }
+        })
+      })
+      displayDetailedResults = function(){
+        $.each(hostels, function(i, hostel){
+          var hostelId = gon.hostels.HotelListResponse.HotelList.HotelSummary[i].hotelId
+          console.log('ajax success')
+          $('#hostelDetailedResults').append(hostelDetailedTemplate(hostel))
+        })
+      }
+       
+
     }
-
-
-
-    // searchresult = '<li>' + 'hotel name' + hostel.name + ' '  + 'hostellowrate' + ' ' + 
-    // ' ' + hostel.lowRate + ' ' + 'hostelhighrate' + ' ' + hostel.highRate + 'hostel.lattude' +
-    // + hostel.latitude + '</li>' + $("input").attr("type", "button").click(function(){
-    //                               console.log('clicked')
-    //                               // some ajax call - to shift data back into rails
-    //                               $.ajax({
-    //                                 type:post,
-    //                                 url:"/hostels",
-    //                                 //data: hostelId
-    //                                 dataType:json // or script???
-  }
-      //})
-    
-
+    if (gon.hostel_attractions){
+      attractions = gon.attractions.businesses
+    }
+   
     // $('#hostelResults').append(searchresult)
    // then how do get it in rails params? 
       // or i could put the whole thing in rails - but that wont work with google maps?
@@ -87,6 +66,32 @@ var hotelRed = new google.maps.MarkerImage('/assets/hotel_0star_red.png');
 var hotelGreen = new google.maps.MarkerImage('/assets/hotel_0star_green.png')
 var hotelYellow = new google.maps.MarkerImage('/assets/hotel_0star_yellow.png')
 var hotelOrange = new google.maps.MarkerImage('/assets/hotel_0star_orange.png')
+
+// var fetchHostelAttraction = $('#hotel_attraction').data('hostels')
+  
+//   $('.showyelp').click(function() {
+//     var url = "http://api.yelp.com/" +
+//             "business_review_search?"+
+//             "&term=" + fetchHostelAttraction + 
+//             "&lat=" + fetchLatitude +
+//             "&long=" + fetchLongitude +
+//             "&ywsid=" + "tEgG-fgQ2KUyHahOv7gWBQ"
+//     $.ajax({
+//       type: 'GET',
+//       url: url,
+//         dataType: 'json',
+//         success:function(){
+//             displayYelpURL();
+//       }
+//       })
+//   });
+//     function displayYelpURL() {
+//         //return encodeURI(url);
+//        console.log("done")
+//     }
+    
+  
+
 //hostels = gon.hostels.HotelListResponse.HotelList.HotelSummary
 //hostelLatitude = gon.hostels.HotelListResponse.HotelList.HotelSummary.latitude
 //hostelLongitude = gon.hostels.HotelListResponse.HotelList.HotelSummary.longitude

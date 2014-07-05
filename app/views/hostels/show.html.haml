@@ -92,7 +92,9 @@
 
   %br    
   %hr/
-%h3 best hotel deals
+
+/ = @hostel_attractions
+%button.showyelp
 .row
   #hotelOfferResults
 / .row{"data-equalizer" => ""}
@@ -111,7 +113,10 @@
   %b departedate: 
   = @hostel.departureDate
 
-
+  %b chosen hostel term 
+= content_tag "p", id: "hotel_attraction", data: {hostels: @hostel.attraction_type} do
+  %b hostel term:
+  = @hostel_attractions
 
 = link_to 'Edit', edit_hostel_path(@hostel)
 \|
