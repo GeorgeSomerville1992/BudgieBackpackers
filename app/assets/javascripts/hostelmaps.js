@@ -4,6 +4,7 @@ $(function(){
   if (gon.hostels){
     hostels = gon.hostels.HotelListResponse.HotelList.HotelSummary
     hostellatitude = hostels.latitude
+
     hostellongitude = gon.hostels.HotelListResponse.HotelList.HotelSummary.longitude
      //var hostelId = gon.hostels.HotelListResponse.HotelList.HotelSummary[i].hotelId
     hostelLowrate = gon.hostels.HotelListResponse.HotelList.HotelSummary.lowRate
@@ -145,15 +146,18 @@ var hotelOrange = new google.maps.MarkerImage('/assets/hotel_0star_orange.png')
 
   // what are we actualky passing into the attaction
   function maphostels(hostels){
+
     // _(attactions).each(createMarkerForAttraction)
     $.each(hostels,function(i,hostel){
-
-        var hotel = gon.hostels.HotelListResponse.HotelList.HotelSummary[i]
-        if(hotel != undefined)
-          var hostelLowrate = hotel.lowRate
-        else
-          var hostelLowrate = 0
-        createMarkerForhostel(hostel, hostelLowrate)
+      //var hotel = gon.hostels.HotelListResponse.HotelList.HotelSummary[i]
+      var hotel = gon.hostels.HotelListResponse.HotelList.HotelSummary[i]
+      //hotelLowrate = hotel.lowRate
+      createMarkerForhostel(hostel, hostelLowrate)
+        
+        // if(hotel != undefined)
+          // var hostelLowrate = hotel.lowRate
+        // else
+          // var hostelLowrate = 0   
           // add a specfic id to this marker
     })    //iterate through this marker 
   }       // then pass this marker back to the server end instead of the hotel marker itself. 
