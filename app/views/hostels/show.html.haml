@@ -27,15 +27,20 @@
               %p Fourth panel content goes here...
   %script#hostel-show-cheapest-hotels{type: "text/template"}
     .large-3.columns
-      %ul.pricing-table{"data-equalizer-watch" => ""}
-        %li.title <%= name %>
-        %li.price $<%= lowRate %>
-        %li.bullet-item <%= address1 %>
-        %li.bullet-item <%= postalCode %>
-        %li 
-        %img{src: "http://images.travelnow.com<%= thumbNailUrl %>"}
-        %li.cta-button
-          %a.button{href: "#"} Buy Now
+      .flip{style: "width: 200px; height: 200px;"}
+        .flip-front
+          %ul.pricing-table
+            %li.title <%= name %>
+            %li.price $<%= lowRate %>
+            %li.bullet-item <%= address1 %>
+            %li.bullet-item <%= postalCode %>
+            %li 
+            
+        .flip-back  
+          %ul.pricing-table{"data-equalizer-watch" => ""}
+            %img{src: "http://images.travelnow.com<%= thumbNailUrl %>"}
+            %li.cta-button
+              %a.button{href: "#"} Buy Now
       / .large-3.columns
       /   %ul.pricing-table{"data-equalizer-watch" => ""}
           
@@ -88,9 +93,9 @@
   %br    
   %hr/
 %h3 best hotel deals
-.row{"data-equalizer" => ""}
+.row
   #hotelOfferResults
-
+/ .row{"data-equalizer" => ""}
 %p#notice= notice
 %p
   %b Address:
