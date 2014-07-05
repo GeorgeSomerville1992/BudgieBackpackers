@@ -34,6 +34,7 @@ gem 'expedia'
 gem 'yelpster'
 gem 'oauth'
 gem 'omniauth-google-oauth2'
+gem 'date_validator'
 
 
 
