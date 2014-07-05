@@ -26,7 +26,7 @@ class HostelsController < ApplicationController
     serialized = JSON.generate(@api)
 
     yelp = Apis::Yelp.new(@hostel.address)
-    binding.pry
+    # binding.pry
     @hostel_attractions = yelp.hostel_attractions
     #gon.hostel_attractions = JSON.parse @hostel_attractions
 
