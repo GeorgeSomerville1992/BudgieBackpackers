@@ -15,7 +15,7 @@ class UsersController < Devise::RegistrationsController
 
     # then add our custom logic
     @user.role = "user"
-    @user.save
+    @user.save!
   end
 
   def edit

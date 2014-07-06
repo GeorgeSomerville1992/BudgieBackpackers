@@ -9,8 +9,6 @@
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
-
-    
     
     
   %body
@@ -29,11 +27,12 @@
 
     /   - flash.each do |name, msg|
     /     = content_tag :div, msg, :id => "flash_#{name}"
-    %nav.top-bar{"data-topbar" => ""}
+    #hi
+    %nav.top-bar
       %ul.title-area
         %li.name
           %h1
-            %a{href: "#"} My Site
+            
       %section.top-bar-section
         %ul.right
           - if user_signed_in?
@@ -62,7 +61,8 @@
             = link_to 'Hostels', hostels_path
           %li 
             = link_to 'Attractions', attractions_path  
-
+   
+        %a.exit-off-canvas        
     .row
       .container    
         -flash.each do |name, message|
@@ -75,6 +75,8 @@
 %script{src: "http://maps.googleapis.com/maps/api/js?libraries=places", type: "text/javascript"}   
 %script google.load("earth", "1", {"other_params":"sensor=true_or_false"});   
 = javascript_include_tag "application"   
+
+
 
 
    
