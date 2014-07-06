@@ -63,16 +63,57 @@
             = link_to 'Hostels', hostels_path
           %li 
             = link_to 'Attractions', attractions_path  
-   
-        %a.exit-off-canvas        
-    .row
-      .container    
-        -flash.each do |name, message|
-          %div{class: "alert alert-info alert-dismissable"}
-            %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"} &#215;
-            = message  
 
-      = yield
+   
+
+    .off-canvas-wrap
+      .inner-wrap
+        / OFF CANVAS MENU BAR
+        %nav.tab-bar.hide-for-large-up
+          %section.left-small
+            %a.left-off-canvas-toggle.menu-icon
+              %span
+          %section.right.tab-bar-section
+            %h1.title Menu
+        / END NAV.TAB-BAR HIDE-FOR-LARGE-UP
+        / OFF CANVAS MENU
+        %aside.left-off-canvas-menu
+          %ul.off-canvas-list
+            %li
+              %label Navigation
+            %li
+              %a{href: "index.html"} Home
+          %ul.off-canvas-list
+            %li.has-dropdown
+              %a{href: "blog.html"} Blog
+              %ul.off-canvas-list
+                %li
+                  %a{href: "blog.html"} Archive
+                %li
+                  %a{href: "post.html"} Single
+          %ul.off-canvas-list
+            %li.has-dropdown
+              %a{href: "page.html"} Page
+              %ul.off-canvas-list
+                %li
+                  %a{href: "page.html"} Full-width
+                %li
+                  %a{href: "sidebar-left.html"} Left Sidebar
+                %li
+                  %a{href: "sidebar-right.html"} Right Sidebar
+          %ul.off-canvas-list
+            %li
+              %a{href: "portfolio.html"} Portfolio 
+                   
+      .row
+        .container    
+          -flash.each do |name, message|
+            %div{class: "alert alert-info alert-dismissable"}
+              %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"} &#215;
+              = message  
+
+        = yield
+
 %script{src: "https://www.google.com/jsapi", type: "text/javascript"}
 %script{src: "http://maps.googleapis.com/maps/api/js?libraries=places", type: "text/javascript"}   
 %script google.load("earth", "1", {"other_params":"sensor=true_or_false"});   
