@@ -14,7 +14,7 @@ Devise.setup do |config|
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
-
+  config.omniauth :twitter, "yUMR9nAxXuqilOzLq219ZQMqB", "TIybHkreeKM5Kzxawxoe07awxgTY6pKTV19YIyc6NEySPHLozC"
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
@@ -229,7 +229,9 @@ Devise.setup do |config|
       image_size: 30
     }
 
+    
 
+       
   
   # The "*/*" below is required to match Internet Explorer requests.
   # config.navigational_formats = ['*/*', :html]
