@@ -1,5 +1,6 @@
 class HostelsController < ApplicationController
   before_filter :authenticate_user!
+  include Yelp::V2::Search::Request
   
   # GET /hostels
   # GET /hostels.json
@@ -14,6 +15,26 @@ class HostelsController < ApplicationController
 
   # GET /hostels/1
   # GET /hostels/1.json
+
+  # def search
+  #   client = Yelp::Client.new
+
+  #    request = GeoPoint.new(
+  #                :term => 'thai',
+  #                :category_filter => 'food,restaurants',
+  #                :limit => 20,
+  #                :radius_filter => 8047,
+  #                :latitude => 37.782093,
+  #                :longitude => -122.483230)
+  #    @hostel_attractions = client.search(request)
+
+
+
+
+
+  # end 
+
+
   def show
     @hostel = Hostel.find(params[:id])
       #gpo straight to the apis module then on to wgo- create a new object of it
@@ -25,10 +46,19 @@ class HostelsController < ApplicationController
     @api = expedia.get_hostels(@hostel.latitude,@hostel.longitude,@hostel.arrivalDate,@hostel.departureDate)
     serialized = JSON.generate(@api)
 
-    yelp = Apis::Yelp.new(@hostel.address)
-    # binding.pry
-    @hostel_attractions = yelp.hostel_attractions
-    #gon.hostel_attractions = JSON.parse @hostel_attractions
+      yelp = Apis::Yelp.new(@hostel.attraction_type,@hostel.address)
+    # request = GeoPoint.new(
+    #          :latitude => 37.782093,
+    #          :longitude => -122.483230)
+
+    # yelp = Yelp.client.search(@borough, { 
+    #     :latitude => @hostel.latitude,
+    #          :longitude => @hostel.longitude
+    #  })
+    # binding.pry                         
+    
+      @hostel_attractions = yelp.hostel_attractions
+      #gon.hostel_attractions = JSON.parse @hostel_attractions
 
 
 
