@@ -1,3 +1,9 @@
+
+$background: url(/assets/backgroundhome.JPG);
+.row {
+background-color: $background
+
+}
 // Foundation by ZURB
 // foundation.zurb.com
 // Licensed under MIT Open Source
@@ -35,13 +41,14 @@
 // $include-html-grid-classes: $include-html-classes;
 // $include-xl-html-grid-classes: false;
 
-// $row-width: rem-calc(1000);
+$row-width: rem-calc(1000);
+
 // $total-columns: 12;
 
 // Global
 
 // We use these to control various global styles
-// $body-bg: #fff;
+$body-bg: white;
 // $body-font-color: #222;
 // $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: $font-weight-normal;
