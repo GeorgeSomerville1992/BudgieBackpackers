@@ -45,7 +45,7 @@ class HostelsController < ApplicationController
     expedia = Apis::ExpediaApi.new(@hostel.latitude, @hostel.longitude,@hostel.arrivalDate,@hostel.departureDate)
     @api = expedia.get_hostels(@hostel.latitude,@hostel.longitude,@hostel.arrivalDate,@hostel.departureDate)
     serialized = JSON.generate(@api)
-
+    binding.pry
       yelp = Apis::Yelp.new(@hostel.attraction_type,@hostel.address)
     # request = GeoPoint.new(
     #          :latitude => 37.782093,
