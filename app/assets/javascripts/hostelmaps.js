@@ -54,6 +54,7 @@ $(function(){
       attractions_foursquare_items = attractions_foursquare[0].items 
       attractions_foursquare_template = _.template($('#attraction-foursquare-template').text())
       attractions_foursquare_venues = attractions_foursquare[0]['items']
+      attraction_distance_miles = 
       a = attractions_foursquare[0].items
       // debugger
       $.each(attractions_foursquare_items, function(i, item){ // hidden form?  put this inside one then user submit - will this data be able to show???
@@ -192,19 +193,19 @@ function createMarkerForhostel(hostel, lowrate){
   function createMarkerForAttraction(attraction, attraction_catagory, locationLat, locationLong){
     var attractionCatagory = attraction_catagory
     var latLng = new google.maps.LatLng(locationLat,locationLong);  
-    console.log(locationLat)
-    var marker = new google.maps.Marker({
-      position: latLng,
-      map: window.mapAttraction,
-      title:"Hello World!"
+    console.log(attractionCatagory)
+    // var marker = new google.maps.Marker({
+    //   position: latLng,
+    //   map: window.mapAttraction,
+    //   title:"Hello World!"
       
-    });
+    // });
 
 
-     if(attraction.attractionName == "bar"){
+     if(attractionCatagory == "Bar"){
       var marker = new google.maps.Marker({
         position: latLng,
-        map: window.map,
+        map: window.mapAttraction,
         title: "hi",
         icon: bar
       })
