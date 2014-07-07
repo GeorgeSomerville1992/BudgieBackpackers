@@ -6,6 +6,7 @@ $(function(){
        //var hostelId = gon.hostels.HotelListResponse.HotelList.HotelSummary[i].hotelId
       hostelLowrate = gon.hostels.HotelListResponse.HotelList.HotelSummary.lowRate
       hostelOffers = hostels.slice(0,4)
+      hostelProximityRound = hostels.proximityDistance
       // for(i=0; i<20; i++){
         // this will go in a window from google
       // render into erb.....
