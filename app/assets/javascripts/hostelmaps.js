@@ -48,7 +48,22 @@ $(function(){
 
     }
     if (gon.hostel_attractions){
-      attractions = gon.attractions.businesses
+      attractions = gon.hostel_attractions.businesses
+      distance_miles = gon.hostel_attractions.businesses.distance * 0.00062137
+      attraction_template = _.template($('#attraction-show-template').text())
+
+      $.each(attractions, function(i, attraction){
+
+        $('#showattractiondetails').append(attraction_template(attraction))
+
+      })
+
+
+
+
+
+
+
     }
    
     // $('#hostelResults').append(searchresult)

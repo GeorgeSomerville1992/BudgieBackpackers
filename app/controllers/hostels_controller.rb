@@ -45,8 +45,8 @@ class HostelsController < ApplicationController
     expedia = Apis::ExpediaApi.new(@hostel.latitude, @hostel.longitude,@hostel.arrivalDate,@hostel.departureDate)
     @api = expedia.get_hostels(@hostel.latitude,@hostel.longitude,@hostel.arrivalDate,@hostel.departureDate)
     serialized = JSON.generate(@api)
-    binding.pry
-      yelp = Apis::Yelp.new(@hostel.attraction_type,@hostel.address)
+    
+      yelp = Apis::Yelp.new(@hostel.attraction_type,@hostel.address,@hostel.latitude, @hostel.longitude)
     # request = GeoPoint.new(
     #          :latitude => 37.782093,
     #          :longitude => -122.483230)
@@ -55,12 +55,12 @@ class HostelsController < ApplicationController
     #     :latitude => @hostel.latitude,
     #          :longitude => @hostel.longitude
     #  })
-    # binding.pry                         
+                         
     
       @hostel_attractions = yelp.hostel_attractions
-      #gon.hostel_attractions = JSON.parse @hostel_attractions
+      gon.hostel_attractions = JSON.parse @hostel_attractions
 
-
+       
 
 
     # JSON generator converts symbols to strings because JSON does not support symbols.
