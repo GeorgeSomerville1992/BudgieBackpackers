@@ -47,20 +47,17 @@ $(function(){
        
 
     }
-    if (gon.hostel_attractions){
-      attractions = gon.hostel_attractions.businesses
-      distance_miles = gon.hostel_attractions.businesses.distance * 0.00062137
-      attraction_template = _.template($('#attraction-show-template').text())
 
-      $.each(attractions, function(i, attraction){
+    if (gon.hostel_attraction_foursquare){
 
-        $('#showattractiondetails').append(attraction_template(attraction))
+      attractions_foursquare = gon.hostel_attraction_foursquare.venues
+      attractions_foursquare_template = _.template($('#attraction-foursquare-template').text())
 
+      $.each(attractions_foursquare, function(i, attraction){ // hidden form?  put this inside one then user submit - will this data be able to show???
+        
+        $('#showfoursquaredata').append(attractions_foursquare_template(attraction))
+        
       })
-
-
-
-
 
 
 

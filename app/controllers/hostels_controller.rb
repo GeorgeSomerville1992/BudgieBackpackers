@@ -46,8 +46,10 @@ class HostelsController < ApplicationController
     @api = expedia.get_hostels(@hostel.latitude,@hostel.longitude,@hostel.arrivalDate,@hostel.departureDate)
     serialized = JSON.generate(@api)
     
-      yelp = Apis::Yelp.new(@hostel.attraction_type,@hostel.address,@hostel.latitude, @hostel.longitude)
-
+      # yelp = Apis::Yelp.new(@hostel.attraction_type,@hostel.address,@hostel.latitude, @hostel.longitude)
+      # @hostel_attractions = yelp.hostel_attractions
+      # gon.hostel_attractions = JSON.parse @hostel_attractions
+    gon.hostels = JSON.parse(serialized, {:symbolize_names => true})
 
 
     # request = GeoPoint.new(
@@ -60,8 +62,7 @@ class HostelsController < ApplicationController
     #  })
                          
     
-      @hostel_attractions = yelp.hostel_attractions
-      gon.hostel_attractions = JSON.parse @hostel_attractions
+      
 
      client = Foursquare2::Client.new(:client_id => 'PJOVUMNXMNMSCGSYVETRKZ23WN2LUR31M0AD04AMKTJAKI5I', 
                                     :client_secret => '3GG355R0B5D4KMH1J1UIUFXH2ZZCFH4ISOW5WTNYV11JJTDV',
@@ -75,11 +76,12 @@ class HostelsController < ApplicationController
     #begin 
     @foursquare = client.search_venues(:near => @hostel.address, 
         :query => @hostel.attraction_type)
-       
+    serialized_foursquare = JSON.generate(@foursquare)
+    gon.hostel_attraction_foursquare = JSON.parse(serialized_foursquare,{:symbolize_names => true})       
     # JSON generator converts symbols to strings because JSON does not support symbols.
     # passing json document will produce a ruby hash with string keys inside
     # since we already have thus we can use symbols
-    gon.hostels = JSON.parse(serialized, {:symbolize_names => true})
+    
     
     gon.preference = "hello"
     respond_to do |format|
