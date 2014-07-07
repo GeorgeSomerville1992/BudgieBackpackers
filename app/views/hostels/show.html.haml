@@ -50,7 +50,7 @@
         %h5 <%= name %>
           
         %p  <%= url %>
-        %p <%= phone %>
+        / %p <%= phone %>
         %p <%= distance * 0.00062137 %> miles away
         %p <%= location.displayaddress %>
 
@@ -171,9 +171,9 @@
 / - for hostel in @hostel.nearbys(10)
 /   %li = link_to hostel.address, hostel (hostel.distance.round(10) miles)
 
-%h3 hostels 
-= @hostel_attractions  
-
+%h3 foursquare
+/ = @hostel_attractions  
+= @foursquare
 
 / %dl.accordion{"data-accordion" => ""}
 /   %dd.accordion-navigation

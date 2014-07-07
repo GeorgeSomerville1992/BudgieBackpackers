@@ -47,6 +47,9 @@ class HostelsController < ApplicationController
     serialized = JSON.generate(@api)
     
       yelp = Apis::Yelp.new(@hostel.attraction_type,@hostel.address,@hostel.latitude, @hostel.longitude)
+
+
+
     # request = GeoPoint.new(
     #          :latitude => 37.782093,
     #          :longitude => -122.483230)
@@ -60,9 +63,17 @@ class HostelsController < ApplicationController
       @hostel_attractions = yelp.hostel_attractions
       gon.hostel_attractions = JSON.parse @hostel_attractions
 
+     client = Foursquare2::Client.new(:client_id => 'PJOVUMNXMNMSCGSYVETRKZ23WN2LUR31M0AD04AMKTJAKI5I', 
+                                    :client_secret => '3GG355R0B5D4KMH1J1UIUFXH2ZZCFH4ISOW5WTNYV11JJTDV',
+                                    :api_version => '20120610'
+
+                                    ) 
+
+       # @foursquare = client.search_venues(:ll => '@hostel.latitude,@hostel.longitude', 
+       #  :query => @hostel.attraction_type)
+    @foursquare = client.search_venues(:near => @hostel.address, 
+        :query => @hostel.attraction_type)
        
-
-
     # JSON generator converts symbols to strings because JSON does not support symbols.
     # passing json document will produce a ruby hash with string keys inside
     # since we already have thus we can use symbols
