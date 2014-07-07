@@ -200,8 +200,6 @@ function createMarkerForhostel(hostel, lowrate){
     //   title:"Hello World!"
       
     // });
-
-
      if(attractionCatagory == "Bar"){
       var marker = new google.maps.Marker({
         position: latLng,
