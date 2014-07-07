@@ -10,9 +10,8 @@
       %ul
         - @hostel.errors.full_messages.each do |msg|
           %li= msg
-
+  %h3 Find me a hostel in...        
   .field
-    = f.label :address
     = f.text_field :address
   
   .field
@@ -24,8 +23,8 @@
   .field   
     = f.label :attraction_type
     = f.text_field :attraction_type
+  %h3 And limit my distance to....  
   .field 
-    = f.label :distance
     = f.text_field :distance  
 
   .actions

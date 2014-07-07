@@ -4,7 +4,7 @@ module Apis
 
     API_KEY = "m5zs97x99nkugvee8pmadv7c"
 
-    def initialize(hostellatitude,hostellongitude,hostelarrivalDate,hosteldepartureDate)
+    def initialize(hostellatitude,hostellongitude,hostelarrivalDate,hosteldepartureDate, hosteldistance)
       Expedia::Utils.logger = Rails.logger
 
       Expedia.cid = 55505
