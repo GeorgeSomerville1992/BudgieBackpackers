@@ -42,7 +42,7 @@ class HostelsController < ApplicationController
     # yelp = Apis::Yelp.new(@location.address)
     # @places = yelp.addresses
     # gon.places = JSON.parse @places
-    expedia = Apis::ExpediaApi.new(@hostel.latitude, @hostel.longitude,@hostel.arrivalDate,@hostel.departureDate)
+    expedia = Apis::ExpediaApi.new(@hostel.latitude, @hostel.longitude,@hostel.arrivalDate,@hostel.departureDate,@hostel.distance)
     @api = expedia.get_hostels(@hostel.latitude,@hostel.longitude,@hostel.arrivalDate,@hostel.departureDate)
     serialized = JSON.generate(@api)
     

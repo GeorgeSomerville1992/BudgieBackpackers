@@ -17,7 +17,7 @@ module Apis
       # @locations
     end 
 
-    def get_hostels (hostellatitude,hostellongitude, hostelarrivalDate, hosteldepartureDate)
+    def get_hostels (hostellatitude,hostellongitude, hostelarrivalDate, hosteldepartureDate, hosteldistance)
       
       @api.get_list({ 
                       :latitude => hostellatitude,
@@ -25,7 +25,7 @@ module Apis
                       :propertyCategory => 1,
                       :arrivalDate => hostelarrivalDate.strftime("%m/%d/%Y"),
                       :departureDate => hosteldepartureDate.strftime("%m/%d/%Y"),
-                      :searchRadius => 5,
+                      :searchRadius => hosteldistance,
                       :sort => "PRICE"
 
                        }).body

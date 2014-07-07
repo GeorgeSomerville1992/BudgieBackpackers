@@ -6,7 +6,8 @@ $(function(){
        //var hostelId = gon.hostels.HotelListResponse.HotelList.HotelSummary[i].hotelId
       hostelLowrate = gon.hostels.HotelListResponse.HotelList.HotelSummary.lowRate
       hostelOffers = hostels.slice(0,4)
-      hostelProximityRound = hostels.proximityDistance
+      //distance_miles = gon.hostel_attractions.businesses.distance * 0.00062137
+      // hostelProximityRound = gon.hostels.HotelListResponse.HotelList.HotelSummary.proximityDistance * 1000
       // for(i=0; i<20; i++){
         // this will go in a window from google
       // render into erb.....
@@ -55,7 +56,8 @@ $(function(){
       attractions_foursquare_items = attractions_foursquare[0].items 
       attractions_foursquare_template = _.template($('#attraction-foursquare-template').text())
       attractions_foursquare_venues = attractions_foursquare[0]['items']
-      attraction_distance_miles = 
+      
+      
       a = attractions_foursquare[0].items
       // debugger
       $.each(attractions_foursquare_items, function(i, item){ // hidden form?  put this inside one then user submit - will this data be able to show???
