@@ -74,8 +74,8 @@ class HostelsController < ApplicationController
        #  :query => @hostel.attraction_type)
 
     #begin 
-    @foursquare = client.search_venues(:near => @hostel.address, 
-        :query => @hostel.attraction_type)
+    @foursquare = client.explore_venues(:near => @hostel.address, 
+        :query => @hostel.attraction_type ,:price => 1)
     serialized_foursquare = JSON.generate(@foursquare)
     gon.hostel_attraction_foursquare = JSON.parse(serialized_foursquare,{:symbolize_names => true})       
     # JSON generator converts symbols to strings because JSON does not support symbols.

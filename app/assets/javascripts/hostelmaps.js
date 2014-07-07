@@ -50,12 +50,15 @@ $(function(){
 
     if (gon.hostel_attraction_foursquare){
 
-      attractions_foursquare = gon.hostel_attraction_foursquare.venues
+      attractions_foursquare = gon.hostel_attraction_foursquare.groups
+      attractions_foursquare_items = attractions_foursquare[0].items 
       attractions_foursquare_template = _.template($('#attraction-foursquare-template').text())
-
-      $.each(attractions_foursquare, function(i, attraction){ // hidden form?  put this inside one then user submit - will this data be able to show???
-        
-        $('#showfoursquaredata').append(attractions_foursquare_template(attraction))
+      attractions_foursquare_venues = attractions_foursquare[0]['items']
+      // debugger
+      $.each(attractions_foursquare[0].items, function(i, item){ // hidden form?  put this inside one then user submit - will this data be able to show???
+        console.log(item.venue.name)
+        console.log("-->", item.venue.location.formattedAddress.join())
+        $('#showfoursquaredata').append(attractions_foursquare_template(item))
         
       })
 
@@ -78,7 +81,7 @@ var hotelRed = new google.maps.MarkerImage('/assets/hotel_0star_red.png');
 var hotelGreen = new google.maps.MarkerImage('/assets/hotel_0star_green.png')
 var hotelYellow = new google.maps.MarkerImage('/assets/hotel_0star_yellow.png')
 var hotelOrange = new google.maps.MarkerImage('/assets/hotel_0star_orange.png')
-
+var bar = new google.maps.MarkerImage('/assets/winebar.png')
 // var fetchHostelAttraction = $('#hotel_attraction').data('hostels')
   
 //   $('.showyelp').click(function() {
@@ -166,6 +169,32 @@ function createMarkerForhostel(hostel, lowrate){
     // call mapoattractions
     //addInfoWindowForCamera(marker, camera)
   }
+
+  function createMarkerForAttraction(attraction, attraction_catagory, locationLat, locationLong){
+    var attractionCatagory = attraction_catagory
+    var latLng = new google.maps.LatLng(locationLat,locationLong);  
+    console.log(locationLat)
+    var marker = new google.maps.Marker({
+      position: latLng,
+      map: window.mapAttraction,
+      title:"Hello World!"
+      
+    });
+
+
+     if(attraction.attractionName == "bar"){
+      var marker = new google.maps.Marker({
+        position: latLng,
+        map: window.map,
+        title: "hi",
+        icon: bar
+      })
+    }
+  }
+
+
+
+
   // what are we actualky passing into the attaction
   function maphostels(hostels){
     // _(attactions).each(createMarkerForAttraction)
@@ -176,11 +205,22 @@ function createMarkerForhostel(hostel, lowrate){
           // add a specfic id to this marker
     })    //iterate through this marker 
   }       // then pass this marker back to the server end instead of the hotel marker itself. 
-  function mapattractions(attractions){
-    $.each(hostels,function(i,attraction){
+  function mapattractions(attractions_foursquare){
+    $.each(attractions_foursquare[0]['items'], function(i,attraction){
 
-        //var hostelLowrate = gon.hostels.HotelListResponse.HotelList.HotelSummary[i].lowRate
-        createMarkerForAttraction(attraction)
+        console.log(attraction);
+        console.log(attraction['venue']);
+        console.log(attraction['venue']['categories']);
+        console.log(attraction['venue']['categories']['0']);
+        var locationLat = attraction['venue']['location']['lat']
+        var locationLong = attraction['venue']['location']['lng']
+        var categoryName = attraction['venue']['categories']['0']['name']
+        // venue location - lat
+        //attractions_foursquare_items[0]['venue']['categories'][0]['name']
+        // var attraction_catagory = attractions_foursquare_items.categories[i].name
+
+        //var attractionname = attractions.name
+        createMarkerForAttraction(attraction, categoryName,locationLat, locationLong)
           // add a specfic id to this marker
     }) 
   }
@@ -205,8 +245,8 @@ function createMarkerForhostel(hostel, lowrate){
       }
     map_container_attraction = document.getElementById('map-attraction-canvas')
       if(map_container_attraction != undefined){
-        window.map = new google.maps.Map(map_container_attraction, mapOptions) 
-        //maphostels(hostels)
+        window.mapAttraction = new google.maps.Map(map_container_attraction, mapOptions) 
+        mapattractions(attractions_foursquare)
         // gon.hostels is was messing everything up
         //infowindow = new google.maps.InfoWindow(); 
       }

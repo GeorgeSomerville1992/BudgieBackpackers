@@ -42,8 +42,34 @@
             %li.cta-button
               %a.button{href: "#"} Buy Now
   %script#attraction-foursquare-template{type: "text/template"}
-    %h5 <%= name %>
-    %p  <%= location.formattedAddress %>     
+    %dl.accordion{"data-accordion" => ""}
+      %dd.accordion-navigation
+        %a{href: "#panel1"} <%= name %>
+        #panel1.content
+          %dl.tabs{"data-tab" => ""}
+            %dd.active
+              %a{href: "#panel2-1"} Address
+            %dd
+              %a{href: "#panel2-2"} Populatity
+            %dd
+              %a{href: "#panel2-3"} Tab 3
+          
+          .tabs-content
+            #panel2-1.content.active
+              %p  Address: 
+              
+            #panel2-2.content
+              %p Checkins  
+              %p Tips 
+              %p
+            #panel2-3.content
+              %p Third panel content goes here...
+            #panel2-4.content
+              %p Fourth panel content goes here...
+
+
+
+     
 
     
   
