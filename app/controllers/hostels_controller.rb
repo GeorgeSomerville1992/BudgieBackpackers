@@ -71,6 +71,8 @@ class HostelsController < ApplicationController
 
        # @foursquare = client.search_venues(:ll => '@hostel.latitude,@hostel.longitude', 
        #  :query => @hostel.attraction_type)
+
+    #begin 
     @foursquare = client.search_venues(:near => @hostel.address, 
         :query => @hostel.attraction_type)
        
