@@ -176,6 +176,14 @@ function createMarkerForhostel(hostel, lowrate){
           // add a specfic id to this marker
     })    //iterate through this marker 
   }       // then pass this marker back to the server end instead of the hotel marker itself. 
+  function mapattractions(attractions){
+    $.each(hostels,function(i,attraction){
+
+        //var hostelLowrate = gon.hostels.HotelListResponse.HotelList.HotelSummary[i].lowRate
+        createMarkerForAttraction(attraction)
+          // add a specfic id to this marker
+    }) 
+  }
   function initialize() { 
       var mapOptions = {
         zoom: 12,                     // hostel based on what user has typed in
@@ -192,6 +200,13 @@ function createMarkerForhostel(hostel, lowrate){
       if(map_container != undefined){
         window.map = new google.maps.Map(map_container, mapOptions) 
         maphostels(hostels)
+        // gon.hostels is was messing everything up
+        //infowindow = new google.maps.InfoWindow(); 
+      }
+    map_container_attraction = document.getElementById('map-attraction-canvas')
+      if(map_container_attraction != undefined){
+        window.map = new google.maps.Map(map_container_attraction, mapOptions) 
+        //maphostels(hostels)
         // gon.hostels is was messing everything up
         //infowindow = new google.maps.InfoWindow(); 
       }

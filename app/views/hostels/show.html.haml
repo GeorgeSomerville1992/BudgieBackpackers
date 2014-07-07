@@ -42,22 +42,10 @@
             %li.cta-button
               %a.button{href: "#"} Buy Now
   %script#attraction-foursquare-template{type: "text/template"}
-    .large-9.columns
-      .panel 
-        %h5 <%= name %>
-        %p  <%= location.formattedAddress %>     
+    %h5 <%= name %>
+    %p  <%= location.formattedAddress %>     
 
-      / .large-3.columns
-      /   %ul.pricing-table{"data-equalizer-watch" => ""}
-          
-      /     %li.cta-button
-      /       %a.button{href: "#"} Buy Now    
-      / .large-3.columns
-      /   %ul.pricing-table{"data-equalizer-watch" => ""}
-      /     %li test
-      /     %li test 2 
-      /     %li.cta-button
-      /       %a.button{href: "#"} Buy Now      
+    
   
   / script goes inside here 
     
@@ -92,6 +80,9 @@
   %br    
   %hr/
 
+
+
+
 / = @hostel_attractions
 
 .row
@@ -102,16 +93,15 @@
 %br
 %br
 %br
-
-%h3
-  Nearby #{@hostel.attraction_type} s 
 .row
   .large-12.columns
     .large-6.columns
       .accordioncontainer
         #showfoursquaredata
     .large-4.columns
-      
+      #map-attraction-canvas{:style => "width: 543px; height: 300px"}    
+    
+
 
 / = @hostel_attractions  
 
