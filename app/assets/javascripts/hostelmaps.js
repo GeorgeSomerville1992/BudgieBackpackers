@@ -54,17 +54,36 @@ $(function(){
       attractions_foursquare_items = attractions_foursquare[0].items 
       attractions_foursquare_template = _.template($('#attraction-foursquare-template').text())
       attractions_foursquare_venues = attractions_foursquare[0]['items']
+      a = attractions_foursquare[0].items
       // debugger
-      $.each(attractions_foursquare[0].items, function(i, item){ // hidden form?  put this inside one then user submit - will this data be able to show???
+      $.each(attractions_foursquare_items, function(i, item){ // hidden form?  put this inside one then user submit - will this data be able to show???
         console.log(item.venue.name)
         console.log("-->", item.venue.location.formattedAddress.join())
-        $('#showfoursquaredata').append(attractions_foursquare_template(item))
+
+        $('#showfoursquaredata').append(attractions_foursquare_template(item.venue))
         
       })
 
-
+      for(var i = 0; i < a.length; i ++) { 
+        
+        $('#showfoursquaredata').append(a[i].venue.name)
+        
+      }
 
     }
+
+
+
+
+
+    //   for(var i = 0; i < a.length; i ++) { 
+
+    //     $('#test').append(a[i].venue.name)
+
+    //   }
+
+
+    // }
    
     // $('#hostelResults').append(searchresult)
    // then how do get it in rails params? 

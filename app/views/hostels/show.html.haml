@@ -41,10 +41,11 @@
             %img{src: "http://images.travelnow.com<%= thumbNailUrl %>"}
             %li.cta-button
               %a.button{href: "#"} Buy Now
+  #test
   %script#attraction-foursquare-template{type: "text/template"}
     %dl.accordion{"data-accordion" => ""}
       %dd.accordion-navigation
-        %a{href: "#panel1"} <%= name %>
+        %a{href: "#panel1"} <%= name %> <%= location.distance * 0.00062137 %> miles away
         #panel1.content
           %dl.tabs{"data-tab" => ""}
             %dd.active
@@ -56,10 +57,10 @@
           
           .tabs-content
             #panel2-1.content.active
-              %p  Address: 
+              %p  Address: <%= location.formattedAddress %>
               
             #panel2-2.content
-              %p Checkins  
+              %p no of checkins: <%=   
               %p Tips 
               %p
             #panel2-3.content
