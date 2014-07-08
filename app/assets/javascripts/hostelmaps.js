@@ -140,6 +140,8 @@ var hotelOrange = new google.maps.MarkerImage('/assets/hotel_0star_orange.png')
 var bar = new google.maps.MarkerImage('/assets/winebar.png')
 var restaurant = new google.maps.MarkerImage('/assets/restaurant.png')
 var coffee = new google.maps.MarkerImage('/assets/coffee.png')
+var general = new google.maps.MarkerImage('/assets/panoramicview.png')
+var beer = new google.maps.MarkerImage('/assets/beer.png')
 // var fetchHostelAttraction = $('#hotel_attraction').data('hostels')
   
 //   $('.showyelp').click(function() {
@@ -232,12 +234,7 @@ function createMarkerForhostel(hostel, lowrate){
     var attractionCatagory = attraction_catagory
     var latLng = new google.maps.LatLng(locationLat,locationLong);  
     console.log(attractionCatagory)
-    // var marker = new google.maps.Marker({
-    //   position: latLng,
-    //   map: window.mapAttraction,
-    //   title:"Hello World!"
-      
-    // });
+    
      // if(attractionCatagory == "Bar"){
      //  var marker = new google.maps.Marker({
      //    position: latLng,
@@ -245,23 +242,42 @@ function createMarkerForhostel(hostel, lowrate){
      //    title: "hi",
      //    icon: bar
      //  })
-    // }else if(attractionCatagory == "Restaurant"){
-    //   var marker = new google.maps.Marker({
-    //     position: latLng,
-    //     map: window.mapAttraction,
-    //     title: "hi",
-    //     icon: restaurant 
-    //   })
-    // }
-    if(attractionCatagory == "Club"){
+      if(attractionCatagory == "Bar"){
       var marker = new google.maps.Marker({
         position: latLng,
         map: window.mapAttraction,
         title: "hi",
-        icon: coffee
+        icon: bar
       
       })
-    }
+    } else if(attractionCatagory == "Cafe"){
+        var marker = new google.maps.Marker({
+          position: latLng,
+          map: window.mapAttraction,
+          title: "hi",
+          icon: restaurant 
+        })
+      }else if(attractionCatagory == "Pub"){
+      var marker = new google.maps.Marker({
+        position: latLng,
+        map: window.mapAttraction,
+        title: "hi",
+        icon: beer
+      
+        })
+      }else 
+    
+      var marker = new google.maps.Marker({
+        position: latLng,
+        map: window.mapAttraction,
+        title:"Hello World!",
+        icon: general 
+      });
+
+
+
+
+
   }
 
 
