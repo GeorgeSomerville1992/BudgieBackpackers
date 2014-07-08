@@ -15,7 +15,7 @@ $(function(){
       hostelDetailedTemplate = _.template($('#hostel-show-detailed-template').text())
       hostelOfferTemplate = _.template($('#hostel-show-cheapest-hotels').text())
       $.each(hostels, function(i, hostel){ // hidden form?  put this inside one then user submit - will this data be able to show???
-        
+        hostel.proximityDistance = Math.round(hostel.proximityDistance*10)/10
         $('#hostelResults').append(hostelTemplate(hostel))
         
       })
@@ -61,9 +61,6 @@ $(function(){
       a = attractions_foursquare[0].items
       // debugger
       $.each(attractions_foursquare_items, function(i, item){ // hidden form?  put this inside one then user submit - will this data be able to show???
-        console.log(item.venue.name)
-        console.log("-->", item.venue.location.formattedAddress.join())
-
         $('#showfoursquaredata').append(attractions_foursquare_template(item.venue))
         
       })
