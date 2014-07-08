@@ -13,11 +13,15 @@ $(function(){
       // render into erb.....
       hostelTemplate = _.template($('#hostel-show-template').text())
       hostelDetailedTemplate = _.template($('#hostel-show-detailed-template').text())
+
       hostelOfferTemplate = _.template($('#hostel-show-cheapest-hotels').text())
+
       $.each(hostels, function(i, hostel){ // hidden form?  put this inside one then user submit - will this data be able to show???
         hostel.proximityDistance = Math.round(hostel.proximityDistance*10)/10
-        $('#hostelResults').append(hostelTemplate(hostel))
-        
+        arrayIndex = i.toString()
+        $('#hostelResults').append(hostelTemplate(hostel,i))
+        // how would you render erb into a string????? 
+        console.log(arrayIndex)
       })
       $.each(hostelOffers, function(i, hostel){
 
@@ -249,14 +253,14 @@ function createMarkerForhostel(hostel, lowrate){
     //     icon: restaurant 
     //   })
     // }
-    if(attractionCatagory == "Café"){
+    if(attractionCatagory == "Club"){
       var marker = new google.maps.Marker({
         position: latLng,
         map: window.mapAttraction,
         title: "hi",
         icon: coffee
       
-    })
+      })
     }
   }
 
