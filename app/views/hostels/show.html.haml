@@ -76,6 +76,8 @@
           %p <%= tips[0].text %>
           %p <%= tips[0].text %>
           %p <%= tips[0].createdAt %>
+          %p <%= tips[0].user.firstName %>
+          %p <%= tips[0].user.lastName %>
       .large-3.columns
         .panel
           %p
@@ -83,12 +85,14 @@
       .large-3.columns 
         .flip{style: "width: 200px; height: 200px;"}
           .flip-front
-            .panel
-              %li <%= venue.contact.phone %>
-              %li <%= venue.contact.twitter %>
-              %li <%= venue.contact.facebook %>
-              %li <%= venue.contact.facebookName %>
-              %li <%= venue.location.formattedAddress %>
+            .panel.panellist
+              %h4 Contact details
+              %p Address: <%= venue.location.formattedAddress %>
+              %li Mobile: <%= venue.contact.phone %>
+              %li Twitter: <%= venue.contact.twitter %>
+              %li Facebook: <%= venue.contact.facebook %>
+            
+              
           .flip-back
             .panel 
               %h3 Book now!
@@ -102,23 +106,25 @@
     .large-3.columns 
       .flip{style: "width: 200px; height: 200px;"}
         .flip-front
-          .panel
-            %li <%= venue.contact.phone %>
-            %li <%= venue.contact.twitter %>
-            %li <%= venue.contact.facebook %>
-            %li <%= venue.contact.facebookName %>
-            %li <%= venue.location.formattedAddress %>
+          .panel.panellist
+            %p <%= venue.contact.phone %>
+            %p <%= venue.contact.twitter %>
+            %li Mobile: <%= venue.contact.phone %>
+            %li Twitter: <%= venue.contact.twitter %>
+            %li Facebook: <%= venue.contact.facebook %>
         .flip-back
           .panel 
             %h3 Book now!   
             
     .large-6.columns 
-      .panel
+      .panel.panellist
         %h4 <%= venue.name %> 
         %p <%= venue.hereNow.count %> <%= venue.hereNow.summry %>
         %p <%= tips[0].text %>
         %p <%= tips[0].text %>
         %p <%= tips[0].createdAt %>
+        %p <%= tips[0].user.firstName %>
+        %p <%= tips[0].user.lastName %>
     .row            
       #showfoursquare-toppics-template-third
   %script#attraction-foursquare-topPics-template-third{type: "text/template"} 
@@ -129,7 +135,8 @@
         %p <%= venue.hereNow.summry %> people are here
         %p <%= tips[0].text %>
         %p <%= tips[0].text %>
-        %p <%= tips[0].createdAt %>
+        %p <%= tips[0].user.firstName %>
+        %p <%= tips[0].user.lastName %>
     .large-3.columns
       .panel
         %p
@@ -137,12 +144,12 @@
     .large-3.columns 
       .flip{style: "width: 200px; height: 200px;"}
         .flip-front
-          .panel
-            %li <%= venue.contact.phone %>
-            %li <%= venue.contact.twitter %>
-            %li <%= venue.contact.facebook %>
-            %li <%= venue.contact.facebookName %>
-            %li <%= venue.location.formattedAddress %>
+          .panel.panellist
+            %p <%= venue.contact.phone %>
+            %p <%= venue.contact.twitter %>
+            %li Mobile: <%= venue.contact.phone %>
+            %li Twitter: <%= venue.contact.twitter %>
+            %li Facebook: <%= venue.contact.facebook %>
         .flip-back
           .panel 
             %h3 Book now!
@@ -173,12 +180,16 @@
 
            
 .row
-  %h1
-    Hostel results within 
-    = @hostel.distance
-    miles of 
-    = @hostel.address
-
+  .large-8.columns
+    %h2
+      Hostel results within 
+      = @hostel.distance
+      miles of 
+      = @hostel.address
+  .large-4.columns    
+    = link_to 'Edit', edit_hostel_path(@hostel)
+    \|
+    = link_to 'Back', hostels_path
   .large-12.columns
     .large-6.columns
       #map-canvas{:style => "width: 100%; height: 300px"}
@@ -238,16 +249,16 @@
     %b departedate: 
     = @hostel.departureDate
 
-  %b chosen hostel term 
-= content_tag "p", id: "hotel_attraction", data: {hostels: @hostel.attraction_type} do
-  %b hostel term:
-  = @hostel_attractions
+    %b chosen hostel term 
+  = content_tag "p", id: "hotel_attraction", data: {hostels: @hostel.attraction_type} do
+    %b hostel term:
+    = @hostel_attractions
 
 = link_to 'Edit', edit_hostel_path(@hostel)
 \|
 = link_to 'Back', hostels_path
 
-%h3 foursquare topics 
+
 / = @foursquare_topPics
 .row
   %h3 foursquare topics
