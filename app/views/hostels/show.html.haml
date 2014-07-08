@@ -67,12 +67,88 @@
               %p Third panel content goes here...
             #panel2-4.content
               %p Fourth panel content goes here...
+  %script#attraction-foursquare-topPics-template{type: "text/template"} 
+    .row  
+      .large-6.columns 
+        .panel
+          %h4 <%= venue.name %>
+          %p <%= venue.hereNow.count %> <%= venue.hereNow.summry %> people are here 
+          %p <%= tips[0].text %>
+          %p <%= tips[0].text %>
+          %p <%= tips[0].createdAt %>
+      .large-3.columns
+        .panel
+          %p
+            %img{src: "http://placehold.it/400x400"}/
+      .large-3.columns 
+        .flip{style: "width: 200px; height: 200px;"}
+          .flip-front
+            .panel
+              %li <%= venue.contact.phone %>
+              %li <%= venue.contact.twitter %>
+              %li <%= venue.contact.facebook %>
+              %li <%= venue.contact.facebookName %>
+              %li <%= venue.location.formattedAddress %>
+          .flip-back
+            .panel 
+              %h3 Book now!
+    .row
+      #showfoursquare-toppics-template-odd          
+  %script#attraction-foursquare-topPics-template-odd{type: "text/template"}                
+    .large-3.columns
+      .panel
+        %p
+          %img{src: "http://placehold.it/400x400"}/
+    .large-3.columns 
+      .flip{style: "width: 200px; height: 200px;"}
+        .flip-front
+          .panel
+            %li <%= venue.contact.phone %>
+            %li <%= venue.contact.twitter %>
+            %li <%= venue.contact.facebook %>
+            %li <%= venue.contact.facebookName %>
+            %li <%= venue.location.formattedAddress %>
+        .flip-back
+          .panel 
+            %h3 Book now!   
+            
+    .large-6.columns 
+      .panel
+        %h4 <%= venue.name %> 
+        %p <%= venue.hereNow.count %> <%= venue.hereNow.summry %>
+        %p <%= tips[0].text %>
+        %p <%= tips[0].text %>
+        %p <%= tips[0].createdAt %>
+    .row            
+      #showfoursquare-toppics-template-third
+  %script#attraction-foursquare-topPics-template-third{type: "text/template"} 
+    .large-6.columns 
+      .panel
+        %h4 <%= venue.name %>
+        %p <%= venue.hereNow.count %>
+        %p <%= venue.hereNow.summry %> people are here
+        %p <%= tips[0].text %>
+        %p <%= tips[0].text %>
+        %p <%= tips[0].createdAt %>
+    .large-3.columns
+      .panel
+        %p
+          %img{src: "http://placehold.it/400x400"}/
+    .large-3.columns 
+      .flip{style: "width: 200px; height: 200px;"}
+        .flip-front
+          .panel
+            %li <%= venue.contact.phone %>
+            %li <%= venue.contact.twitter %>
+            %li <%= venue.contact.facebook %>
+            %li <%= venue.contact.facebookName %>
+            %li <%= venue.location.formattedAddress %>
+        .flip-back
+          .panel 
+            %h3 Book now!
+            %h3 massive test 
+       
 
-
-
-     
-
-    
   
   / script goes inside here 
     
@@ -97,9 +173,15 @@
 
            
 .row
+  %h1
+    Hostel results within 
+    = @hostel.distance
+    miles of 
+    = @hostel.address
+
   .large-12.columns
-    .large-4.columns
-      #map-canvas{:style => "width: 543px; height: 300px"}
+    .large-6.columns
+      #map-canvas{:style => "width: 100%; height: 300px"}
     .large-6.columns  
       .accordioncontainer
         #hostelResults  
@@ -125,8 +207,8 @@
     .large-6.columns
       .accordioncontainer
         #showfoursquaredata
-    .large-4.columns
-      #map-attraction-canvas{:style => "width: 543px; height: 300px"}    
+    .large-6.columns
+      #map-attraction-canvas{:style => "width: 100%; height: 300px"}    
     
 
 
@@ -177,6 +259,14 @@
 = link_to 'Edit', edit_hostel_path(@hostel)
 \|
 = link_to 'Back', hostels_path
+
+%h3 foursquare topics 
+/ = @foursquare_topPics
+
+%h3 foursquare topics
+#showfoursquaretopPicdata
+
+
 
 / %h3 nearby saved hostels
 / - for hostel in @hostel.nearbys(10)

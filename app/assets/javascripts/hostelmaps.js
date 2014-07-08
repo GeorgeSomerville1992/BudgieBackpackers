@@ -56,7 +56,7 @@ $(function(){
       attractions_foursquare_items = attractions_foursquare[0].items 
       attractions_foursquare_template = _.template($('#attraction-foursquare-template').text())
       attractions_foursquare_venues = attractions_foursquare[0]['items']
-      
+     
       
       a = attractions_foursquare[0].items
       // debugger
@@ -68,6 +68,9 @@ $(function(){
         
       })
 
+      
+
+
       for(var i = 0; i < a.length; i ++) { 
         
         $('#showfoursquaredata').append(a[i].venue.name)
@@ -76,7 +79,36 @@ $(function(){
 
     }
 
+    if (gon.hostel_attraction_foursquare_topPics){
 
+      attractions_topPics = gon.hostel_attraction_foursquare_topPics.groups  
+      attractions_topPics_items = attractions_topPics[0].items
+      attractions_topPics_items_first = attractions_topPics_items.slice(0,1)
+      attractions_foursquare_topPics_template = _.template($('#attraction-foursquare-topPics-template').text())
+      attractions_foursquare_topPics_odd_venues = attractions_topPics_items.slice(1,2)
+      attractions_foursquare_topPics_template_odd = _.template($('#attraction-foursquare-topPics-template-odd').text())  
+      attractions_foursquare_topPics_third_venues = attractions_topPics_items.slice(2,3)
+      attractions_foursquare_topPics_template_third = _.template($('#attraction-foursquare-topPics-template-third').text())
+      $.each(attractions_topPics_items_first , function(i, item){
+        console.log(item.venue.name)
+        $('#showfoursquaretopPicdata').append(attractions_foursquare_topPics_template(item))
+      })
+
+      $.each(attractions_foursquare_topPics_odd_venues, function(i,item){
+
+        $('#showfoursquare-toppics-template-odd').append(attractions_foursquare_topPics_template_odd(item))
+      })
+
+      $.each(attractions_foursquare_topPics_third_venues, function(i,item){
+
+        $('#showfoursquare-toppics-template-third').append(attractions_foursquare_topPics_template_third(item))
+      })
+
+
+
+
+
+    }
 
 
 
@@ -105,6 +137,8 @@ var hotelGreen = new google.maps.MarkerImage('/assets/hotel_0star_green.png')
 var hotelYellow = new google.maps.MarkerImage('/assets/hotel_0star_yellow.png')
 var hotelOrange = new google.maps.MarkerImage('/assets/hotel_0star_orange.png')
 var bar = new google.maps.MarkerImage('/assets/winebar.png')
+var restaurant = new google.maps.MarkerImage('/assets/restaurant.png')
+var coffee = new google.maps.MarkerImage('/assets/coffee.png')
 // var fetchHostelAttraction = $('#hotel_attraction').data('hostels')
   
 //   $('.showyelp').click(function() {
@@ -203,13 +237,29 @@ function createMarkerForhostel(hostel, lowrate){
     //   title:"Hello World!"
       
     // });
-     if(attractionCatagory == "Bar"){
+     // if(attractionCatagory == "Bar"){
+     //  var marker = new google.maps.Marker({
+     //    position: latLng,
+     //    map: window.mapAttraction,
+     //    title: "hi",
+     //    icon: bar
+     //  })
+    // }else if(attractionCatagory == "Restaurant"){
+    //   var marker = new google.maps.Marker({
+    //     position: latLng,
+    //     map: window.mapAttraction,
+    //     title: "hi",
+    //     icon: restaurant 
+    //   })
+    // }
+    if(attractionCatagory == "Café"){
       var marker = new google.maps.Marker({
         position: latLng,
         map: window.mapAttraction,
         title: "hi",
-        icon: bar
-      })
+        icon: coffee
+      
+    })
     }
   }
 

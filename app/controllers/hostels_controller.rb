@@ -66,7 +66,7 @@ class HostelsController < ApplicationController
 
      client = Foursquare2::Client.new(:client_id => 'PJOVUMNXMNMSCGSYVETRKZ23WN2LUR31M0AD04AMKTJAKI5I', 
                                     :client_secret => '3GG355R0B5D4KMH1J1UIUFXH2ZZCFH4ISOW5WTNYV11JJTDV',
-                                    :api_version => '20120610'
+                                    :api_version => '20120610',
 
                                     ) 
 
@@ -76,8 +76,18 @@ class HostelsController < ApplicationController
     #begin 
     @foursquare = client.explore_venues(:near => @hostel.address, 
         :query => @hostel.attraction_type ,:price => 1)
+
     serialized_foursquare = JSON.generate(@foursquare)
-    gon.hostel_attraction_foursquare = JSON.parse(serialized_foursquare,{:symbolize_names => true})       
+    gon.hostel_attraction_foursquare = JSON.parse(serialized_foursquare,{:symbolize_names => true})
+    
+
+    @foursquare_topPics = client.explore_venues(:near => @hostel.address,
+      :secion => 'topPicks', :venuePhotos => :true, :limit => 3
+      )   
+    serialized_foursquare_topPics = JSON.generate(@foursquare_topPics)
+    gon.hostel_attraction_foursquare_topPics = JSON.parse(serialized_foursquare_topPics,{:symbolize_names => true})
+
+
     # JSON generator converts symbols to strings because JSON does not support symbols.
     # passing json document will produce a ruby hash with string keys inside
     # since we already have thus we can use symbols
