@@ -44,8 +44,15 @@ class HostelsController < ApplicationController
     # gon.places = JSON.parse @places
     expedia = Apis::ExpediaApi.new(@hostel.latitude, @hostel.longitude,@hostel.arrivalDate,@hostel.departureDate,@hostel.distance)
     @api = expedia.get_hostels(@hostel.latitude,@hostel.longitude,@hostel.arrivalDate,@hostel.departureDate,@hostel.distance)
+
+    # order by descending distance to user
+    @api["HotelListResponse"]["HotelList"]["HotelSummary"].sort_by! { |hs| hs["proximityDistance"] }
+
+    # add index of each hotel summary
+    @api["HotelListResponse"]["HotelList"]["HotelSummary"].each_with_index { |hs, indx| hs["indx"] = indx + 1 }
+
     serialized = JSON.generate(@api)
-    
+
       # yelp = Apis::Yelp.new(@hostel.attraction_type,@hostel.address,@hostel.latitude, @hostel.longitude)
       # @hostel_attractions = yelp.hostel_attractions
       # gon.hostel_attractions = JSON.parse @hostel_attractions
