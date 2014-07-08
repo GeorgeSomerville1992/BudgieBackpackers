@@ -110,13 +110,14 @@
           %div{class: "alert alert-info alert-dismissable"}
             %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"} &#215;
             = message  
-
+    / = javascript_include_tag "foundation.offcanvas"        
+    = javascript_include_tag "application" 
     = yield
 
-    %script{src: "https://www.google.com/jsapi", type: "text/javascript"}
-    %script{src: "http://maps.googleapis.com/maps/api/js?libraries=places", type: "text/javascript"}   
-    %script google.load("earth", "1", {"other_params":"sensor=true_or_false"});   
-    = javascript_include_tag "application"   
+  %script{src: "https://www.google.com/jsapi", type: "text/javascript"}
+  %script{src: "http://maps.googleapis.com/maps/api/js?libraries=places", type: "text/javascript"}   
+  %script google.load("earth", "1", {"other_params":"sensor=true_or_false"});   
+      
 
 
 

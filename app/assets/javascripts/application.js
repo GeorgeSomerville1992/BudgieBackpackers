@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-
+//= require jquery.masonry
 //= require jquery.ui.accordion
 //= require_tree .
 
