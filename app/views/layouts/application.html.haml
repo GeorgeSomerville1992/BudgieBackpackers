@@ -113,10 +113,10 @@
 
     = yield
 
-%script{src: "https://www.google.com/jsapi", type: "text/javascript"}
-%script{src: "http://maps.googleapis.com/maps/api/js?libraries=places", type: "text/javascript"}   
-%script google.load("earth", "1", {"other_params":"sensor=true_or_false"});   
-= javascript_include_tag "application"   
+    %script{src: "https://www.google.com/jsapi", type: "text/javascript"}
+    %script{src: "http://maps.googleapis.com/maps/api/js?libraries=places", type: "text/javascript"}   
+    %script google.load("earth", "1", {"other_params":"sensor=true_or_false"});   
+    = javascript_include_tag "application"   
 
 
 
