@@ -4,6 +4,80 @@ $background: url(/assets/backgroundhome.JPG);
 background-color: $background
 
 }
+body{
+  background-color: black;
+
+}
+.span{
+  background-color: black;
+
+}
+
+.textcontainerflip{
+  
+  color: white;
+    h3{
+      color:white;
+      padding: 5px 5px 5px 7px;
+      
+    }
+
+}
+
+
+.flipfront200-350{
+  width:200px;
+  height:350px;
+  background-color:#7F0710;
+
+}
+.flipback200-350{
+  width:200px;
+  height:350px;
+  background-color: #E2D4A5;
+
+}
+.flipfront360-320{
+  width:360px;
+  height:320px;
+  background-color:#7F0710;
+
+}
+.flipback360-320{
+  width:360px;
+  height:320px;
+  background-color:#E2D4A5;
+
+}
+
+.flipfront400-150{
+  width:400px;
+  height:150px;
+  background-color:#7F0710;
+
+
+}
+.flipback400-150{
+  width:400px;
+  height:150px;
+  background-color:#E2D4A5;
+
+
+}
+#keycontainer{
+  align: left;
+  padding: 10px;
+  margin-left: 20px;
+  color: white;
+  h3{
+    color:white;
+  }
+  h4{
+      color:silver;
+    }
+}
+
+
 // Foundation by ZURB
 // foundation.zurb.com
 // Licensed under MIT Open Source

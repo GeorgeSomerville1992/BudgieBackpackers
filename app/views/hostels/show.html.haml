@@ -35,10 +35,11 @@
             %li.bullet-item Address: <%= address1 %>
             %li.bullet-item Postcode: <%= postalCode %>
             %li 
-            
+            // what does plain do???
         .flip-back  
-          %ul.pricing-table{"data-equalizer-watch" => ""}
-            %img{src: "http://images.travelnow.com/ =thumbNailUrl" }
+          %ul.pricing-table{"data-equalizer-watch" => ""} 
+            :plain
+              <img src="http://images.travelnow.com/<%= thumbNailUrl %>" />
             %li.cta-button
               %a.button{href: "#"} Buy Now
   #test
@@ -330,13 +331,10 @@
 /       %li.cta-button
 /         %a.button{href: "#"} Buy Now    
 
-%div{align: "center"}>
-  %script{src: "http://www.weatherforecastmap.com/weather2.php?zona=#{@hostel.address}"}
-#weather 
 
 
 
 
-\!-end of code-->
+
 
 // cheapest three hotels using foundation eqlizier - include price - room avliblty and book now!!!

@@ -1,0 +1,65 @@
+
+.row
+  .large-12.columns
+    %h2 Masonry & Foundation 5
+    %hr/
+.span.transitions-enabled.large-centered.clearfix
+  #container
+    .box.col2
+      %img{src: "http://www.placehold.it/225x140"}/
+    .box.col2
+      %img{src: "http://www.placehold.it/210x160"}/
+    .box.col2
+      %img{src: "http://www.placehold.it/310x280"}/
+    .box.col2
+      %img{src: "http://www.placehold.it/200x115"}/
+    .box.col2
+      %img{src: "http://www.placehold.it/200x150"}/
+    .box.col2
+      %img{src: "http://www.placehold.it/200x130"}/
+    .box.col2
+      %img{src: "http://www.placehold.it/200x350"}/
+    .box.col2
+      %img{src: "http://www.placehold.it/200x130"}/
+    .box.col2
+      %img{src: "http://www.placehold.it/200x130"}/
+    .box.col2
+      %img{src: "http://www.placehold.it/200x170"}/
+    .box.col2
+      %img{src: "http://www.placehold.it/200x140"}/
+    .box.col2
+      %img{src: "http://www.placehold.it/200x110"}/
+    .box.col2
+      %img{src: "http://www.placehold.it/200x300"}/
+    .box.col2
+      %img{src: "http://www.placehold.it/200x130"}/
+    .box.col2
+      %img{src: "http://www.placehold.it/200x180"}/
+    .box.col2
+      %img{src: "http://www.placehold.it/300x140"}/
+    .box.col2
+      %img{src: "http://www.placehold.it/260x180"}/
+    .box.col2
+      %img{src: "http://www.placehold.it/200x135"}/
+    .box.col2
+      %img{src: "http://www.placehold.it/240x110"}/
+    .box.col2
+      %img{src: "http://www.placehold.it/200x180"}/
+    .box.col2
+      %img{src: "http://www.placehold.it/200x150"}/
+    .box.col2
+      %img{src: "http://www.placehold.it/200x120"}/
+  / /container
+/assets/backgroundhome.JPG
+:javascript
+  $(document).foundation();
+%script{src: "/assets/jquery.masonry.js"}
+:javascript
+  var $containter = $('#container');
+      $containter.imagesLoaded( function(){
+          $containter.masonry({
+            itemSelector: '.box',
+            isAnimated: !Modernizr.csstransitions,
+            isFitWidth: true
+       });  
+  });
