@@ -87,12 +87,16 @@ class HostelsController < ApplicationController
 
                                     ) 
 
+
        # @foursquare = client.search_venues(:ll => '@hostel.latitude,@hostel.longitude', 
        #  :query => @hostel.attraction_type)
 
     #begin 
     @foursquare = client.explore_venues(:near => @hostel.address, 
         :query => @hostel.attraction_type ,:price => 1)
+    @foursquare["groups"][0]["items"].each_with_index { |hs, indx| hs["indxx"] = indx + 1 }
+
+
 
     serialized_foursquare = JSON.generate(@foursquare)
     gon.hostel_attraction_foursquare = JSON.parse(serialized_foursquare,{:symbolize_names => true})

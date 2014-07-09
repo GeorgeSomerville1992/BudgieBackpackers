@@ -18,8 +18,19 @@ body{
   color: white;
     h3{
       color:white;
+
+      padding: 5px 5px 5px 7px;
+      
     }
+    li{
+      padding: 5px 5px 5px 7px;    
+
+
+    }
+
 }
+
+
 .flipfront200-350{
   width:200px;
   height:350px;
@@ -59,6 +70,28 @@ body{
 
 
 }
+<<<<<<< HEAD
+=======
+#keycontainer{
+  align: left;
+  padding: 10px;
+  margin-left: 20px;
+  color: white;
+  h3{
+    color:white;
+  }
+  h4{
+      color:silver;
+    }
+}
+// .foursquarerecommendedpanel{
+//   background:#7F0710;
+//   color:white;
+
+
+// }
+
+>>>>>>> feature/cleanup
 
 // Foundation by ZURB
 // foundation.zurb.com

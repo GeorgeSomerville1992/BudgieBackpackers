@@ -9,7 +9,7 @@
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
-    
+    %link{href: "//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css", rel: "stylesheet"}/
     
   %body
     / #container
@@ -28,57 +28,54 @@
     /   - flash.each do |name, msg|
     /     = content_tag :div, msg, :id => "flash_#{name}"
     #hi
-    %div{"data-magellan-expedition" => "fixed"}
-      %nav.top-bar{data:{topbar:""}}
-        %ul.title-area
-          %li.name
-            %h1
-        %section.top-bar-section
-          / Right Nav Section
-          %ul.right
-            %li.has-dropdown
-              - if user_signed_in?
-                %li.has-dropdown
-                  %a{href:"#"}= current_user.email
-                  %ul.dropdown
-                    %li
-                      = link_to 'Logout', destroy_user_session_path, method: 'delete'
-                    %li
-                      = link_to 'Edit Profile', edit_user_registration_path  
-              - else
-                %li
-                  = link_to 'Login', new_user_session_path
-                %li 
-                  = link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2)  
-                %li.active.has-dropdown
-                  = link_to 'Sign Up', new_user_registration_path          
-                  %ul.dropdown
-                    %li
-                      = link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2)   
-
-          %ul.left 
-            %li
-              %img{src: "http://placehold.it/100x45&text=Logo"}/         
-            %li
-              = link_to 'Hostels', hostels_path
-            %li 
-              = link_to 'Attractions', attractions_path  
-            %dl.sub-nav
-              %dd{"data-magellan-arrival" => "Hostels"}
-                %a{href: "#hostels"} hostels
-                %dd{"data-magellan-arrival" => "Attractions"}
-                  %a{href: "#attractions"} attractions
-   
-
-    .off-canvas-wrap
+    .off-canvas-wrap{"data-offcanvas" => ""}
       .inner-wrap
         / OFF CANVAS MENU BAR
-        %nav.tab-bar.hide-for-large-up
+        %nav.tab-bar
           %section.left-small
             %a.left-off-canvas-toggle.menu-icon
               %span
           %section.right.tab-bar-section
-            %h1.title Menu
+            %section.right-small
+              %a.right-off-canvas-toggle.menu-icon
+            %nav.top-bar{data:{topbar:""}}
+              %ul.title-area
+                %li.name
+                  %h1
+              %section.top-bar-section
+                / Right Nav Section
+                %ul.right
+                  %li.has-dropdown
+                    - if user_signed_in?
+                      %li.has-dropdown
+                        %a{href:"#"}= current_user.email
+                        %ul.dropdown
+                          %li
+                            = link_to 'Logout', destroy_user_session_path, method: 'delete'
+                          %li
+                            = link_to 'Edit Profile', edit_user_registration_path  
+                    - else
+                      %li
+                        = link_to 'Login', new_user_session_path
+                      %li 
+                        = link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2)  
+                      %li.active.has-dropdown
+                        = link_to 'Sign Up', new_user_registration_path          
+                        %ul.dropdown
+                          %li
+                            = link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2)   
+
+                %ul.left 
+                  %li
+                    %img{src: "http://placehold.it/100x45&text=BUDGIEBACKPACKERS"}/         
+                  %li
+                    = link_to 'Hostels', hostels_path
+                  %li 
+                    = link_to 'Attractions', attractions_path  
+                  %li 
+                    = link_to 'Home', root_path
+                  
+               
         / END NAV.TAB-BAR HIDE-FOR-LARGE-UP
         / OFF CANVAS MENU
         %aside.left-off-canvas-menu
@@ -86,38 +83,57 @@
             %li
               %label Navigation
             %li
-              %a{href: "index.html"} Home
+              = link_to 'Hostels', hostels_path
           %ul.off-canvas-list
             %li.has-dropdown
-              %a{href: "blog.html"} Blog
+              %a{href: "#"} Journal
               %ul.off-canvas-list
                 %li
-                  %a{href: "blog.html"} Archive
+                  %a{href: "blog.html"} Friends
                 %li
-                  %a{href: "post.html"} Single
-          %ul.off-canvas-list
-            %li.has-dropdown
-              %a{href: "page.html"} Page
-              %ul.off-canvas-list
-                %li
-                  %a{href: "page.html"} Full-width
-                %li
-                  %a{href: "sidebar-left.html"} Left Sidebar
-                %li
-                  %a{href: "sidebar-right.html"} Right Sidebar
-          %ul.off-canvas-list
-            %li
-              %a{href: "portfolio.html"} Portfolio 
-                   
-    .row
-      .container    
-        -flash.each do |name, message|
-          %div{class: "alert alert-info alert-dismissable"}
-            %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"} &#215;
-            = message  
+
+                  %a{href: "post.html"} Other
+        %aside.right-off-canvas-menu 
+          - if @hostel
+            #keycontainer
+              %h3 Key 
+              %h4 Hotels
+              %img{src: "/assets/hotel_0star_red.png"}: $90+ 
+              %br
+              %img{src: "/assets/hotel_0star_yellow.png"}: $70 - $90 
+              %br
+              %img{src: "/assets/hotel_0star_orange.png"}: $50 - $70 
+              %br
+              %img{src: "/assets/hotel_0star_green.png"}: $0 - $40 
+              %p 
+              %h4 Attractions
+              %img{src: "/assets/beer.png"}: Pub
+              %br
+              %img{src: "/assets/coffee.png"}: Coffeeshop/cafe
+              %br
+              %img{src: "/assets/restaurant.png"}: Restaurant
+              %br
+              %img{src: "/assets/winebar.png"}: Wine bar
+              %br
+              %img{src: "/assets/panoramicview.png"}: other
+              %br 
+              %h4 Local Weather
+            %div{align: "center" ,style: "background-color: black"}>  
+              %script{src: "http://www.weatherforecastmap.com/weather2.php?zona=#{@hostel.address}"}
+          - else  
+            %p you need to sign in!     
+             
+        = yield           
+      .row
+        .container    
+          -flash.each do |name, message|
+            %div{class: "alert alert-info alert-dismissable"}
+              %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"} &#215;
+              = message  
     / = javascript_include_tag "foundation.offcanvas"        
     = javascript_include_tag "application" 
-    = yield
+    
+
 
   %script{src: "https://www.google.com/jsapi", type: "text/javascript"}
   %script{src: "http://maps.googleapis.com/maps/api/js?libraries=places", type: "text/javascript"}   
