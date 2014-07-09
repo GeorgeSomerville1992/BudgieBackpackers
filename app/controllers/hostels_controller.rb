@@ -58,6 +58,16 @@ class HostelsController < ApplicationController
       # gon.hostel_attractions = JSON.parse @hostel_attractions
     gon.hostels = JSON.parse(serialized, {:symbolize_names => true})
 
+    expedia_prices = Apis::ExpediaApi.new(@hostel.latitude, @hostel.longitude,@hostel.arrivalDate,@hostel.departureDate,@hostel.distance)
+    @price_api = expedia_prices.get_hostels_prices(@hostel.latitude,@hostel.longitude,@hostel.arrivalDate,@hostel.departureDate,@hostel.distance)
+
+    serialized_price = JSON.generate(@price_api)
+
+    gon.hostel_price_sort = JSON.parse(serialized_price, {:symbolize_names => true})
+
+
+
+
 
     # request = GeoPoint.new(
     #          :latitude => 37.782093,
