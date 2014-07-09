@@ -32,7 +32,7 @@
         .flip-front
           %ul.pricing-table
             %li.title <%= name %>
-            %li.price $<%= lowRate %>
+            %li.price <%= lowRate %>
             %li.bullet-item Address: <%= address1 %>
             %li.bullet-item Postcode: <%= postalCode %>
             %li.bullet-item
@@ -84,7 +84,7 @@
           %p <%= tips[0].user.firstName %>
           %p <%= tips[0].user.lastName %>
       .large-3.columns
-        .panel
+        .panel.foursquarerecommendedpanel
           %p
             %img{src: "http://placehold.it/400x400"}/
       .large-3.columns 
@@ -105,13 +105,13 @@
       #showfoursquare-toppics-template-odd          
   %script#attraction-foursquare-topPics-template-odd{type: "text/template"}                
     .large-3.columns
-      .panel
+      .panelfoursquarerecommendedpanel
         %p
           %img{src: "http://placehold.it/400x400"}/
     .large-3.columns 
       .flip{style: "width: 200px; height: 200px;"}
         .flip-front
-          .panel.panellist
+          .panel.panellist.foursquarerecommendedpanel
             %p <%= venue.contact.phone %>
             %p <%= venue.contact.twitter %>
             %li Mobile: <%= venue.contact.phone %>
@@ -122,7 +122,7 @@
             %h3 Book now!   
             
     .large-6.columns 
-      .panel.panellist
+      .panel.panellist.foursquarerecommendedpanel
         %h4 <%= venue.name %> 
         %p <%= venue.hereNow.count %> <%= venue.hereNow.summry %>
         %p <%= tips[0].text %>
@@ -134,7 +134,7 @@
       #showfoursquare-toppics-template-third
   %script#attraction-foursquare-topPics-template-third{type: "text/template"} 
     .large-6.columns 
-      .panel
+      .panel.foursquarerecommendedpanel
         %h4 <%= venue.name %>
         %p <%= venue.hereNow.count %>
         %p <%= venue.hereNow.summry %> people are here
@@ -143,13 +143,13 @@
         %p <%= tips[0].user.firstName %>
         %p <%= tips[0].user.lastName %>
     .large-3.columns
-      .panel
+      .panel.foursquarerecommendedpanel
         %p
           %img{src: "http://placehold.it/400x400"}/
     .large-3.columns 
       .flip{style: "width: 200px; height: 200px;"}
         .flip-front
-          .panel.panellist
+          .panel.panellist.foursquarerecommendedpanel
             %p <%= venue.contact.phone %>
             %p <%= venue.contact.twitter %>
             %li Mobile: <%= venue.contact.phone %>
