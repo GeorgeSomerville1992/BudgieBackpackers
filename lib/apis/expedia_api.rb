@@ -14,6 +14,7 @@ module Apis
       Expedia.currency_code = 'GBP'
       Expedia.minor_rev = 26
       @api = Expedia::Api.new
+      @price_api = Expedia::Api.new
       # @locations
     end 
 
@@ -32,6 +33,21 @@ module Apis
       #show error handling!!!
       # if result? APIError
     end
+
+    def get_hostels_prices(hostellatitude,hostellongitude, hostelarrivalDate, hosteldepartureDate, hosteldistance)
+       @price_api.get_list({ 
+                      :latitude => hostellatitude,
+                      :longitude => hostellongitude,
+                      :propertyCategory => 1,
+                      :arrivalDate => hostelarrivalDate.strftime("%m/%d/%Y"),
+                      :departureDate => hosteldepartureDate.strftime("%m/%d/%Y"),
+                      :searchRadius => hosteldistance,
+                      :sort => "PRICE"
+
+                       }).body
+    end    
+
+
 
   end 
 

@@ -5,7 +5,7 @@ $(function(){
       hostellongitude = gon.hostels.HotelListResponse.HotelList.HotelSummary.longitude
        //var hostelId = gon.hostels.HotelListResponse.HotelList.HotelSummary[i].hotelId
       hostelLowrate = gon.hostels.HotelListResponse.HotelList.HotelSummary.lowRate
-      hostelOffers = hostels.slice(0,4)
+      
       //distance_miles = gon.hostel_attractions.businesses.distance * 0.00062137
       // hostelProximityRound = gon.hostels.HotelListResponse.HotelList.HotelSummary.proximityDistance * 1000
       // for(i=0; i<20; i++){
@@ -14,7 +14,7 @@ $(function(){
       hostelTemplate = _.template($('#hostel-show-template').text())
       hostelDetailedTemplate = _.template($('#hostel-show-detailed-template').text())
 
-      hostelOfferTemplate = _.template($('#hostel-show-cheapest-hotels').text())
+      
 
       $.each(hostels, function(i, hostel){ // hidden form?  put this inside one then user submit - will this data be able to show???
         hostel.proximityDistance = Math.round(hostel.proximityDistance*10)/10
@@ -23,12 +23,7 @@ $(function(){
         // how would you render erb into a string????? 
         console.log(arrayIndex)
       })
-      $.each(hostelOffers, function(i, hostel){
-
-        $('#hotelOfferResults').append(hostelOfferTemplate(hostel))
-
-      })
-      $('.hostel-info-button').on("click", function(hostelId){
+            $('.hostel-info-button').on("click", function(hostelId){
         //console.log("clicked hostel info button with hotelId: " + $(this).data("hotelId"))
         hotelId = $(this).attr('data-hotelid');
         console.log(hotelId);
@@ -51,6 +46,18 @@ $(function(){
         })
       }
        
+
+    }
+    if (gon.hostel_price_sort){
+      hostels_prices = gon.hostel_price_sort.HotelListResponse.HotelList.HotelSummary
+      hostelOffers = hostels_prices.slice(0,4)
+      hostelOfferTemplate = _.template($('#hostel-show-cheapest-hotels').text())
+      $.each(hostelOffers, function(i, hostel){
+
+        $('#hotelOfferResults').append(hostelOfferTemplate(hostel))
+
+      })
+
 
     }
 
