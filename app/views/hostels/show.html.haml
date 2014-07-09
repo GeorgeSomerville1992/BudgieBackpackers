@@ -6,23 +6,24 @@
         #panel1.content
           %dl.tabs{"data-tab" => ""}
             %dd.active
-              %a{href: "#panel2-1"} Address
+              %a{href: "#panel2-1"} About
             %dd
-              %a{href: "#panel2-2"} Rates
+              %a{href: "#panel2-2"} Address
             %dd
-              %a{href: "#panel2-3"} Tab 3
+              %a{href: "#panel2-3"} Trip advisor rating
           
           .tabs-content
             #panel2-1.content.active
+              %p Description: <%= shortDescription %>
+              %p Low Rate: <%= lowRate %> <%= rateCurrencyCode %>
+            #panel2-2.content
+              %li Location Description: <%= locationDescription %>
               %li Address: <%= address1 %>
               %li Postal Code: <%= postalCode %>
-              %li Latitude: <%= latitude %>
-            #panel2-2.content
-              %li Low Rate: <%= lowRate %>
-              %li High Rate: <%= highRate %>
-              %li hotelRating: <%= hotelRating %>
             #panel2-3.content
-              %p Third panel content goes here...
+              :plain
+                <img src="<%= tripAdvisorRatingUrl %>"
+              %p contact number unavailable 
             #panel2-4.content
               %p Fourth panel content goes here...
   %script#hostel-show-cheapest-hotels{type: "text/template"}
@@ -34,15 +35,16 @@
             %li.price $<%= lowRate %>
             %li.bullet-item Address: <%= address1 %>
             %li.bullet-item Postcode: <%= postalCode %>
-            %li 
+            %li.bullet-item
+              :plain
+                <img src="http://images.travelnow.com/<%= thumbNailUrl %>" />
             // what does plain do???
         .flip-back  
           %ul.pricing-table{"data-equalizer-watch" => ""} 
-            :plain
-              <img src="http://images.travelnow.com/<%= thumbNailUrl %>" />
+            %li.bullet-item
             %li.cta-button
               %a.button{href: "#"} Buy Now
-  #test
+              %p contact number unavailable 
   %script#attraction-foursquare-template{type: "text/template"}
     %dl.accordion{"data-accordion" => ""}
       %dd.accordion-navigation
@@ -214,11 +216,19 @@
 
 .row
   #hotelOfferResults
-
+%br
+%br
+%br
+%br
+%br
+%br
+%br
 %br    
 %hr/  
 %br
 %br
+%br
+
 .row
   .large-8.columns
     %h2
