@@ -11,6 +11,7 @@ BudgieBackpackers::Application.routes.draw do
 
   root to: "homes#index"
 
+  get "/masonry" => "homes#masonry"
   devise_for :users
 
   resources :attractions

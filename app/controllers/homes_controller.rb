@@ -1,7 +1,8 @@
 class HomesController < ApplicationController
   def index
   end
-  def mansory
+
+  def masonry
 
   end 
 end
