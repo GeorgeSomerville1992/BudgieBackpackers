@@ -26,6 +26,12 @@ gem 'pry-rails'
   gem 'letter_opener'
   gem 'uglifier', '>= 1.0.3'
 end 
+
+group :production do
+  gem 'rails_12factor'
+end
+
+
 gem 'haml-rails'
 gem 'devise'
 gem 'geocoder'
