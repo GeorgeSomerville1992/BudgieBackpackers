@@ -10,7 +10,9 @@
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
     %link{href: "//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css", rel: "stylesheet"}/
-    
+    %script{src: "https://www.google.com/jsapi", type: "text/javascript"}
+    %script{src: "http://maps.googleapis.com/maps/api/js?libraries=places", type: "text/javascript"}   
+    %script google.load("earth", "1", {"other_params":"sensor=true_or_false"}); 
   %body
     / #container
     /   .user-nav
@@ -101,13 +103,13 @@
             #keycontainer
               %h3 Key 
               %h4 Hotels
-              %img{src: "/assets/hotel_0star_red.png"}: $90+ 
+              %img{src: "/assets/hotel_0star_red.png"}: 90+ 
               %br
-              %img{src: "/assets/hotel_0star_yellow.png"}: $70 - $90 
+              %img{src: "/assets/hotel_0star_yellow.png"}: 70 - $90 
               %br
-              %img{src: "/assets/hotel_0star_orange.png"}: $50 - $70 
+              %img{src: "/assets/hotel_0star_orange.png"}: 50 - $70 
               %br
-              %img{src: "/assets/hotel_0star_green.png"}: $0 - $40 
+              %img{src: "/assets/hotel_0star_green.png"}: 0 - $40 
               %p 
               %h4 Attractions
               %img{src: "/assets/beer.png"}: Pub
@@ -138,9 +140,7 @@
     
 
 
-  %script{src: "https://www.google.com/jsapi", type: "text/javascript"}
-  %script{src: "http://maps.googleapis.com/maps/api/js?libraries=places", type: "text/javascript"}   
-  %script google.load("earth", "1", {"other_params":"sensor=true_or_false"});   
+    
       
 
 
