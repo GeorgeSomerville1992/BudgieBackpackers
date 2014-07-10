@@ -58,13 +58,16 @@
                       %li
                         = link_to 'Login', new_user_session_path
                       %li 
-                        = link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2)  
+                        = link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2)
+                      %li 
+                        = link_to "Sign in with twitter", user_omniauth_authorize_path(:twitter)     
                       %li.active.has-dropdown
                         = link_to 'Sign Up', new_user_registration_path          
                         %ul.dropdown
                           %li
                             = link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2)   
-
+                          %li 
+                            = link_to "Sign in with twitter", user_omniauth_authorize_path(:twitter) 
                 %ul.left 
                   %li
                     %img{src: "http://placehold.it/100x45&text=BUDGIEBACKPACKERS"}/         
