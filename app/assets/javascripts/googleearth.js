@@ -1,3 +1,5 @@
+
+$()
 var ge;
     google.load("earth", "1", {"other_params":"sensor=true_or_false"});
 
