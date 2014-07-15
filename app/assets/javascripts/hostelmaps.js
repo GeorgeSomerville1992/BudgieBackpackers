@@ -216,6 +216,8 @@ function createMarkerForhostel(hostel, lowrate){
     var latLng = new google.maps.LatLng(hostel.latitude,hostel.longitude);
     var lowRate = lowrate;
     console.log(lowRate);
+
+    
     if(hostel.lowRate <= 40){
       var marker = new google.maps.Marker({
         position: latLng,
