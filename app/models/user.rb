@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
 
   has_many :hostels
   has_many :attractions
+  has_many :posts
   
     def self.find_for_google_oauth2(auth, signed_in_user=nil)
     if user = signed_in_user || User.find_by_email(auth.info.email)
