@@ -131,7 +131,7 @@ $(function(){
       attractions_foursquare_topPics_third_venues = attractions_topPics_items.slice(2,3)
       attractions_foursquare_topPics_template_third = _.template($('#attraction-foursquare-topPics-template-third').text())
       $.each(attractions_topPics_items_first , function(i, item){
-        //console.log(item.venue['photos']['groups'][0]['items'][0].prefix)
+        console.log(item.venue['photos']['groups'][0]['items'][0].prefix)
         $('#showfoursquaretopPicdata').append(attractions_foursquare_topPics_template(item))
       })
 

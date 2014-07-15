@@ -79,14 +79,15 @@
           %h4 <%= venue.name %>
           %p <%= venue.hereNow.count %> <%= venue.hereNow.summry %> people are here 
           %p <%= tips[0].text %>
-          %p <%= tips[0].text %>
           %p <%= tips[0].createdAt %>
           %p <%= tips[0].user.firstName %>
           %p <%= tips[0].user.lastName %>
       .large-3.columns
         .panel.foursquarerecommendedpanel
           %p
-            %img{src: "http://placehold.it/400x400"}/
+            :plain
+                <img src="<%= venue['photos']['groups'][0]['items'][0].prefix %>400x400<%= venue['photos']['groups'][0]['items'][0].suffix %>" />
+
       .large-3.columns 
         .flip{style: "width: 200px; height: 200px;"}
           .flip-front
@@ -105,15 +106,16 @@
       #showfoursquare-toppics-template-odd          
   %script#attraction-foursquare-topPics-template-odd{type: "text/template"}                
     .large-3.columns
-      .panelfoursquarerecommendedpanel
+      .panel.foursquarerecommendedpanel
         %p
-          %img{src: "http://placehold.it/400x400"}/
+          :plain
+              <img src="<%= venue['photos']['groups'][0]['items'][0].prefix %>400x400<%= venue['photos']['groups'][0]['items'][0].suffix %>" />
     .large-3.columns 
       .flip{style: "width: 200px; height: 200px;"}
         .flip-front
           .panel.panellist.foursquarerecommendedpanel
-            %p <%= venue.contact.phone %>
-            %p <%= venue.contact.twitter %>
+            %h4 Contact details
+            %p Address: <%= venue.location.formattedAddress %>
             %li Mobile: <%= venue.contact.phone %>
             %li Twitter: <%= venue.contact.twitter %>
             %li Facebook: <%= venue.contact.facebook %>
@@ -125,7 +127,6 @@
       .panel.panellist.foursquarerecommendedpanel
         %h4 <%= venue.name %> 
         %p <%= venue.hereNow.count %> <%= venue.hereNow.summry %>
-        %p <%= tips[0].text %>
         %p <%= tips[0].text %>
         %p <%= tips[0].createdAt %>
         %p <%= tips[0].user.firstName %>
@@ -139,19 +140,19 @@
         %p <%= venue.hereNow.count %>
         %p <%= venue.hereNow.summry %> people are here
         %p <%= tips[0].text %>
-        %p <%= tips[0].text %>
         %p <%= tips[0].user.firstName %>
         %p <%= tips[0].user.lastName %>
     .large-3.columns
       .panel.foursquarerecommendedpanel
         %p
-          %img{src: "http://placehold.it/400x400"}/
+          :plain
+              <img src="<%= venue['photos']['groups'][0]['items'][0].prefix %>400x400<%= venue['photos']['groups'][0]['items'][0].suffix %>" />
     .large-3.columns 
       .flip{style: "width: 200px; height: 200px;"}
         .flip-front
           .panel.panellist.foursquarerecommendedpanel
-            %p <%= venue.contact.phone %>
-            %p <%= venue.contact.twitter %>
+            %h4 Contact details
+            %p Address: <%= venue.location.formattedAddress %>
             %li Mobile: <%= venue.contact.phone %>
             %li Twitter: <%= venue.contact.twitter %>
             %li Facebook: <%= venue.contact.facebook %>
