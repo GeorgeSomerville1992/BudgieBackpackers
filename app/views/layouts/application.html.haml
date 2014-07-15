@@ -38,12 +38,8 @@
             %a.left-off-canvas-toggle.menu-icon
               %span
           %section.right.tab-bar-section
-            %section.right-small
-              %a.right-off-canvas-toggle.menu-icon
             %nav.top-bar{data:{topbar:""}}
-              %ul.title-area
-                %li.name
-                  %h1
+              
               %section.top-bar-section
                 / Right Nav Section
                 %ul.right
@@ -70,6 +66,7 @@
                             = link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2)   
                           %li 
                             = link_to "Sign in with twitter", user_omniauth_authorize_path(:twitter) 
+                        
                 %ul.left 
                   %li
                     %img{src: "http://placehold.it/100x45&text=BUDGIEBACKPACKERS"}/         
@@ -77,7 +74,10 @@
                     = link_to 'Hostels', hostels_path
                   %li 
                     = link_to 'Home', root_path
-                  
+
+            %section.right-small
+              %a.right-off-canvas-toggle.menu-icon    
+                %span
                
         / END NAV.TAB-BAR HIDE-FOR-LARGE-UP
         / OFF CANVAS MENU
