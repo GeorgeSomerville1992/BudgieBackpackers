@@ -29,14 +29,17 @@
   .large-4.columns
     %h1 Your Journey
     %h4 coming soon!!!
+
     %table 
-      - @hostel.posts.each do |post|
+      - @posts.each do |post|
         %tr 
           %td= post.title
           %td= post.body
-          %td= post.datecreated
-          %td= post.dateedited
-          %td= createdby post.title
+          %td= post.date_created
+          %td= post.date_edited
+          %td 
+            Created by 
+            = post.name
           %td
     = link_to 'new post', new_post_path      
   / - @attractions.each do |attraction|

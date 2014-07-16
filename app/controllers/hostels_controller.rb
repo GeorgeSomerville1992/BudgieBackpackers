@@ -7,7 +7,7 @@ class HostelsController < ApplicationController
   def index
     @hostels = Hostel.all
 
-    
+    @posts = Post.all
 
     respond_to do |format|
       format.html # index.html.erb
