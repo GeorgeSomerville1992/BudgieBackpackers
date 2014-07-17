@@ -86,7 +86,8 @@
       .large-3.columns
         .panel.foursquarerecommendedpanel
           %p
-            %img{src: "http://placehold.it/400x400"}/
+            :plain
+                <img src="<%= venue['photos']['groups'][0]['items'][0].prefix %>400x400<%= venue['photos']['groups'][0]['items'][0].suffix %>" />
       .large-3.columns 
         .flip{style: "width: 200px; height: 200px;"}
           .flip-front
@@ -107,7 +108,8 @@
     .large-3.columns
       .panelfoursquarerecommendedpanel
         %p
-          %img{src: "http://placehold.it/400x400"}/
+          :plain
+              <img src="<%= venue['photos']['groups'][0]['items'][0].prefix %>400x400<%= venue['photos']['groups'][0]['items'][0].suffix %>" />
     .large-3.columns 
       .flip{style: "width: 200px; height: 200px;"}
         .flip-front
@@ -145,7 +147,8 @@
     .large-3.columns
       .panel.foursquarerecommendedpanel
         %p
-          %img{src: "http://placehold.it/400x400"}/
+          :plain
+              <img src="<%= venue['photos']['groups'][0]['items'][0].prefix %>400x400<%= venue['photos']['groups'][0]['items'][0].suffix %>" />
     .large-3.columns 
       .flip{style: "width: 200px; height: 200px;"}
         .flip-front
