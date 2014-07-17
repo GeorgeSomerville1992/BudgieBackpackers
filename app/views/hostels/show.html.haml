@@ -46,32 +46,50 @@
               %a.button{href: "#"} Buy Now
               %p contact number unavailable 
   %script#attraction-foursquare-template{type: "text/template"}
-    %dl.accordion{"data-accordion" => ""}
-      %dd.accordion-navigation
-        %a{href: "#panel1"} <%= name %> 
-        #panel1.content
-          %dl.tabs{"data-tab" => ""}
-            %dd.active
-              %a{href: "#panel2-1"} Address 
-            %dd
-              %a{href: "#panel2-2"} Price/Rating
-            %dd
-              %a{href: "#panel2-3"} Popularity 
+    .large-4.columns
+      %p
+        :plain
+          <img src="<%= photos['groups'][0]['items'][0].prefix %>400x300<%= photos['groups'][0]['items'][0].suffix %>" />
+      %p 
+        
+
+      %h6 <%= name %> 
+      %p 
+        <%= categories['0']['name'] %> ·
+        <%= stats.checkinsCount %> 
+        Checkins ·
+        <%= location.address %>,
+        <%= location.city %>
+
+      
+
+
+    / %dl.accordion{"data-accordion" => ""}
+    /   %dd.accordion-navigation
+    /     %a{href: "#panel1"} <%= name %> 
+    /     #panel1.content
+    /       %dl.tabs{"data-tab" => ""}
+    /         %dd.active
+    /           %a{href: "#panel2-1"} Address 
+    /         %dd
+    /           %a{href: "#panel2-2"} Price/Rating
+    /         %dd
+    /           %a{href: "#panel2-3"} Popularity 
           
-          .tabs-content
-            #panel2-1.content.active
-              %p  Address: <%= location.formattedAddress %>
-              %p  contact: <%= contact.formattedPhone %>
-            #panel2-2.content
-              %p  Price: <%= price.currency %>
-              %p  Price Description: <%= price.message %>
-              %p  Rating: <%= rating %>
-              %p  No of Reviews: <%= ratingSignals %>
-            #panel2-3.content
-              %p  No of Checkins: <%= stats.checkinsCount %>
-              %p  No of Users: <%= stats.usersCount %>
-            #panel2-4.content
-              %p Fourth panel content goes here...
+    /       .tabs-content
+    /         #panel2-1.content.active
+    /           %p  Address: <%= location.formattedAddress %>
+    /           %p  contact: <%= contact.formattedPhone %>
+    /         #panel2-2.content
+    /           %p  Price: <%= price.currency %>
+    /           %p  Price Description: <%= price.message %>
+    /           %p  Rating: <%= rating %>
+    /           %p  No of Reviews: <%= ratingSignals %>
+    /         #panel2-3.content
+    /           %p  No of Checkins: <%= stats.checkinsCount %>
+    /           %p  No of Users: <%= stats.usersCount %>
+    /         #panel2-4.content
+    /           %p Fourth panel content goes here...
   %script#attraction-foursquare-topPics-template{type: "text/template"} 
     .row  
       .large-6.columns 
@@ -88,6 +106,7 @@
           %p
             :plain
                 <img src="<%= venue['photos']['groups'][0]['items'][0].prefix %>400x400<%= venue['photos']['groups'][0]['items'][0].suffix %>" />
+
       .large-3.columns 
         .flip{style: "width: 200px; height: 200px;"}
           .flip-front
@@ -245,13 +264,13 @@
 %br
 %br
 %br
-.row
-  .large-12.columns
-    .large-6.columns
-      .accordioncontainer
-        #showfoursquaredata
-    .large-6.columns
-      #map-attraction-canvas{:style => "width: 100%; height: 300px"}    
+
+.large-12.columns
+  .large-8.columns
+    .foursquareimagecontainer
+      #showfoursquaredata
+  .large-4.columns
+    #map-attraction-canvas{:style => "width: 100%; height: 400px"}    
 %br    
 %hr/      
 

@@ -95,6 +95,10 @@ $(function(){
         // if (typeof item.price.message == "undefined") {
         //   item.price.message = "not applicable"
         // }
+        /// <img src="<%= tips[0].user.photo.prefix %>60x60<%= tips[0].user.photo.suffix %>" 
+        // :plain
+        //   <img src="<%= ['tips'][0].user.photo.prefix %>60x60<%= ['tips'][0].user.photo.suffix %>"
+        //console.log(item.tips['0'].user.photo.prefix )
         if (typeof item.venue.rating == "undefined") {
           item.venue.rating = "not applicable"
         }
