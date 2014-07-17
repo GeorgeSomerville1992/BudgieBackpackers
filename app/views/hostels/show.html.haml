@@ -17,9 +17,9 @@
               %p Description: <%= shortDescription %>
               %p Low Rate: <%= lowRate %> <%= rateCurrencyCode %>
             #panel2-2.content
-              %li Location Description: <%= locationDescription %>
-              %li Address: <%= address1 %>
-              %li Postal Code: <%= postalCode %>
+              %p Location Description: <%= locationDescription %>
+              %p Address: <%= address1 %>
+              %p Postal Code: <%= postalCode %>
             #panel2-3.content
               :plain
                 <img src="<%= tripAdvisorRatingUrl %>"/>
@@ -121,7 +121,7 @@
             %li Facebook: <%= venue.contact.facebook %>
         .flip-back
           .panel 
-            %h3 Book now!   
+            %h3 Book now!
             
     .large-6.columns 
       .panel.panellist.foursquarerecommendedpanel
