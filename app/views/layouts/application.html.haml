@@ -65,8 +65,9 @@
                           %li
                             = link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2)   
                           %li 
-                            = link_to "Sign in with twitter", user_omniauth_authorize_path(:twitter) 
-                        
+                            = link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)
+                          %li
+                            = link_to "Sign in with Foursquare", user_omniauth_authorize_path(:foursquare)                          
                 %ul.left 
                   %li
                     %img{src: "http://placehold.it/100x45&text=BUDGIEBACKPACKERS"}/         
