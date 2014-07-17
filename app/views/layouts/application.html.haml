@@ -46,6 +46,9 @@
                   %li.has-dropdown
                     - if user_signed_in?
                       %li.has-dropdown
+                        / - if current_user.image? && current_user.name?
+                        /   = image_tag current_user.image, class: "small-avatar"
+                        /   %b= current_user.name
                         %a{href:"#"}= current_user.email
                         %ul.dropdown
                           %li
