@@ -90,7 +90,16 @@ body{
   border-radius: 1000px;
   margin-bottom: -8px;
 }
+.accordioncontainer{
+  height:300px;
+  overflow:scroll;
+}
 
+.pricing-table{
+  height:200px;
+  width:200px;
+
+}
 
 // .foursquarerecommendedpanel{
 //   background:#7F0710;

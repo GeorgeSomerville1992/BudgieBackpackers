@@ -17,12 +17,12 @@
               %p Description: <%= shortDescription %>
               %p Low Rate: <%= lowRate %> <%= rateCurrencyCode %>
             #panel2-2.content
-              %li Location Description: <%= locationDescription %>
-              %li Address: <%= address1 %>
-              %li Postal Code: <%= postalCode %>
+              %p Location Description: <%= locationDescription %>
+              %p Address: <%= address1 %>
+              %p Postal Code: <%= postalCode %>
             #panel2-3.content
               :plain
-                <img src="<%= tripAdvisorRatingUrl %>"/>
+                <img src="<%= tripAdvisorRatingUrl %>"
               %p contact number unavailable 
             #panel2-4.content
               %p Fourth panel content goes here...
@@ -63,8 +63,8 @@
               %p  Address: <%= location.formattedAddress %>
               %p  contact: <%= contact.formattedPhone %>
             #panel2-2.content
-              %p  Price: 
-              %p  Price Description: 
+              %p  Price: <%= price.currency %>
+              %p  Price Description: <%= price.message %>
               %p  Rating: <%= rating %>
               %p  No of Reviews: <%= ratingSignals %>
             #panel2-3.content
@@ -79,15 +79,14 @@
           %h4 <%= venue.name %>
           %p <%= venue.hereNow.count %> <%= venue.hereNow.summry %> people are here 
           %p <%= tips[0].text %>
+          %p <%= tips[0].text %>
           %p <%= tips[0].createdAt %>
           %p <%= tips[0].user.firstName %>
           %p <%= tips[0].user.lastName %>
       .large-3.columns
         .panel.foursquarerecommendedpanel
           %p
-            :plain
-                <img src="<%= venue['photos']['groups'][0]['items'][0].prefix %>400x400<%= venue['photos']['groups'][0]['items'][0].suffix %>" />
-
+            %img{src: "http://placehold.it/400x400"}/
       .large-3.columns 
         .flip{style: "width: 200px; height: 200px;"}
           .flip-front
@@ -106,16 +105,15 @@
       #showfoursquare-toppics-template-odd          
   %script#attraction-foursquare-topPics-template-odd{type: "text/template"}                
     .large-3.columns
-      .panel.foursquarerecommendedpanel
+      .panelfoursquarerecommendedpanel
         %p
-          :plain
-              <img src="<%= venue['photos']['groups'][0]['items'][0].prefix %>400x400<%= venue['photos']['groups'][0]['items'][0].suffix %>" />
+          %img{src: "http://placehold.it/400x400"}/
     .large-3.columns 
       .flip{style: "width: 200px; height: 200px;"}
         .flip-front
           .panel.panellist.foursquarerecommendedpanel
-            %h4 Contact details
-            %p Address: <%= venue.location.formattedAddress %>
+            %p <%= venue.contact.phone %>
+            %p <%= venue.contact.twitter %>
             %li Mobile: <%= venue.contact.phone %>
             %li Twitter: <%= venue.contact.twitter %>
             %li Facebook: <%= venue.contact.facebook %>
@@ -127,6 +125,7 @@
       .panel.panellist.foursquarerecommendedpanel
         %h4 <%= venue.name %> 
         %p <%= venue.hereNow.count %> <%= venue.hereNow.summry %>
+        %p <%= tips[0].text %>
         %p <%= tips[0].text %>
         %p <%= tips[0].createdAt %>
         %p <%= tips[0].user.firstName %>
@@ -140,19 +139,19 @@
         %p <%= venue.hereNow.count %>
         %p <%= venue.hereNow.summry %> people are here
         %p <%= tips[0].text %>
+        %p <%= tips[0].text %>
         %p <%= tips[0].user.firstName %>
         %p <%= tips[0].user.lastName %>
     .large-3.columns
       .panel.foursquarerecommendedpanel
         %p
-          :plain
-              <img src="<%= venue['photos']['groups'][0]['items'][0].prefix %>400x400<%= venue['photos']['groups'][0]['items'][0].suffix %>" />
+          %img{src: "http://placehold.it/400x400"}/
     .large-3.columns 
       .flip{style: "width: 200px; height: 200px;"}
         .flip-front
           .panel.panellist.foursquarerecommendedpanel
-            %h4 Contact details
-            %p Address: <%= venue.location.formattedAddress %>
+            %p <%= venue.contact.phone %>
+            %p <%= venue.contact.twitter %>
             %li Mobile: <%= venue.contact.phone %>
             %li Twitter: <%= venue.contact.twitter %>
             %li Facebook: <%= venue.contact.facebook %>
@@ -217,9 +216,19 @@
 
 .row
   #hotelOfferResults
+
+%br    
+%hr/  
 %br
 %br
-%br  
+.row
+  .large-8.columns
+    %h2
+      Showing 
+      = @hostel.attraction_type 
+      s
+      in 
+      = @hostel.address
 %br
 %br
 %br
@@ -229,7 +238,7 @@
 %hr/  
 %br
 %br
-
+%br
 
 .row
   .large-8.columns
