@@ -106,7 +106,7 @@
       #showfoursquare-toppics-template-odd          
   %script#attraction-foursquare-topPics-template-odd{type: "text/template"}                
     .large-3.columns
-      .panelfoursquarerecommendedpanel
+      .panel.foursquarerecommendedpanel
         %p
           :plain
               <img src="<%= venue['photos']['groups'][0]['items'][0].prefix %>400x400<%= venue['photos']['groups'][0]['items'][0].suffix %>" />
@@ -219,29 +219,19 @@
 
 .row
   #hotelOfferResults
+%br
+%br
+%br
+%br
+%br
+%br
+%br
+%br    
+%hr/  
+%br
+%br
 
-%br    
-%hr/  
-%br
-%br
-.row
-  .large-8.columns
-    %h2
-      Showing 
-      = @hostel.attraction_type 
-      s
-      in 
-      = @hostel.address
-%br
-%br
-%br
-%br
-%br
-%br    
-%hr/  
-%br
-%br
-%br
+
 
 .row
   .large-8.columns
