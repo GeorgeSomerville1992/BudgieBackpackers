@@ -35,6 +35,7 @@ gem 'expedia'
 gem 'oauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
+
 gem 'date_validator'
 gem 'foursquare2'
 
