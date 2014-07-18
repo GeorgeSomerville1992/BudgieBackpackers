@@ -28,7 +28,7 @@
               %p Fourth panel content goes here...
   %script#hostel-show-cheapest-hotels{type: "text/template"}
     .large-3.columns
-      .flip{style: "width: 200px; height: 200px;"}
+      .flip{style: "width: 200px; height: 350px;"}
         .flip-front
           %ul.pricing-table
             %li.title <%= name %>
@@ -45,6 +45,8 @@
             %li.cta-button
               %a.button{href: "#"} Buy Now
               %p contact number unavailable 
+    
+
   %script#attraction-foursquare-template{type: "text/template"}
     .large-4.columns
       %p
@@ -91,35 +93,34 @@
     /         #panel2-4.content
     /           %p Fourth panel content goes here...
   %script#attraction-foursquare-topPics-template{type: "text/template"} 
-    .row  
-      .large-6.columns 
-        .panel
-          %h4 <%= venue.name %>
-          %p <%= venue.hereNow.count %> <%= venue.hereNow.summry %> people are here 
-          %p <%= tips[0].text %>
-          %p <%= tips[0].user.firstName %>
-          %p <%= tips[0].user.lastName %>
-      .large-3.columns
-        .panel.foursquarerecommendedpanel
-          %p
-            :plain
-                <img src="<%= venue['photos']['groups'][0]['items'][0].prefix %>400x400<%= venue['photos']['groups'][0]['items'][0].suffix %>" />
+    .large-6.columns 
+      .panel
+        %h4 <%= venue.name %>
+        %p <%= venue.hereNow.count %> <%= venue.hereNow.summry %> people are here 
+        %p <%= tips[0].text %>
+        %p <%= tips[0].user.firstName %>
+        %p <%= tips[0].user.lastName %>
+    .large-3.columns
+      .panel.foursquarerecommendedpanel
+        %p
+          :plain
+              <img src="<%= venue['photos']['groups'][0]['items'][0].prefix %>400x400<%= venue['photos']['groups'][0]['items'][0].suffix %>" />
 
-      .large-3.columns 
-        .flip{style: "width: 200px; height: 200px;"}
-          .flip-front
-            .panel.panellist
-              %h4 Contact details
-              %p Address: <%= venue.location.formattedAddress %>
-              %li Mobile: <%= venue.contact.phone %>
-              %li Twitter: <%= venue.contact.twitter %>
-              %li Facebook: <%= venue.contact.facebook %>
+    .large-3.columns 
+      .flip{style: "width: 200px; height: 200px;"}
+        .flip-front
+          .panel.panellist
+            %h4 Contact details
+            %p Address: <%= venue.location.formattedAddress %>
+            %li Mobile: <%= venue.contact.phone %>
+            %li Twitter: <%= venue.contact.twitter %>
+            %li Facebook: <%= venue.contact.facebook %>
+          
             
-              
-          .flip-back
-            .panel 
-              %h3 Book now!
-    .row
+        .flip-back
+          .panel 
+            %h3 Book now!
+    .large-12.columns 
       #showfoursquare-toppics-template-odd          
   %script#attraction-foursquare-topPics-template-odd{type: "text/template"}                
     .large-3.columns
@@ -148,7 +149,7 @@
         %p <%= tips[0].createdAt %>
         %p <%= tips[0].user.firstName %>
         %p <%= tips[0].user.lastName %>
-    .row            
+    .large-12.columns             
       #showfoursquare-toppics-template-third
   %script#attraction-foursquare-topPics-template-third{type: "text/template"} 
     .large-6.columns 
@@ -202,49 +203,42 @@
       
 
            
-.row
-  .large-8.columns
-    %h2
-      Hostel results within 
-      = @hostel.distance
-      miles of 
-      = @hostel.address
-  .large-4.columns    
-    = link_to 'Edit', edit_hostel_path(@hostel)
-    \|
-    = link_to 'Back', hostels_path
-  .large-12.columns
-    .large-6.columns
-      #map-canvas{:style => "width: 100%; height: 300px"}
-    .large-6.columns  
-      .accordioncontainer
-        #hostelResults  
+
+.large-8.columns
+  %h2
+    Hostel results within 
+    = @hostel.distance
+    miles of 
+    = @hostel.address
+.large-4.columns    
+  = link_to 'Edit', edit_hostel_path(@hostel)
+  \|
+  = link_to 'Back', hostels_path
+.large-12.columns
+  .large-6.columns
+    #map-canvas{:style => "width: 100%; height: 300px"}
+  .large-6.columns  
+    .accordioncontainer
+      #hostelResults  
 #div{:style => "display:none"}        
 %a{name: "Hostels"}
 %h3{"data-magellan-destination" => "hostels"}    
 %br
 %br
 %br
- 
 
 
 
 
 / = @hostel_attractions
 
-.row
+.large-12.columns
   #hotelOfferResults
 %br
 %br
 %br
 %br
-%br
-%br
-%br
-%br    
-%hr/  
-%br
-%br
+%hr
 
 
 
@@ -306,9 +300,8 @@
 
 
 / = @foursquare_topPics
-.row
-  %h3 foursquare topics
-  #showfoursquaretopPicdata
+%h3 foursquare topics
+#showfoursquaretopPicdata
 
 
 
