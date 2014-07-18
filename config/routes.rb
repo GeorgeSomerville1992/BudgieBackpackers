@@ -1,5 +1,8 @@
 BudgieBackpackers::Application.routes.draw do
 
+  
+
+
   devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout'}, 
                                       :controllers => {:registrations => 'users', omniauth_callbacks: "omniauth_callbacks"}
   devise_scope :user do
@@ -19,7 +22,8 @@ BudgieBackpackers::Application.routes.draw do
 
   resources :hostels
 
-
+  resources :posts
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

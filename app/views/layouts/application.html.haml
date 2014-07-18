@@ -10,7 +10,9 @@
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
     %link{href: "//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css", rel: "stylesheet"}/
-    
+    %script{src: "https://www.google.com/jsapi", type: "text/javascript"}
+    %script{src: "http://maps.googleapis.com/maps/api/js?libraries=places", type: "text/javascript"}   
+    %script google.load("earth", "1", {"other_params":"sensor=true_or_false"}); 
   %body
     / #container
     /   .user-nav
@@ -36,18 +38,17 @@
             %a.left-off-canvas-toggle.menu-icon
               %span
           %section.right.tab-bar-section
-            %section.right-small
-              %a.right-off-canvas-toggle.menu-icon
             %nav.top-bar{data:{topbar:""}}
-              %ul.title-area
-                %li.name
-                  %h1
+              
               %section.top-bar-section
                 / Right Nav Section
                 %ul.right
                   %li.has-dropdown
                     - if user_signed_in?
                       %li.has-dropdown
+                        / - if current_user.image? && current_user.name?
+                        /   = image_tag current_user.image, class: "small-avatar"
+                        /   %b= current_user.name
                         %a{href:"#"}= current_user.email
                         %ul.dropdown
                           %li
@@ -61,23 +62,26 @@
                         = link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2)
                       %li 
                         = link_to "Sign in with twitter", user_omniauth_authorize_path(:twitter)     
-                      %li.active.has-dropdown
+                      %li.active.has-dropdown.red
                         = link_to 'Sign Up', new_user_registration_path          
                         %ul.dropdown
                           %li
                             = link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2)   
                           %li 
-                            = link_to "Sign in with twitter", user_omniauth_authorize_path(:twitter) 
+                            = link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)
+                          %li
+                            = link_to "Sign in with Foursquare", user_omniauth_authorize_path(:foursquare)                          
                 %ul.left 
                   %li
                     %img{src: "http://placehold.it/100x45&text=BUDGIEBACKPACKERS"}/         
                   %li
                     = link_to 'Hostels', hostels_path
                   %li 
-                    = link_to 'Attractions', attractions_path  
-                  %li 
                     = link_to 'Home', root_path
-                  
+
+            %section.right-small
+              %a.right-off-canvas-toggle.menu-icon    
+                %span
                
         / END NAV.TAB-BAR HIDE-FOR-LARGE-UP
         / OFF CANVAS MENU
@@ -101,13 +105,13 @@
             #keycontainer
               %h3 Key 
               %h4 Hotels
-              %img{src: "/assets/hotel_0star_red.png"}: $90+ 
+              %img{src: "/assets/hotel_0star_red.png"}: 90+ 
               %br
-              %img{src: "/assets/hotel_0star_yellow.png"}: $70 - $90 
+              %img{src: "/assets/hotel_0star_yellow.png"}: 70 - $90 
               %br
-              %img{src: "/assets/hotel_0star_orange.png"}: $50 - $70 
+              %img{src: "/assets/hotel_0star_orange.png"}: 50 - $70 
               %br
-              %img{src: "/assets/hotel_0star_green.png"}: $0 - $40 
+              %img{src: "/assets/hotel_0star_green.png"}: 0 - $40 
               %p 
               %h4 Attractions
               %img{src: "/assets/beer.png"}: Pub
@@ -138,9 +142,7 @@
     
 
 
-  %script{src: "https://www.google.com/jsapi", type: "text/javascript"}
-  %script{src: "http://maps.googleapis.com/maps/api/js?libraries=places", type: "text/javascript"}   
-  %script google.load("earth", "1", {"other_params":"sensor=true_or_false"});   
+    
       
 
 

@@ -19,9 +19,25 @@ $(function(){
       $.each(hostels, function(i, hostel){ // hidden form?  put this inside one then user submit - will this data be able to show???
         hostel.proximityDistance = Math.round(hostel.proximityDistance*10)/10
         arrayIndex = i.toString()
+        // var tripAdvisorUrl = hostel[i].tripAdvisorRatingUrl
+
+        if (typeof hostel.tripAdvisorRatingUrl == "undefined") {
+          hostel.tripAdvisorRatingUrl = "not applicable"
+        }
+        if (typeof hostel.postalCode == "undefined") {
+          hostel.postalCode = "not applicable"
+        }
+
+        
+
+
+
+
+
         $('#hostelResults').append(hostelTemplate(hostel,i))
+
         // how would you render erb into a string????? 
-        console.log(arrayIndex)
+        console.log(hostel.postalCode)
       })
             $('.hostel-info-button').on("click", function(hostelId){
         //console.log("clicked hostel info button with hotelId: " + $(this).data("hotelId"))
@@ -72,6 +88,27 @@ $(function(){
       a = attractions_foursquare[0].items
       // debugger
       $.each(attractions_foursquare_items, function(i, item){ // hidden form?  put this inside one then user submit - will this data be able to show???
+        // console.log(item.venue)
+        // if (typeof item.venue.price.currency == "undefined") {
+        //   item.venue.price.currency = "not applicable"
+        // }
+        // if (typeof item.price.message == "undefined") {
+        //   item.price.message = "not applicable"
+        // }
+        /// <img src="<%= tips[0].user.photo.prefix %>60x60<%= tips[0].user.photo.suffix %>" 
+        // :plain
+        //   <img src="<%= ['tips'][0].user.photo.prefix %>60x60<%= ['tips'][0].user.photo.suffix %>"
+        //console.log(item.tips['0'].user.photo.prefix )
+        if (typeof item.venue.rating == "undefined") {
+          item.venue.rating = "not applicable"
+        }
+        if (typeof item.venue.ratingSignals == "undefined") {
+          item.venue.ratingSignals = "not applicable"
+        }
+
+
+
+
         $('#showfoursquaredata').append(attractions_foursquare_template(item.venue))
         
       })
@@ -98,7 +135,7 @@ $(function(){
       attractions_foursquare_topPics_third_venues = attractions_topPics_items.slice(2,3)
       attractions_foursquare_topPics_template_third = _.template($('#attraction-foursquare-topPics-template-third').text())
       $.each(attractions_topPics_items_first , function(i, item){
-        //console.log(item.venue['photos']['groups'][0]['items'][0].prefix)
+        console.log(item.venue['photos']['groups'][0]['items'][0].prefix)
         $('#showfoursquaretopPicdata').append(attractions_foursquare_topPics_template(item))
       })
 
@@ -183,6 +220,8 @@ function createMarkerForhostel(hostel, lowrate){
     var latLng = new google.maps.LatLng(hostel.latitude,hostel.longitude);
     var lowRate = lowrate;
     console.log(lowRate);
+
+    
     if(hostel.lowRate <= 40){
       var marker = new google.maps.Marker({
         position: latLng,

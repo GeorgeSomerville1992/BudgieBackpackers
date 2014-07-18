@@ -228,7 +228,7 @@ Devise.setup do |config|
       image_aspect_ratio: "square",
       image_size: 30
     }
-
+  config.omniauth :foursquare, "PJOVUMNXMNMSCGSYVETRKZ23WN2LUR31M0AD04AMKTJAKI5I" , "3GG355R0B5D4KMH1J1UIUFXH2ZZCFH4ISOW5WTNYV11JJTDV"
     
 
        

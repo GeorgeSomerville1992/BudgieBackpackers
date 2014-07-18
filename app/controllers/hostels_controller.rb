@@ -7,6 +7,8 @@ class HostelsController < ApplicationController
   def index
     @hostels = Hostel.all
 
+    @posts = Post.all
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @hostels }
@@ -93,7 +95,9 @@ class HostelsController < ApplicationController
 
     #begin 
     @foursquare = client.explore_venues(:near => @hostel.address, 
-        :query => @hostel.attraction_type ,:price => 1)
+        :query => @hostel.attraction_type ,:price => 1,
+        :venuePhotos => :true
+        )
     @foursquare["groups"][0]["items"].each_with_index { |hs, indx| hs["indxx"] = indx + 1 }
 
 

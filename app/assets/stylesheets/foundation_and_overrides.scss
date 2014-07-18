@@ -1,5 +1,7 @@
 
 $background: url(/assets/backgroundhome.JPG);
+$red: #7F0710;
+$background-color: $red;
 .row {
 background-color: $background
 
@@ -32,40 +34,40 @@ body{
 
 
 .flipfront200-350{
-  width:200px;
+  width:230px;
   height:350px;
   background-color:#7F0710;
 
 }
 .flipback200-350{
-  width:200px;
+  width:230px;
   height:350px;
   background-color: #E2D4A5;
 
 }
 .flipfront360-320{
-  width:360px;
-  height:320px;
+  width:400px;
+  height:300px;
   background-color:#7F0710;
 
 }
 .flipback360-320{
-  width:360px;
-  height:320px;
+  width:400px;
+  height:300px;
   background-color:#E2D4A5;
 
 }
 
 .flipfront400-150{
   width:400px;
-  height:150px;
+  height:200px;
   background-color:#7F0710;
 
 
 }
 .flipback400-150{
   width:400px;
-  height:150px;
+  height:200px;
   background-color:#E2D4A5;
 
 
@@ -82,6 +84,40 @@ body{
       color:silver;
     }
 }
+.box-item {
+    margin: 0px;
+}
+.small-avatar {
+  height: 30px;
+  border-radius: 1000px;
+  margin-bottom: -8px;
+}
+.accordioncontainer{
+  height:300px;
+  overflow:scroll;
+}
+.foursquareimagecontainer{
+  height:400px;
+  overflow:scroll;
+}
+
+.pricing-table{
+  height:200px;
+  width:200px;
+
+}
+
+.red{
+  background-color: #7F0710;
+
+}
+.emptyspace{
+  padding:100px;
+  width:100%;
+  height: 300px;
+
+}
+
 // .foursquarerecommendedpanel{
 //   background:#7F0710;
 //   color:white;
@@ -150,7 +186,7 @@ $body-bg: white;
 // $default-float: left;
 
 // We use these as default colors throughout
-//$primary-color: #008CBA;
+$primary-color: #7F0710;
 // $secondary-color: #e7e7e7;
 // $alert-color: #f04124;
 // $success-color: #43AC6A;
