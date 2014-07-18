@@ -1,5 +1,7 @@
 
 $background: url(/assets/backgroundhome.JPG);
+$red: #7F0710;
+$background-color: $red;
 .row {
 background-color: $background
 
@@ -32,40 +34,40 @@ body{
 
 
 .flipfront200-350{
-  width:200px;
+  width:230px;
   height:350px;
   background-color:#7F0710;
 
 }
 .flipback200-350{
-  width:200px;
+  width:230px;
   height:350px;
   background-color: #E2D4A5;
 
 }
 .flipfront360-320{
   width:400px;
-  height:320px;
+  height:300px;
   background-color:#7F0710;
 
 }
 .flipback360-320{
   width:400px;
-  height:320px;
+  height:300px;
   background-color:#E2D4A5;
 
 }
 
 .flipfront400-150{
   width:400px;
-  height:150px;
+  height:200px;
   background-color:#7F0710;
 
 
 }
 .flipback400-150{
   width:400px;
-  height:150px;
+  height:200px;
   background-color:#E2D4A5;
 
 
@@ -102,6 +104,11 @@ body{
 .pricing-table{
   height:200px;
   width:200px;
+
+}
+
+.red{
+  background-color: #7F0710;
 
 }
 
@@ -173,7 +180,7 @@ $body-bg: white;
 // $default-float: left;
 
 // We use these as default colors throughout
-//$primary-color: #008CBA;
+$primary-color: #7F0710;
 // $secondary-color: #e7e7e7;
 // $alert-color: #f04124;
 // $success-color: #43AC6A;
