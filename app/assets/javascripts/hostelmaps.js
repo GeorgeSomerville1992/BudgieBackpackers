@@ -28,6 +28,8 @@ $(function(){
           hostel.postalCode = "not applicable"
         }
 
+
+
         
 
 
@@ -110,6 +112,9 @@ $(function(){
           item.venue.ratingSignals = "not applicable"
         }
 
+        if (typeof item.venue.price == "undefined") {
+          item.venue.price = "not applicable"
+        }
 
 
 
