@@ -72,6 +72,10 @@ $(function(){
 
         $('#hotelOfferResults').append(hostelOfferTemplate(hostel))
 
+        if (typeof hostel.postalCode == "undefined") {
+          hostel.postalCode = "not applicable"
+        }
+
       })
 
 
@@ -216,6 +220,15 @@ var beer = new google.maps.MarkerImage('/assets/beer.png')
 //hostelLongitude = gon.hostels.HotelListResponse.HotelList.HotelSummary.longitude
 //var hostelLowrate = gon.hostels.HotelListResponse.HotelList.HotelSummary.lowRate
 //
+
+function addInfoWindowForHostel(marker, hostel){
+  google.maps.event.addListener(marker, 'click', function(){
+    console.log("i have just been clicked")
+  }
+
+}
+
+
 function createMarkerForhostel(hostel, lowrate){
     var latLng = new google.maps.LatLng(hostel.latitude,hostel.longitude);
     var lowRate = lowrate;
@@ -273,7 +286,7 @@ function createMarkerForhostel(hostel, lowrate){
       //camera_id: camera.i
   
     // call mapoattractions
-    //addInfoWindowForCamera(marker, camera)
+    addInfoWindowForHostel(marker, hostel)
   }
 
   function createMarkerForAttraction(attraction, attraction_catagory, locationLat, locationLong){
