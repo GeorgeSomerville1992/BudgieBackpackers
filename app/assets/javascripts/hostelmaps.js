@@ -221,12 +221,21 @@ var beer = new google.maps.MarkerImage('/assets/beer.png')
 //var hostelLowrate = gon.hostels.HotelListResponse.HotelList.HotelSummary.lowRate
 //
 
-function addInfoWindowForHostel(marker, hostel){
-  google.maps.event.addListener(marker, 'click', function(){
-    console.log("i have just been clicked")
-  }
+// function addInfoWindowForHostel(marker, hostel){
+//   google.maps.event.addListener(marker, 'click', function(){
+//     console.log("i have just been clicked")
+//     if(infowindow != undefined) infowindow.close()
+//       infowindow = new google.maps.InfoWindow({
+//         content: "<p> i have just been clicked! </p> "
 
-}
+//     })
+//     map.setCenter(new google.maps.LatLng((marker.position.lat()), marker.position.lng()));
+//     map.setZoom(18);
+//     infowindow.open(map, marker);
+
+
+//   })
+// }  
 
 
 function createMarkerForhostel(hostel, lowrate){
@@ -286,7 +295,7 @@ function createMarkerForhostel(hostel, lowrate){
       //camera_id: camera.i
   
     // call mapoattractions
-    addInfoWindowForHostel(marker, hostel)
+    //addInfoWindowForHostel(marker, hostel)
   }
 
   function createMarkerForAttraction(attraction, attraction_catagory, locationLat, locationLong){
