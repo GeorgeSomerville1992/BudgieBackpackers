@@ -1,4 +1,5 @@
 $(function(){  
+  
     if (gon.hostels){
       hostels = gon.hostels.HotelListResponse.HotelList.HotelSummary
       hostellatitude = hostels.latitude
@@ -185,7 +186,10 @@ $(function(){
 var fetchLatitude = $('#latitude').data('hostels') // data is the instance variable!!!
 var fetchLongitude = $('#longitude').data('hostels')
 var map;
+var map_container;
 var infowindow;
+var directionsDisplay;
+var directionsService = new google.maps.DirectionsService();
 var hotelRed = new google.maps.MarkerImage('/assets/hotel_0star_red.png');
 var hotelGreen = new google.maps.MarkerImage('/assets/hotel_0star_green.png')
 var hotelYellow = new google.maps.MarkerImage('/assets/hotel_0star_yellow.png')
@@ -241,11 +245,26 @@ var beer = new google.maps.MarkerImage('/assets/beer.png')
 
 //   })
 // }  
-
+function calcRoute(marker,hostel) {
+  var end = new google.maps.LatLng(hostel.latitude,hostel.longitude);
+  var start = $("#address").data('hostels');
+  console.log(end)
+  var request = {
+      origin:start,
+      destination:end,
+      travelMode: google.maps.TravelMode.DRIVING
+  };
+  directionsService.route(request, function(response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(response);
+    }
+  });
+}
 
 function createMarkerForhostel(hostel, lowrate){
     var latLng = new google.maps.LatLng(hostel.latitude,hostel.longitude);
     var lowRate = lowrate;
+    console.log(latLng)
     console.log(lowRate);
 
     
@@ -295,10 +314,30 @@ function createMarkerForhostel(hostel, lowrate){
     //   icon: hotelRed
 
     // }
+    
 
+    google.maps.event.addListener(marker, 'click', function(){
+      console.log("hello")
+      var contentString =
+      '<h3>' + hostel.name + '</h3>' +
+      '<p>' + hostel.address1 + '</p>' +
+      '<p>' + hostel.postalCode + '</p>';
+        var thisMarker = this;
+
+        infowindow.setContent(contentString);
+        infowindow.open(window.map,this);
+
+      // if(infowindow != undefined) infowindow.close()
+      // infowindow = new google.maps.InfoWindow({
+      //   content: "hello"
+      // })
+      // map_container.setCenter(new google.maps.LatLng((marker.position.lat()), marker.position.lng())); 
+      // map_container.setZoom(18);
+     
+    })
       // wtf is this???
       //camera_id: camera.i
-  
+    calcRoute(marker,hostel)
     // call mapoattractions
     //addInfoWindowForHostel(marker, hostel)
   }
@@ -386,11 +425,13 @@ function createMarkerForhostel(hostel, lowrate){
     }) 
   }
   function initialize() { 
+     directionsDisplay = new google.maps.DirectionsRenderer();
       var mapOptions = {
         zoom: 12,                     // hostel based on what user has typed in
         center: new google.maps.LatLng(fetchLatitude, fetchLongitude),
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
+
         // do i need ajax for this??? 
       // $.ajax({
       //   url: attractions,
@@ -411,6 +452,9 @@ function createMarkerForhostel(hostel, lowrate){
         // gon.hostels is was messing everything up
         //infowindow = new google.maps.InfoWindow(); 
       }
+    directionsDisplay.setMap(window.map)
+    
+
 
 
     //window.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions) 
@@ -419,6 +463,9 @@ function createMarkerForhostel(hostel, lowrate){
     infowindow = new google.maps.InfoWindow(); // put informaiton from api in here??? create a new function from this
      // built in service near by - calling function and request
   }   
+
+
+
 
 
  google.maps.event.addDomListener(window, "load", initialize)
