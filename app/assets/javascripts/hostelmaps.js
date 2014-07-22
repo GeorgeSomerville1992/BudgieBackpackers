@@ -321,7 +321,8 @@ function createMarkerForhostel(hostel, lowrate){
       var contentString =
       '<h3>' + hostel.name + '</h3>' +
       '<p>' + hostel.address1 + '</p>' +
-      '<p>' + hostel.postalCode + '</p>';
+      '<p>' + hostel.postalCode + '</p>' +
+      '<img src= http://images.travelnow.com/'+ hostel.thumbNailUrl + '>'
         var thisMarker = this;
 
         infowindow.setContent(contentString);
@@ -470,5 +471,8 @@ function createMarkerForhostel(hostel, lowrate){
 
  google.maps.event.addDomListener(window, "load", initialize)
 })
+// <img src="http://images.travelnow.com//hotels/5000000/4650000/4646600/4646581/4646581_50_t.jpg/">
+
+// <img src="http://images.travelnow.com//hotels/3000000/2690000/2688900/2688875/2688875_30_t.jpg">
 
 
