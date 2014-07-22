@@ -320,6 +320,10 @@
 
 
 
+%h3 deals 
+
+= @hostel_attractions_deals
+
 / %h3 nearby saved hostels
 / - for hostel in @hostel.nearbys(10)
 /   %li = link_to hostel.address, hostel (hostel.distance.round(10) miles)
