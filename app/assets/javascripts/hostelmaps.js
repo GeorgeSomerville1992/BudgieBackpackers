@@ -366,34 +366,34 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
     //addInfoWindowForHostel(marker, hostel)
     
     console.log(mapcenter)
-    google.maps.event.addListener(window.map, 'dragend',function() { 
-    var newCoords = window.map.getCenter(mapcenter);
-      console.log(newCoords)
+    // google.maps.event.addListener(window.map, 'dragend',function() { 
+    // var newCoords = window.map.getCenter(mapcenter);
+    //   console.log(newCoords)
 
-      var mapOptions = {
-        zoom: 12,                     // hostel based on what user has typed in
-        center: new google.maps.LatLng(newCoords.k, newCoords.B),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      }
+    //   var mapOptions = {
+    //     zoom: 12,                     // hostel based on what user has typed in
+    //     center: new google.maps.LatLng(newCoords.k, newCoords.B),
+    //     mapTypeId: google.maps.MapTypeId.ROADMAP
+    //   }
 
 
 
-      map_container = document.getElementById('map-canvas')
-      if(map_container != undefined){
-        window.map = new google.maps.Map(map_container, mapOptions) 
-        var mapcenter = window.map.getCenter();
-        console.log(mapcenter)
-        maphostels(hostels,mapcenter)
-        // gon.hostels is was messing everything up
-        //infowindow = new google.maps.InfoWindow(); 
-      }
+    //   map_container = document.getElementById('map-canvas')
+    //   if(map_container != undefined){
+    //     window.map = new google.maps.Map(map_container, mapOptions) 
+    //     var mapcenter = window.map.getCenter();
+    //     console.log(mapcenter)
+    //     maphostels(hostels,mapcenter)
+    //     // gon.hostels is was messing everything up
+    //     //infowindow = new google.maps.InfoWindow(); 
+    //   }
 
-    // maphostels(hostel,mapcenter)
+    // // maphostels(hostel,mapcenter)
       
-    });
+    // });
 }
   
-  function createMarkerForAttraction(attraction, attraction_catagory, locationLat, locationLong){
+  function createMarkerForAttraction(attraction, attraction_catagory, locationLat, locationLong,attractionDetails){
     var attractionCatagory = attraction_catagory
     var latLng = new google.maps.LatLng(locationLat,locationLong);  
     console.log(attractionCatagory)
@@ -437,31 +437,58 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
         icon: general 
       });
 
+      google.maps.event.addListener(marker, 'click', function(){
+      console.log(attractions_foursquare_items)
 
-      google.maps.event.addListener(window.mapAttraction, 'dragend',function() { 
-        var newCoordsAttraction = window.mapAttraction.getCenter();
+      var contentStringAttraction =
+      '<h3>' + attractionDetails.name + '</h3>' +
+      '<p>' + '<b>' + attractionDetails.location.address + '</b>' + '</p>'+
+      '<p>' + attractionDetails.hereNow.summary + '</p>'+
+      '<p>' + attractionDetails.likes.summary + '</p>'+
+      '<p>' + "Avarage Rating:"+ attractionDetails.rating +  '</p>'
+
+      // '<p>' + hostel.address1 + '</p>' +
+      // '<p>' + hostel.postalCode + '</p>' +
+      // '<img src= http://images.travelnow.com/'+ hostel.thumbNailUrl + '>'
+        var thisMarker = this;
+
+        infowindow.setContent(contentStringAttraction);
+        infowindow.open(window.mapAttraction,this);
+
+      // if(infowindow != undefined) infowindow.close()
+      // infowindow = new google.maps.InfoWindow({
+      //   content: "hello"
+      // })
+      // map_container.setCenter(new google.maps.LatLng((marker.position.lat()), marker.position.lng())); 
+      // map_container.setZoom(18);
+     
+    })
+
+
+    //   google.maps.event.addListener(window.mapAttraction, 'dragend',function() { 
+    //     var newCoordsAttraction = window.mapAttraction.getCenter();
         
 
-        var mapOptions = {
-          zoom: 12,                     // hostel based on what user has typed in
-          center: new google.maps.LatLng(newCoordsAttraction.k, newCoordsAttraction.B),
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        }
-        map_container_attraction = document.getElementById('map-attraction-canvas')
-        if(map_container_attraction != undefined){
-        window.mapAttraction = new google.maps.Map(map_container_attraction, mapOptions) 
+    //     var mapOptions = {
+    //       zoom: 12,                     // hostel based on what user has typed in
+    //       center: new google.maps.LatLng(newCoordsAttraction.k, newCoordsAttraction.B),
+    //       mapTypeId: google.maps.MapTypeId.ROADMAP
+    //     }
+    //     map_container_attraction = document.getElementById('map-attraction-canvas')
+    //     if(map_container_attraction != undefined){
+    //     window.mapAttraction = new google.maps.Map(map_container_attraction, mapOptions) 
 
 
 
         
-        mapattractions(attractions_foursquare)
-        // gon.hostels is was messing everything up
-        //infowindow = new google.maps.InfoWindow(); 
-      }
+    //     mapattractions(attractions_foursquare)
+    //     // gon.hostels is was messing everything up
+    //     //infowindow = new google.maps.InfoWindow(); 
+    //   }
 
-    // maphostels(hostel,mapcenter)
+    // // maphostels(hostel,mapcenter)
       
-    });
+    // });
 
 
 
@@ -491,12 +518,13 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
         var locationLat = attraction['venue']['location']['lat']
         var locationLong = attraction['venue']['location']['lng']
         var categoryName = attraction['venue']['categories']['0']['name']
+        var attractionDetails = attraction['venue']
         // venue location - lat
         //attractions_foursquare_items[0]['venue']['categories'][0]['name']
         // var attraction_catagory = attractions_foursquare_items.categories[i].name
 
         //var attractionname = attractions.name
-        createMarkerForAttraction(attraction, categoryName,locationLat, locationLong)
+        createMarkerForAttraction(attraction, categoryName,locationLat, locationLong,attractionDetails)
           // add a specfic id to this marker
     }) 
   }
