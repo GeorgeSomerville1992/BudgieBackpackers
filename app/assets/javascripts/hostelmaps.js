@@ -450,6 +450,10 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
         map_container_attraction = document.getElementById('map-attraction-canvas')
         if(map_container_attraction != undefined){
         window.mapAttraction = new google.maps.Map(map_container_attraction, mapOptions) 
+
+
+
+        
         mapattractions(attractions_foursquare)
         // gon.hostels is was messing everything up
         //infowindow = new google.maps.InfoWindow(); 
