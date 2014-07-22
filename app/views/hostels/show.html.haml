@@ -6,24 +6,28 @@
         #panel1.content
           %dl.tabs{"data-tab" => ""}
             %dd.active
-              %a{href: "#panel2-1"} About
+              %a{href: "#panel2-1"} General
             %dd
-              %a{href: "#panel2-2"} Address
+              %a{href: "#panel2-2"} Available room details
             %dd
               %a{href: "#panel2-3"} Trip advisor rating
           
           .tabs-content
             #panel2-1.content.active
-              %p Description: <%= shortDescription %>
+              %p Description: <%= shortDescription %> ...
               %p Low Rate: <%= lowRate %> <%= rateCurrencyCode %>
-            #panel2-2.content
-              %p Location Description: <%= locationDescription %>
               %p Address: <%= address1 %>
               %p Postal Code: <%= postalCode %>
+            #panel2-2.content
+              %p Max room Occupancy: <%= RoomRateDetailsList.RoomRateDetails.maxRoomOccupancy %>
+              %p Room Description: <%= RoomRateDetailsList.RoomRateDetails.roomDescription %>
+              %p Features: <%= RoomRateDetailsList.RoomRateDetails.ValueAdds['ValueAdd'].description %>
+             
+
             #panel2-3.content
               :plain
-                <img src="<%= tripAdvisorRatingUrl %>"
-              %p contact number unavailable 
+                <img src="<%= tripAdvisorRatingUrl %>" <br/>
+              %p Number of Reviews: <%= tripAdvisorReviewCount %>
             #panel2-4.content
               %p Fourth panel content goes here...
   %script#hostel-show-cheapest-hotels{type: "text/template"}
@@ -93,33 +97,39 @@
     /         #panel2-4.content
     /           %p Fourth panel content goes here...
   %script#attraction-foursquare-topPics-template{type: "text/template"} 
-    .large-6.columns 
+    .large-5.columns 
       .panel
         %h4 <%= venue.name %>
         %p <%= venue.hereNow.count %> <%= venue.hereNow.summry %> people are here 
         %p <%= tips[0].text %>
-        %p <%= tips[0].user.firstName %>
-        %p <%= tips[0].user.lastName %>
+        %p <%= tips[0].createdAt %>
+        %p <%= tips[0].user.firstName %> <%= tips[0].user.lastName %>
+        %p <%= tips[0].url %>
     .large-3.columns
       .panel.foursquarerecommendedpanel
         %p
           :plain
               <img src="<%= venue['photos']['groups'][0]['items'][0].prefix %>400x400<%= venue['photos']['groups'][0]['items'][0].suffix %>" />
 
-    .large-3.columns 
-      .flip{style: "width: 200px; height: 200px;"}
-        .flip-front
+    .large-4.columns 
+      .flip{style: "width: 300px; height: 200px;"}
+        .flip-front.flip-front300-200
           .panel.panellist
             %h4 Contact details
-            %p Address: <%= venue.location.formattedAddress %>
+            %p Address: <%= venue.location.address %> , <%= venue.location.crossStreet %>        
+            %P City: <%= venue.location.city %>
+            %p PostelCode: <%= venue.location.postalCode %>
+
+            
+          
+            
+        .flip-back.flip-back300-200
+          .panel 
+            %h3 Book now!
+            %p Website: <%= venue.url %>
             %li Mobile: <%= venue.contact.phone %>
             %li Twitter: <%= venue.contact.twitter %>
             %li Facebook: <%= venue.contact.facebook %>
-          
-            
-        .flip-back
-          .panel 
-            %h3 Book now!
     .large-12.columns 
       #showfoursquare-toppics-template-odd          
   %script#attraction-foursquare-topPics-template-odd{type: "text/template"}                
@@ -129,55 +139,60 @@
           :plain
               <img src="<%= venue['photos']['groups'][0]['items'][0].prefix %>400x400<%= venue['photos']['groups'][0]['items'][0].suffix %>" />
     .large-3.columns 
-      .flip{style: "width: 200px; height: 200px;"}
-        .flip-front
+      .flip{style: "width: 300px; height: 200px;"}
+        .flip-front.flip-front300-200
           .panel.panellist.foursquarerecommendedpanel
-            %p <%= venue.contact.phone %>
-            %p <%= venue.contact.twitter %>
+            %h4 Contact details
+            %p Address: <%= venue.location.address %> , <%= venue.location.crossStreet %>        
+            %P City: <%= venue.location.city %>
+            %p PostelCode: <%= venue.location.postalCode %>
+        .flip-back.flip-back300-200
+          .panel 
+            %h3 Book now!
+            %p Website: <%= venue.url %>
             %li Mobile: <%= venue.contact.phone %>
             %li Twitter: <%= venue.contact.twitter %>
             %li Facebook: <%= venue.contact.facebook %>
-        .flip-back
-          .panel 
-            %h3 Book now!
             
     .large-6.columns 
       .panel.panellist.foursquarerecommendedpanel
         %h4 <%= venue.name %> 
-        %p <%= venue.hereNow.count %> <%= venue.hereNow.summry %>
+        %p <%= venue.hereNow.count %> <%= venue.hereNow.summry %> people are here
         %p <%= tips[0].text %>
         %p <%= tips[0].createdAt %>
-        %p <%= tips[0].user.firstName %>
-        %p <%= tips[0].user.lastName %>
+        %p <%= tips[0].user.firstName %> <%= tips[0].user.lastName %>
+        %p <%= tips[0].url %>
     .large-12.columns             
       #showfoursquare-toppics-template-third
   %script#attraction-foursquare-topPics-template-third{type: "text/template"} 
     .large-6.columns 
       .panel.foursquarerecommendedpanel
         %h4 <%= venue.name %>
-        %p <%= venue.hereNow.count %>
-        %p <%= venue.hereNow.summry %> people are here
+        %p <%= venue.hereNow.count %> <%= venue.hereNow.summry %> people are here
         %p <%= tips[0].text %>
-        %p <%= tips[0].user.firstName %>
-        %p <%= tips[0].user.lastName %>
+        %p <%= tips[0].user.firstName %> <%= tips[0].user.lastName %>
+        %p <%= tips[0].url %>
     .large-3.columns
       .panel.foursquarerecommendedpanel
         %p
           :plain
               <img src="<%= venue['photos']['groups'][0]['items'][0].prefix %>400x400<%= venue['photos']['groups'][0]['items'][0].suffix %>" />
     .large-3.columns 
-      .flip{style: "width: 200px; height: 200px;"}
-        .flip-front
+      .flip{style: "width: 300px; height: 200px;"}
+        .flip-front.flip-front300-200
           .panel.panellist.foursquarerecommendedpanel
-            %p <%= venue.contact.phone %>
-            %p <%= venue.contact.twitter %>
+            %h4 Contact details
+            %p Address: <%= venue.location.address %> , <%= venue.location.crossStreet %>        
+            %P City: <%= venue.location.city %>
+            %p PostelCode: <%= venue.location.postalCode %>
+        .flip-back.flip-back300-200
+          .panel 
+            %h3 Book now!
+            %p Website: <%= venue.url %>
             %li Mobile: <%= venue.contact.phone %>
             %li Twitter: <%= venue.contact.twitter %>
             %li Facebook: <%= venue.contact.facebook %>
-        .flip-back
-          .panel 
-            %h3 Book now!
-            %h3 massive test 
+           
        
 
   
@@ -216,9 +231,9 @@
   = link_to 'Back', hostels_path
 .large-12.columns
   .large-6.columns
-    #map-canvas{:style => "width: 100%; height: 300px"}
+    #map-canvas{:style => "width: 100%; height: 350px"}
   .large-6.columns  
-    .accordioncontainer
+    .accordioncontainer{:style => "width: 100%; height: 350px"}
       #hostelResults  
 #div{:style => "display:none"}        
 %a{name: "Hostels"}
