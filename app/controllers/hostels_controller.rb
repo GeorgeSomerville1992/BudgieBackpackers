@@ -65,11 +65,22 @@ class HostelsController < ApplicationController
 
     gon.hostel_price_sort = JSON.parse(serialized_price, {:symbolize_names => true})
 
-    yelp = Apis::Yelp.new(@hostel.attraction_type, @hostel.address)
-      @hostel_attractions_deals = yelp.hostel_attractions_deals
-      gon.hostel_attractions_deals = JSON.parse @hostel_attractions_deals
+    # yelp = Apis::Yelp.new(@hostel.attraction_type, @hostel.address)
+    #   @hostel_attractions_deals = yelp.hostel_attractions_deals
+      
+    #   yelp = Apis::Yelp.new(@hostel.attraction_type,@hostel.address)
+    # # request = GeoPoint.new(
+    # #          :latitude => 37.782093,
+    # #          :longitude => -122.483230)
 
-
+    # # yelp = Yelp.client.search(@borough, { 
+    # #     :latitude => @hostel.latitude,
+    # #          :longitude => @hostel.longitude
+    # #  })
+    # # binding.pry                         
+    
+    #   @hostel_attractions = yelp.hostel_attractions
+    #   gon.hostel_attractions = JSON.parse @hostel_attractions
 
 
     # request = GeoPoint.new(
