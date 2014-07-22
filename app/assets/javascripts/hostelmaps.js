@@ -4,6 +4,8 @@ $(function(){
       hostels = gon.hostels.HotelListResponse.HotelList.HotelSummary
       hostellatitude = hostels.latitude
       hostellongitude = gon.hostels.HotelListResponse.HotelList.HotelSummary.longitude
+
+      console.log(hostellatitude)
        //var hostelId = gon.hostels.HotelListResponse.HotelList.HotelSummary[i].hotelId
       hostelLowrate = gon.hostels.HotelListResponse.HotelList.HotelSummary.lowRate
       
@@ -189,6 +191,7 @@ var map;
 var map_container;
 var infowindow;
 var directionsDisplay;
+
 var directionsService = new google.maps.DirectionsService();
 var hotelRed = new google.maps.MarkerImage('/assets/hotel_0star_red.png');
 var hotelGreen = new google.maps.MarkerImage('/assets/hotel_0star_green.png')
@@ -245,6 +248,24 @@ var beer = new google.maps.MarkerImage('/assets/beer.png')
 
 //   })
 // }  
+
+// function initializemapDragHostels(mapcenter){
+//   var mapOptions = {
+//       zoom: 12,                     // hostel based on what user has typed in
+//       center: mapcenter,
+//       mapTypeId: google.maps.MapTypeId.ROADMAP
+//   }
+//   map_container = document.getElementById('map-canvas')
+//     if(map_container != undefined){
+//       window.map = new google.maps.Map(map_container, mapOptions) 
+//       maphostels(hostels)
+//       // gon.hostels is was messing everything up
+//       //infowindow = new google.maps.InfoWindow(); 
+//   }
+
+// }
+
+
 function calcRoute(marker,hostel) {
   var end = new google.maps.LatLng(hostel.latitude,hostel.longitude);
   var start = $("#address").data('hostels');
@@ -261,7 +282,7 @@ function calcRoute(marker,hostel) {
   });
 }
 
-function createMarkerForhostel(hostel, lowrate){
+function createMarkerForhostel(hostel, lowrate,mapcenter){
     var latLng = new google.maps.LatLng(hostel.latitude,hostel.longitude);
     var lowRate = lowrate;
     console.log(latLng)
@@ -299,7 +320,7 @@ function createMarkerForhostel(hostel, lowrate){
     }     
 
 
-
+    //dragNewHostels(mapcenter)
     // var marker = new google.maps.Marker({
     //   // if hostel low rate - ....then display yello or red or green!!!
     //   if(hostelLowrate <= 50){
@@ -338,11 +359,40 @@ function createMarkerForhostel(hostel, lowrate){
     })
       // wtf is this???
       //camera_id: camera.i
+
     calcRoute(marker,hostel)
+    console.log(mapcenter.B)
     // call mapoattractions
     //addInfoWindowForHostel(marker, hostel)
-  }
+    
+    console.log(mapcenter)
+    google.maps.event.addListener(window.map, 'dragend',function() { 
+    var newCoords = window.map.getCenter(mapcenter);
+      console.log(newCoords)
 
+      var mapOptions = {
+        zoom: 12,                     // hostel based on what user has typed in
+        center: new google.maps.LatLng(newCoords.k, newCoords.B),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
+
+
+
+      map_container = document.getElementById('map-canvas')
+      if(map_container != undefined){
+        window.map = new google.maps.Map(map_container, mapOptions) 
+        var mapcenter = window.map.getCenter();
+        console.log(mapcenter)
+        maphostels(hostels,mapcenter)
+        // gon.hostels is was messing everything up
+        //infowindow = new google.maps.InfoWindow(); 
+      }
+
+    // maphostels(hostel,mapcenter)
+      
+    });
+}
+  
   function createMarkerForAttraction(attraction, attraction_catagory, locationLat, locationLong){
     var attractionCatagory = attraction_catagory
     var latLng = new google.maps.LatLng(locationLat,locationLong);  
@@ -388,6 +438,27 @@ function createMarkerForhostel(hostel, lowrate){
       });
 
 
+      google.maps.event.addListener(window.mapAttraction, 'dragend',function() { 
+        var newCoordsAttraction = window.mapAttraction.getCenter();
+        
+
+        var mapOptions = {
+          zoom: 12,                     // hostel based on what user has typed in
+          center: new google.maps.LatLng(newCoordsAttraction.k, newCoordsAttraction.B),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        map_container_attraction = document.getElementById('map-attraction-canvas')
+        if(map_container_attraction != undefined){
+        window.mapAttraction = new google.maps.Map(map_container_attraction, mapOptions) 
+        mapattractions(attractions_foursquare)
+        // gon.hostels is was messing everything up
+        //infowindow = new google.maps.InfoWindow(); 
+      }
+
+    // maphostels(hostel,mapcenter)
+      
+    });
+
 
 
 
@@ -397,12 +468,12 @@ function createMarkerForhostel(hostel, lowrate){
 
 
   // what are we actualky passing into the attaction
-  function maphostels(hostels){
+  function maphostels(hostels,mapcenter){
     // _(attactions).each(createMarkerForAttraction)
     $.each(hostels,function(i,hostel){
-
-        var hostelLowrate = gon.hostels.HotelListResponse.HotelList.HotelSummary[i].lowRate
-        createMarkerForhostel(hostel, hostelLowrate)
+      console.log(mapcenter)
+        //var hostelLowrate = gon.hostels.HotelListResponse.HotelList.HotelSummary[i].lowRate
+        createMarkerForhostel(hostel, hostelLowrate,mapcenter)
           // add a specfic id to this marker
     })    //iterate through this marker 
   }       // then pass this marker back to the server end instead of the hotel marker itself. 
@@ -433,6 +504,7 @@ function createMarkerForhostel(hostel, lowrate){
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
 
+      // google.maps.event.addListener(map, 'dragend', getPinsToMapBound);
         // do i need ajax for this??? 
       // $.ajax({
       //   url: attractions,
@@ -442,7 +514,9 @@ function createMarkerForhostel(hostel, lowrate){
     map_container = document.getElementById('map-canvas')
       if(map_container != undefined){
         window.map = new google.maps.Map(map_container, mapOptions) 
-        maphostels(hostels)
+        var mapcenter = window.map.getCenter();
+        console.log(mapcenter)
+        maphostels(hostels,mapcenter)
         // gon.hostels is was messing everything up
         //infowindow = new google.maps.InfoWindow(); 
       }
