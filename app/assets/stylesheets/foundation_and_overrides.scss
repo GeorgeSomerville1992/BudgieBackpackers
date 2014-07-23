@@ -2,6 +2,8 @@
 $background: url(/assets/backgroundhome.JPG);
 $red: #7F0710;
 $background-color: $red;
+$brown: #654222;
+$light: #E2D4A5;
 .row {
 background-color: $background
 
@@ -35,39 +37,39 @@ body{
 .flipfront200-350{
   width:230px;
   height:325px;
-  background-color: #E2D4A5;
+  background-color: $brown;
 
 }
 .flipback200-350{
   width:230px;
   height:325px;
-  background-color: #7F0710;
+  background-color: $red;
 
 }
 .flipfront400-270{
   width:400px;
   height:270px;
-  background-color:#7F0710;
+  background-color:$red;
 
 }
 .flipback400-270{
   width:400px;
   height:270px;
-  background-color:#E2D4A5;
+  background-color: $brown;
 
 }
 
 .flipfront400-150{
   width:400px;
   height:200px;
-  background-color:#7F0710;
+  background-color:$red;
 
 
 }
 .flipback400-150{
   width:400px;
   height:200px;
-  background-color:#E2D4A5;
+  background-color: $brown;
 
 
 }
@@ -119,13 +121,13 @@ body{
 .copyright{
   width:400px;
   height:45px;
-  background-color: black;
-  color:#E2D4A5;
+  background-color: $brown;
+  color: white;
 }
 .smallblank{
   width:400px;
   height:45px;
-  background-color: #E2D4A5;
+  background-color:  $brown;
   color:white;
 }
 .signup-signin{
@@ -137,15 +139,16 @@ body{
     float:left;
     margin-left:50px;
     margin-top: 70px;
-    color:white;
-
+    a{
+      color:white;
+    }
     
 
   }
   .button.leftwelcome{
-      border: 10px solid #7F0710;
+      border: 10px solid #E80C7A;
       border-radius: 25px;
-      background-color: #E2D4A5;
+      background-color: #FF530D;
       color:white;
     }
   
