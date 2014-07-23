@@ -39,9 +39,9 @@ $(function(){
           hostel.postalCode = "not applicable"
         }
 
-        // if (typeof hostel.RoomRateDetailsList.RoomRateDetails.ValueAdds['ValueAdd'].description == "undefined") {
-        //   hostel.RoomRateDetailsList.RoomRateDetails.ValueAdds['ValueAdd'].description = "Nothing cool about this hotel!"
-        // }
+        if (typeof hostel.RoomRateDetailsList.RoomRateDetails.ValueAdds['ValueAdd'].description == "undefined") {
+          hostel.RoomRateDetailsList.RoomRateDetails.ValueAdds['ValueAdd'].description = "Nothing cool about this hotel!"
+        }
         //<%= RoomRateDetailsList.RoomRateDetails.ValueAdds['ValueAdd'].description %>
 
 

@@ -21,7 +21,7 @@
             #panel2-2.content
               %p Max room Occupancy: <%= RoomRateDetailsList.RoomRateDetails.maxRoomOccupancy %>
               %p Room Description: <%= RoomRateDetailsList.RoomRateDetails.roomDescription %>
-              %p Features: 
+              %p Features: <%= RoomRateDetailsList.RoomRateDetails.ValueAdds['ValueAdd'].description %>
              
 
             #panel2-3.content
@@ -39,9 +39,11 @@
             %li.price <%= lowRate %>
             %li.bullet-item Address: <%= address1 %>
             %li.bullet-item Postcode: <%= postalCode %>
-            %li.bullet-item
+            %li.bullet-item  
               :plain
                 <img src="http://images.travelnow.com/<%= thumbNailUrl %>" />
+              
+               
             // what does plain do???
         .flip-back  
           %ul.pricing-table{"data-equalizer-watch" => ""} 
