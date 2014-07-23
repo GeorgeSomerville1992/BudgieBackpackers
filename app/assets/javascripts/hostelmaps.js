@@ -2,9 +2,11 @@ $(function(){
   
     if (gon.hostels){
       hostels = gon.hostels.HotelListResponse.HotelList.HotelSummary
+      // roomdetails = hostels.RoomRateDetailsList.RoomRateDetails.ValueAdds
+      // console.log(roomdetails)
       hostellatitude = hostels.latitude
       hostellongitude = gon.hostels.HotelListResponse.HotelList.HotelSummary.longitude
-
+      console.log(hostels)
       console.log(hostellatitude)
        //var hostelId = gon.hostels.HotelListResponse.HotelList.HotelSummary[i].hotelId
       hostelLowrate = gon.hostels.HotelListResponse.HotelList.HotelSummary.lowRate
@@ -27,9 +29,19 @@ $(function(){
         if (typeof hostel.tripAdvisorRatingUrl == "undefined") {
           hostel.tripAdvisorRatingUrl = "not applicable"
         }
+        if (typeof hostel.tripAdvisorReviewCount == "undefined") {
+          hostel.tripAdvisorReviewCount = "not applicable"
+        }
+
+
+
         if (typeof hostel.postalCode == "undefined") {
           hostel.postalCode = "not applicable"
         }
+
+        // if (typeof hostel.RoomRateDetailsList.RoomRateDetails.ValueAdds['ValueAdd'].description == "undefined") {
+        //   hostel.RoomRateDetailsList.RoomRateDetails.ValueAdds['ValueAdd'].description = "Nothing cool about this hotel!"
+        // }
 
 
 
@@ -75,11 +87,13 @@ $(function(){
       hostelOfferTemplate = _.template($('#hostel-show-cheapest-hotels').text())
       $.each(hostelOffers, function(i, hostel){
 
-        $('#hotelOfferResults').append(hostelOfferTemplate(hostel))
-
         if (typeof hostel.postalCode == "undefined") {
           hostel.postalCode = "not applicable"
         }
+        
+        $('#hotelOfferResults').append(hostelOfferTemplate(hostel))
+
+        
 
       })
 
@@ -92,7 +106,7 @@ $(function(){
       attractions_foursquare_items = attractions_foursquare[0].items 
       attractions_foursquare_template = _.template($('#attraction-foursquare-template').text())
       attractions_foursquare_venues = attractions_foursquare[0]['items']
-     
+     console.log(attractions_foursquare_items)
       
       a = attractions_foursquare[0].items
       // debugger
@@ -148,16 +162,64 @@ $(function(){
       attractions_foursquare_topPics_template_third = _.template($('#attraction-foursquare-topPics-template-third').text())
       $.each(attractions_topPics_items_first , function(i, item){
         console.log(item.venue['photos']['groups'][0]['items'][0].prefix)
+        if (typeof item.venue.contact.phone == "undefined") {
+          item.venue.contact.phone = "not available"
+        }
+         if (typeof item.venue.contact.twitter == "undefined") {
+          item.venue.contact.twitter = "not available"
+        }
+         if (typeof item.venue.contact.facebook== "undefined") {
+          item.venue.contact.facebook = "not available"
+        }
+        if (typeof item.venue.url== "undefined") {
+          item.venue.url = "not available"
+        }
+        // <%= tips[0].url %>
+        if (typeof item.tips[0].url == "undefined") {
+          item.tips[0].url = "Sorry, link to this article is not available"
+        }
+
+
+
         $('#showfoursquaretopPicdata').append(attractions_foursquare_topPics_template(item))
+         
       })
 
       $.each(attractions_foursquare_topPics_odd_venues, function(i,item){
-
+        if (typeof item.venue.contact.phone == "undefined") {
+          item.venue.contact.phone = "not available"
+        }
+         if (typeof item.venue.contact.twitter == "undefined") {
+          item.venue.contact.twitter = "not available"
+        }
+         if (typeof item.venue.contact.facebook== "undefined") {
+          item.venue.contact.facebook = "not available"
+        }
+        if (typeof item.venue.url== "undefined") {
+          item.venue.url = "not available"
+        }
+        if (typeof item.tips[0].url == "undefined") {
+          item.tips[0].url = "Sorry, link to this article is not available"
+        }
         $('#showfoursquare-toppics-template-odd').append(attractions_foursquare_topPics_template_odd(item))
       })
 
       $.each(attractions_foursquare_topPics_third_venues, function(i,item){
-
+        if (typeof item.venue.contact.phone == "undefined") {
+          item.venue.contact.phone = "not available"
+        }
+         if (typeof item.venue.contact.twitter == "undefined") {
+          item.venue.contact.twitter = "not available"
+        }
+         if (typeof item.venue.contact.facebook== "undefined") {
+          item.venue.contact.facebook = "not available"
+        }
+        if (typeof item.venue.url== "undefined") {
+          item.venue.url = "not available"
+        }
+        if (typeof item.tips[0].url == "undefined") {
+          item.tips[0].url = "Sorry, link to this article is not available"
+        }
         $('#showfoursquare-toppics-template-third').append(attractions_foursquare_topPics_template_third(item))
       })
 
@@ -341,8 +403,9 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
       console.log("hello")
       var contentString =
       '<h3>' + hostel.name + '</h3>' +
-      '<p>' + hostel.address1 + '</p>' +
-      '<p>' + hostel.postalCode + '</p>' +
+      '<p>' + 'Price:' + ' ' + '<b>' + hostel.lowRate + '</b>' + '</p>' +
+      '<p>' + 'Address:' + ' ' + hostel.address1 + '</p>' +
+      '<p>' + 'Postcode:' + ' ' + hostel.postalCode + '</p>' +
       '<img src= http://images.travelnow.com/'+ hostel.thumbNailUrl + '>'
         var thisMarker = this;
 
@@ -396,7 +459,7 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
   function createMarkerForAttraction(attraction, attraction_catagory, locationLat, locationLong,attractionDetails){
     var attractionCatagory = attraction_catagory
     var latLng = new google.maps.LatLng(locationLat,locationLong);  
-    console.log(attractionCatagory)
+    //console.log(attractionCatagory)
     
      // if(attractionCatagory == "Bar"){
      //  var marker = new google.maps.Marker({
@@ -465,30 +528,52 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
     })
 
 
-    //   google.maps.event.addListener(window.mapAttraction, 'dragend',function() { 
-    //     var newCoordsAttraction = window.mapAttraction.getCenter();
+      google.maps.event.addListener(window.mapAttraction, 'dragend',function() { 
+        var newCoordsAttraction = window.mapAttraction.getCenter();
         
 
-    //     var mapOptions = {
-    //       zoom: 12,                     // hostel based on what user has typed in
-    //       center: new google.maps.LatLng(newCoordsAttraction.k, newCoordsAttraction.B),
-    //       mapTypeId: google.maps.MapTypeId.ROADMAP
-    //     }
-    //     map_container_attraction = document.getElementById('map-attraction-canvas')
-    //     if(map_container_attraction != undefined){
-    //     window.mapAttraction = new google.maps.Map(map_container_attraction, mapOptions) 
+        var mapOptions = {
+          zoom: 12,                     // hostel based on what user has typed in
+          center: new google.maps.LatLng(newCoordsAttraction.k, newCoordsAttraction.B),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        map_container_attraction = document.getElementById('map-attraction-canvas')
+        if(map_container_attraction != undefined){
+        window.mapAttraction = new google.maps.Map(map_container_attraction, mapOptions) 
+        var clientId = "PJOVUMNXMNMSCGSYVETRKZ23WN2LUR31M0AD04AMKTJAKI5I"
+        var clientSecret = "3GG355R0B5D4KMH1J1UIUFXH2ZZCFH4ISOW5WTNYV11JJTDV"
+        var api_Version = '20120610'
+        var query = $("#hotel_attraction").data('hostels');
+        var requestUrl = 'https://api.foursquare.com/v2/venues/explore?ll='+ newCoordsAttraction.k+','+newCoordsAttraction.B +'&query='+ query + '&price=1&venuePhotos=true&client_id='+ clientId + '&client_secret='+ clientSecret+'&v='+ api_Version
+        //console.log(requestUrl)
+        //attractions_foursquare = 
+        //https://api.foursquare.com/v2/venues/search?ll=40.7,-74&client_id=CLIENT_ID&client_secret=CLIENT_SECRET&v=YYYYMMDD
+        $.ajax({
+          url: requestUrl,
+          dataType: "json",
+          complete: showAttractionAjax
+        });
+        function showAttractionAjax(response){
+          raw_data = response.responseText
+          
+          var format = JSON.parse(raw_data);
+          var groups = format.response['groups']
+          //console.log(groups)
+          attractions_foursquare = groups
+          mapattractions(attractions_foursquare)
 
+        }
 
 
         
-    //     mapattractions(attractions_foursquare)
-    //     // gon.hostels is was messing everything up
-    //     //infowindow = new google.maps.InfoWindow(); 
-    //   }
+       
+        // gon.hostels is was messing everything up
+        //infowindow = new google.maps.InfoWindow(); 
+      }
 
-    // // maphostels(hostel,mapcenter)
+    // maphostels(hostel,mapcenter)
       
-    // });
+    });
 
 
 
@@ -509,6 +594,7 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
     })    //iterate through this marker 
   }       // then pass this marker back to the server end instead of the hotel marker itself. 
   function mapattractions(attractions_foursquare){
+    
     $.each(attractions_foursquare[0]['items'], function(i,attraction){
 
         console.log(attraction);
