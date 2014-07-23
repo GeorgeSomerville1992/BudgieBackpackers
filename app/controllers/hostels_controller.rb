@@ -9,6 +9,17 @@ class HostelsController < ApplicationController
 
     @posts = Post.all
 
+    client = Foursquare2::Client.new(:client_id => 'PJOVUMNXMNMSCGSYVETRKZ23WN2LUR31M0AD04AMKTJAKI5I', 
+                                    :client_secret => '3GG355R0B5D4KMH1J1UIUFXH2ZZCFH4ISOW5WTNYV11JJTDV',
+                                    :api_version => '20120610',
+
+                                    ) 
+    # @foursquareFriends = client.user_friends(:user_id => 'self',
+    #                                          :limit => 30
+    #                                          )
+    # serialized_foursquare = JSON.generate(@foursquareFriends)
+    # gon.foursquareFreinds = JSON.parse(serialized_foursquare,{:symbolize_names => true})
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @hostels }
