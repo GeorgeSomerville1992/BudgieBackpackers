@@ -528,30 +528,30 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
     })
 
 
-    //   google.maps.event.addListener(window.mapAttraction, 'dragend',function() { 
-    //     var newCoordsAttraction = window.mapAttraction.getCenter();
+      google.maps.event.addListener(window.mapAttraction, 'dragend',function() { 
+        var newCoordsAttraction = window.mapAttraction.getCenter();
         
 
-    //     var mapOptions = {
-    //       zoom: 12,                     // hostel based on what user has typed in
-    //       center: new google.maps.LatLng(newCoordsAttraction.k, newCoordsAttraction.B),
-    //       mapTypeId: google.maps.MapTypeId.ROADMAP
-    //     }
-    //     map_container_attraction = document.getElementById('map-attraction-canvas')
-    //     if(map_container_attraction != undefined){
-    //     window.mapAttraction = new google.maps.Map(map_container_attraction, mapOptions) 
+        var mapOptions = {
+          zoom: 12,                     // hostel based on what user has typed in
+          center: new google.maps.LatLng(newCoordsAttraction.k, newCoordsAttraction.B),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        map_container_attraction = document.getElementById('map-attraction-canvas')
+        if(map_container_attraction != undefined){
+        window.mapAttraction = new google.maps.Map(map_container_attraction, mapOptions) 
 
 
 
         
-    //     mapattractions(attractions_foursquare)
-    //     // gon.hostels is was messing everything up
-    //     //infowindow = new google.maps.InfoWindow(); 
-    //   }
+        mapattractions(attractions_foursquare)
+        // gon.hostels is was messing everything up
+        //infowindow = new google.maps.InfoWindow(); 
+      }
 
-    // // maphostels(hostel,mapcenter)
+    // maphostels(hostel,mapcenter)
       
-    // });
+    });
 
 
 
