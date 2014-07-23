@@ -51,6 +51,15 @@
             %li.cta-button
               %a.button{href: "#"} Buy Now
               %p contact number unavailable 
+              :plain
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.expedia.co.uk/" data-text="Wow I have just found this amazing deal!!! for <%= lowRate %> per night at <%= name %> in <%= city %> #deals"  counturl= data-lang="en">Tweet</a> 
+
+              :javascript
+                !function(d,s,id){
+                var js,fjs=d.getElementsByTagName(s)[0];
+                if(!d.getElementById(id)){
+                js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
     
 
   %script#attraction-foursquare-template{type: "text/template"}
