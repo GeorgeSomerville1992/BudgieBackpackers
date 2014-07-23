@@ -26,6 +26,8 @@ module Apis
                       :propertyCategory => 1,
                       :arrivalDate => hostelarrivalDate.strftime("%m/%d/%Y"),
                       :departureDate => hosteldepartureDate.strftime("%m/%d/%Y"),
+                      :RoomGroup => :true,
+
                       :searchRadius => hosteldistance,
                       :sort => "PRICE"
 

@@ -55,9 +55,7 @@ class HostelsController < ApplicationController
 
     serialized = JSON.generate(@api)
 
-      # yelp = Apis::Yelp.new(@hostel.attraction_type,@hostel.address,@hostel.latitude, @hostel.longitude)
-      # @hostel_attractions = yelp.hostel_attractions
-      # gon.hostel_attractions = JSON.parse @hostel_attractions
+      
     gon.hostels = JSON.parse(serialized, {:symbolize_names => true})
 
     expedia_prices = Apis::ExpediaApi.new(@hostel.latitude, @hostel.longitude,@hostel.arrivalDate,@hostel.departureDate,@hostel.distance)
@@ -67,8 +65,22 @@ class HostelsController < ApplicationController
 
     gon.hostel_price_sort = JSON.parse(serialized_price, {:symbolize_names => true})
 
+    # yelp = Apis::Yelp.new(@hostel.attraction_type, @hostel.address)
+    #   @hostel_attractions_deals = yelp.hostel_attractions_deals
+      
+    #   yelp = Apis::Yelp.new(@hostel.attraction_type,@hostel.address)
+    # # request = GeoPoint.new(
+    # #          :latitude => 37.782093,
+    # #          :longitude => -122.483230)
 
-
+    # # yelp = Yelp.client.search(@borough, { 
+    # #     :latitude => @hostel.latitude,
+    # #          :longitude => @hostel.longitude
+    # #  })
+    # # binding.pry                         
+    
+    #   @hostel_attractions = yelp.hostel_attractions
+    #   gon.hostel_attractions = JSON.parse @hostel_attractions
 
 
     # request = GeoPoint.new(
@@ -112,6 +124,8 @@ class HostelsController < ApplicationController
     serialized_foursquare_topPics = JSON.generate(@foursquare_topPics)
     gon.hostel_attraction_foursquare_topPics = JSON.parse(serialized_foursquare_topPics,{:symbolize_names => true})
 
+
+    # yelp = Apis::Yelp.new(@hostel.attraction_type, @hostel.address )
 
     # JSON generator converts symbols to strings because JSON does not support symbols.
     # passing json document will produce a ruby hash with string keys inside

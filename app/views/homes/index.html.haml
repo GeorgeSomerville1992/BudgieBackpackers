@@ -21,15 +21,15 @@
       %img{src: "/assets/backpacker1.jpeg", style: "width:200px; height: 200px" }/
 
     .box.col2
-      %img{src: "/assets/backpacker5.jpeg", style: "width:200px; height: 200px"}/
+      %img{src: "/assets/backpacker6.jpeg", style: "width:200px; height: 200px"}/
     .box.col2
       .flip
-        .textcontainerflip{style: "width:400px; height: 300px"}
-          .flip-front.flipfront360-320
+        .textcontainerflip{style: "width:400px; height: 270px"}
+          .flip-front.flipfront400-270
             %h3 
-              %i.fa.fa-globe &nbsp; instantly find a place to stay anywhere
+              %i.fa.fa-globe &nbsp; Instantly find a place to stay anywhere
               %p Grog blossom spyglass marooned Sea Legs pirate me lookout quarterdeck Buccaneer killick. Hardtack bowsprit loot ahoy fathom me Cat o'nine tails Yellow Jack jury mast transom. 
-          .flip-back.flipback360-320  
+          .flip-back.flipback400-270
             %p 
      
     .box.col2
@@ -49,7 +49,7 @@
 
     .box.col2
       .flip
-        .textcontainerflip{style: "width: 220px; height: 350px;"}
+        .textcontainerflip{style: "width: 220px; height: 325px;"}
           .flip-front.flipfront200-350
             %h3 
               %i.fa.fa-camera &nbsp; See
@@ -64,17 +64,23 @@
           .flip-back.flipback200-350
             %p 
     .box.col2
-      %img{src: "http://www.placehold.it/200x200"}/
+      %img{src: "/assets/backpacker7.jpeg", style: "width:200px; height: 200px"}/
     .box.col2
       %img{src: "/assets/backpacker2.jpeg", style: "width:200px; height: 200px" }/
     .box.col2
-      %img{src: "http://www.placehold.it/200x170"}/
-    .box.col2
-      %img{src: "http://www.placehold.it/200x170"}/
+      .signup-signin
+        %h3.left
+          .button.leftwelcome
+            = link_to 'SignUp', new_user_registration_path
+        %h3
+          .button.rightwelcome
+            = link_to 'Login', new_user_session_path
     .box.col2
       %img{src: "http://www.placehold.it/200x120"}/
     .box.col2
-      %img{src: "http://www.placehold.it/400x70"}/ 
+      .copyright
+        @George Somerville Test Project WDI-London-2014
     .box.col2
-      %img{src: "http://www.placehold.it/400x70"}/          
+      .smallblank
+             
     
