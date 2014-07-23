@@ -1,0 +1,30 @@
+.container 
+  .row
+    .medium-6.columns
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = devise_error_messages!
+      %h2 Sign up
+      %hr/
+      %div
+        = f.label :name
+        %br/
+        = f.text_field :name
+      %div
+        = f.label :image
+        %br/
+        = f.text_field :image
+      %div
+        = f.label :email
+        %br/
+        = f.email_field :email, autofocus: true
+      %div
+        = f.label :password
+        %br/
+        = f.password_field :password, autocomplete: "off"
+      %div
+        = f.label :password_confirmation
+        %br/
+        = f.password_field :password_confirmation, autocomplete: "off"
+        %div= f.submit "Sign up", class: "button"
+    = render "devise/shared/links"
+    .medium-6.columns
