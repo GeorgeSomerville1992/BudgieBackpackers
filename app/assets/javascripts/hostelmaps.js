@@ -459,7 +459,7 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
   function createMarkerForAttraction(attraction, attraction_catagory, locationLat, locationLong,attractionDetails){
     var attractionCatagory = attraction_catagory
     var latLng = new google.maps.LatLng(locationLat,locationLong);  
-    console.log(attractionCatagory)
+    //console.log(attractionCatagory)
     
      // if(attractionCatagory == "Bar"){
      //  var marker = new google.maps.Marker({
@@ -540,11 +540,33 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
         map_container_attraction = document.getElementById('map-attraction-canvas')
         if(map_container_attraction != undefined){
         window.mapAttraction = new google.maps.Map(map_container_attraction, mapOptions) 
+        var clientId = "PJOVUMNXMNMSCGSYVETRKZ23WN2LUR31M0AD04AMKTJAKI5I"
+        var clientSecret = "3GG355R0B5D4KMH1J1UIUFXH2ZZCFH4ISOW5WTNYV11JJTDV"
+        var api_Version = '20120610'
+        var query = $("#hotel_attraction").data('hostels');
+        var requestUrl = 'https://api.foursquare.com/v2/venues/explore?ll='+ newCoordsAttraction.k+','+newCoordsAttraction.B +'&query='+ query + '&price=1&venuePhotos=true&client_id='+ clientId + '&client_secret='+ clientSecret+'&v='+ api_Version
+        //console.log(requestUrl)
+        //attractions_foursquare = 
+        //https://api.foursquare.com/v2/venues/search?ll=40.7,-74&client_id=CLIENT_ID&client_secret=CLIENT_SECRET&v=YYYYMMDD
+        $.ajax({
+          url: requestUrl,
+          dataType: "json",
+          complete: showAttractionAjax
+        });
+        function showAttractionAjax(response){
+          raw_data = response.responseText
+          
+          var format = JSON.parse(raw_data);
+          var groups = format.response['groups']
+          //console.log(groups)
+          attractions_foursquare = groups
+          mapattractions(attractions_foursquare)
 
+        }
 
 
         
-        mapattractions(attractions_foursquare)
+       
         // gon.hostels is was messing everything up
         //infowindow = new google.maps.InfoWindow(); 
       }
@@ -572,6 +594,7 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
     })    //iterate through this marker 
   }       // then pass this marker back to the server end instead of the hotel marker itself. 
   function mapattractions(attractions_foursquare){
+    
     $.each(attractions_foursquare[0]['items'], function(i,attraction){
 
         console.log(attraction);
