@@ -1,24 +1,27 @@
-%p#notice= notice
+.container 
+  .row
+    .medium-6.columns
+      %p#notice= notice
 
-%p
-  %b Title:
-  = @post.title
-%p
-  %b Name:
-  = @post.name
-%p
-  %b Body:
-  = @post.body
-%p
-  %b Datecreated:
-  = @post.date_created
-%p
-  %b Dateedited:
-  = @post.date_edited
-%p
-  %b Picture:
-  = @post.picture
+      %p
+        %b Title:
+        = @post.title
+      %p
+        %b Name:
+        = @post.name
+      %p
+        %b Body:
+        = @post.body
+      %p
+        %b Datecreated:
+        = @post.date_created
+      %p
+        %b Dateedited:
+        = @post.date_edited
+      %p
+        %b Picture:
+        = @post.picture
 
-= link_to 'Edit', edit_post_path(@post)
-\|
-= link_to 'Back', posts_path
+      = link_to 'Edit', edit_post_path(@post)
+      \|
+      = link_to 'Back', posts_path
