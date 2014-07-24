@@ -39,9 +39,9 @@ $(function(){
           hostel.postalCode = "not applicable"
         }
 
-        if (typeof hostel.RoomRateDetailsList.RoomRateDetails.ValueAdds['ValueAdd'].description == "undefined") {
-          hostel.RoomRateDetailsList.RoomRateDetails.ValueAdds['ValueAdd'].description = "Nothing cool about this hotel!"
-        }
+        // if (typeof hostel.RoomRateDetailsList.RoomRateDetails.ValueAdds.ValueAdd.description == "undefined") {
+        //   hostel.RoomRateDetailsList.RoomRateDetails.ValueAdds.ValueAdd.description = "Nothing cool about this hotel!"
+        // }
         //<%= RoomRateDetailsList.RoomRateDetails.ValueAdds['ValueAdd'].description %>
 
 
@@ -328,22 +328,43 @@ var beer = new google.maps.MarkerImage('/assets/beer.png')
 // }
 
 
-function calcRoute(marker,hostel) {
-  var end = new google.maps.LatLng(hostel.latitude,hostel.longitude);
+// function calcRoute(marker,hostel) {
+//   var end = new google.maps.LatLng(hostel.latitude,hostel.longitude);
+//   var start = $("#address").data('hostels');
+//   console.log(end)
+//   var request = {
+//       origin:start,
+//       destination:end,
+//       travelMode: google.maps.TravelMode.DRIVING
+//   };
+//   directionsService.route(request, function(response, status) {
+//     if (status == google.maps.DirectionsStatus.OK) {
+//       directionsDisplay.setDirections(response);
+//     }
+//   });
+// }
+function directRoute(position) {
   var start = $("#address").data('hostels');
-  console.log(end)
-  var request = {
-      origin:start,
-      destination:end,
-      travelMode: google.maps.TravelMode.DRIVING
+  directionsRenderer.setMap();
+  var directionsRequest = {
+    origin: start 
+    destination: position,
+    travelMode: google.maps.DirectionsTravelMode.WALKING,
+    unitSystem: google.maps.UnitSystem.METRIC
   };
-  directionsService.route(request, function(response, status) {
+   directionsService.route(directionsRequest,function(response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
+        directionsRenderer.setMap(window.map)
+        directionsRenderer.setDirections(response)
+        directionsRenderer.setPanel(document.getElementById('directions-panel'));
+        $('#directions').click();
     }
-  });
-}
+    else
+      $("#error").append("Unable to retrieve your route<br />");
+      }
+    );
 
+}
 function createMarkerForhostel(hostel, lowrate,mapcenter){
     var latLng = new google.maps.LatLng(hostel.latitude,hostel.longitude);
     var lowRate = lowrate;
@@ -406,12 +427,18 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
       '<p>' + 'Price:' + ' ' + '<b>' + hostel.lowRate + '</b>' + '</p>' +
       '<p>' + 'Address:' + ' ' + hostel.address1 + '</p>' +
       '<p>' + 'Postcode:' + ' ' + hostel.postalCode + '</p>' +
-      '<img src= http://images.travelnow.com/'+ hostel.thumbNailUrl + '>'
+      '<img src= http://images.travelnow.com/'+ hostel.thumbNailUrl + '>' +
+      '<a id="directions" class="button tiny">'
         var thisMarker = this;
 
         infowindow.setContent(contentString);
         infowindow.open(window.map,this);
-
+        $('a#directions').on('click', function(ev){
+          ev.preventDefault();
+          
+            directRoute(thisMarker.position);
+          
+        })
       // if(infowindow != undefined) infowindow.close()
       // infowindow = new google.maps.InfoWindow({
       //   content: "hello"
@@ -563,10 +590,6 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
           mapattractions(attractions_foursquare)
 
         }
-
-
-        
-       
         // gon.hostels is was messing everything up
         //infowindow = new google.maps.InfoWindow(); 
       }
@@ -597,10 +620,10 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
     
     $.each(attractions_foursquare[0]['items'], function(i,attraction){
 
-        console.log(attraction);
-        console.log(attraction['venue']);
-        console.log(attraction['venue']['categories']);
-        console.log(attraction['venue']['categories']['0']);
+        // console.log(attraction);
+        // console.log(attraction['venue']);
+        // console.log(attraction['venue']['categories']);
+        // console.log(attraction['venue']['categories']['0']);
         var locationLat = attraction['venue']['location']['lat']
         var locationLong = attraction['venue']['location']['lng']
         var categoryName = attraction['venue']['categories']['0']['name']
