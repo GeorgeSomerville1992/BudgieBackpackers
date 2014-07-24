@@ -2,6 +2,8 @@
 $background: url(/assets/backgroundhome.JPG);
 
 // $background-color: $red;
+$black: black;
+$white: white;
 
 $brown: #654222;
 $light: #E2D4A5;
@@ -23,13 +25,26 @@ $pinkish:#FF005F;
 background-color: $background
 
 }
-body{
-  background-color: black;
-
+.maincanvaswrap{
+  background-color: $black;
 }
-.span{
+.panel{
+  .pink{
+    background-color  : $pinkish;
+  }
+}
+.maincontainer{
+  height: 100%;
+  width: 100%;
   background-color: black;
+  color:$white;
+  h1, h2, h3, h4, h5, h6, a, a:visited, label{
+    color: $white;
+  }
+  a:hover{
+    color: $pinkish;
 
+  }
 }
 
 .textcontainerflip{
@@ -261,8 +276,8 @@ $row-width: rem-calc(1000);
 // Global
 
 // We use these to control various global styles
-$body-bg: white;
-// $body-font-color: #222;
+$body-bg: white; 
+$body-font-color: white;
 // $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
@@ -615,7 +630,7 @@ $secondary-color: #FFE800;
 
 // We use these to style captions
 // $clearing-caption-font-color: #ccc;
-// $clearing-caption-font-size: 0.875em;
+// $clearing-caption-font-size: 0.875
 // $clearing-caption-padding: 10px 30px 20px;
 
 // We use these to make the image and carousel height and style
@@ -1030,9 +1045,9 @@ $off-canvas-bg: $cyanblue;
 // $include-html-panel-classes: $include-html-classes;
 
 // We use these to control the background and border styles
-// $panel-bg: scale-color(#fff, $lightness: -5%);
-// $panel-border-style: solid;
-// $panel-border-size: 1px;
+ $panel-bg: scale-color(#fff, $lightness: -5%);
+ $panel-border-style: solid;
+ $panel-border-size: 0px;
 
 // We use this % to control how much we darken things on hover
 // $panel-function-factor: -11%;
@@ -1043,7 +1058,7 @@ $off-canvas-bg: $cyanblue;
 // $panel-padding: rem-calc(20);
 
 // We use these to set default font colors
-// $panel-font-color: #333;
+$panel-font-color: white;
 // $panel-font-color-alt: #fff;
 
 // $panel-header-adjust: true;
