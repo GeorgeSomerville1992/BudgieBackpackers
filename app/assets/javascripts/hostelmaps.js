@@ -253,7 +253,7 @@ var map;
 var map_container;
 var infowindow;
 var directionsDisplay;
-
+var directionsRenderer = new google.maps.DirectionsRenderer();
 var directionsService = new google.maps.DirectionsService();
 var hotelRed = new google.maps.MarkerImage('/assets/hotel_0star_red.png');
 var hotelGreen = new google.maps.MarkerImage('/assets/hotel_0star_green.png')
@@ -347,7 +347,7 @@ function directRoute(position) {
   var start = $("#address").data('hostels');
   directionsRenderer.setMap();
   var directionsRequest = {
-    origin: start 
+    origin: start,
     destination: position,
     travelMode: google.maps.DirectionsTravelMode.WALKING,
     unitSystem: google.maps.UnitSystem.METRIC
@@ -355,9 +355,10 @@ function directRoute(position) {
    directionsService.route(directionsRequest,function(response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
         directionsRenderer.setMap(window.map)
-        directionsRenderer.setDirections(response)
-        directionsRenderer.setPanel(document.getElementById('directions-panel'));
-        $('#directions').click();
+        directionsDisplay.setDirections(response);
+        //directionsRenderer.setDirections(response)
+        //directionsRenderer.setPanel(document.getElementById('directions-panel'));
+        //$('#directions').click();
     }
     else
       $("#error").append("Unable to retrieve your route<br />");
@@ -428,7 +429,7 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
       '<p>' + 'Address:' + ' ' + hostel.address1 + '</p>' +
       '<p>' + 'Postcode:' + ' ' + hostel.postalCode + '</p>' +
       '<img src= http://images.travelnow.com/'+ hostel.thumbNailUrl + '>' +
-      '<a id="directions" class="button tiny">'
+      '<a id="directions" class="button tiny">Calculate Directions</a>'
         var thisMarker = this;
 
         infowindow.setContent(contentString);
@@ -450,7 +451,7 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
       // wtf is this???
       //camera_id: camera.i
 
-    calcRoute(marker,hostel)
+    //calcRoute(marker,hostel)
     console.log(mapcenter.B)
     // call mapoattractions
     //addInfoWindowForHostel(marker, hostel)
