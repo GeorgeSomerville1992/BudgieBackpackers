@@ -188,6 +188,9 @@ margin-left: 35px;
 
 
 }
+.dropdown{
+  background-color: $bloodred;
+}
 // .custom-button-class {
 //   @include button(
 //     // $padding - Used to build padding for buttons Default: $button-med or rem-calc(12)
@@ -643,7 +646,7 @@ $secondary-color: #FFE800;
 // $f-dropdown-margin-bottom: $f-dropdown-margin-top;
 
 // We use this to control the background color
-// $f-dropdown-bg: #fff;
+ $f-dropdown-bg: $bloodred;
 
 // We use this to set the border styles for dropdowns.
 // $f-dropdown-border-style: solid;
@@ -903,7 +906,7 @@ $secondary-color: #FFE800;
 
 // Off Canvas Menu Variables
 // $off-canvas-width: rem-calc(250);
-// $off-canvas-bg: #333;
+$off-canvas-bg: $cyanblue;
 
 // Off Canvas Menu List Variables
 // $off-canvas-label-padding: 0.3rem rem-calc(15);
@@ -1378,6 +1381,7 @@ $secondary-color: #FFE800;
 // $tooltip-font-size: rem-calc(14);
 // $tooltip-font-weight: $font-weight-normal;
 // $tooltip-font-color: #fff;
+
 // $tooltip-line-height: 1.3;
 // $tooltip-close-font-size: rem-calc(10);
 // $tooltip-close-font-weight: $font-weight-normal;
@@ -1394,7 +1398,7 @@ $secondary-color: #FFE800;
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-// $topbar-bg-color: #333;
+ $topbar-bg-color: $cyanblue;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
