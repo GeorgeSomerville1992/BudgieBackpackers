@@ -122,7 +122,7 @@ class HostelsController < ApplicationController
         :venuePhotos => :true
         )
     @foursquare["groups"][0]["items"].each_with_index { |hs, indx| hs["indxx"] = indx + 1 }
-
+    # Foursquare2::APIError server_error: Foursquare servers are experiencing problems.
 
 
     serialized_foursquare = JSON.generate(@foursquare)

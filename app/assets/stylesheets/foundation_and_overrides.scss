@@ -2,10 +2,17 @@
 $background: url(/assets/backgroundhome.JPG);
 
 // $background-color: $red;
+
 $brown: #654222;
 $light: #E2D4A5;
+$themered: #7F0710;
 
+$cyanblue: #00ADF1;
+$lightpurple: #FF27F9;
+$lightgreen: #25FF14;
+$bloodred: #E80C0E;
 
+// the below variabels are for a well matched theme however dont really stand out
 $yellow: #FFD102;
 $lightOrange: #FF9100;
 $darkOrange: #E8640C;
@@ -45,39 +52,39 @@ body{
 .flipfront200-350{
   width:230px;
   height:325px;
-  background-color: $darkOrange;
+  background-color: $cyanblue;
 
 }
 .flipback200-350{
   width:230px;
   height:325px;
-  background-color: $red;
+  background-color: $lightpurple;
 
 }
 .flipfront400-270{
   width:400px;
   height:270px;
-  background-color:$red;
+  background-color: $lightgreen
 
 }
 .flipback400-270{
   width:400px;
   height:270px;
-  background-color: #E80C0E;
+  background-color: $bloodred;
 
 }
 
 .flipfront400-150{
   width:400px;
   height:200px;
-  background-color:$lightOrange;
+  background-color:$lightpurple
 
 
 }
 .flipback400-150{
   width:400px;
   height:200px;
-  background-color: $deepred;
+  background-color: $lightgreen
 
 
 }
@@ -129,19 +136,30 @@ body{
 .copyright{
   width:400px;
   height:45px;
-  background-color: $darkOrange;
+  background-color: $bloodred;
   color: white;
 }
-.smallblank{
+.smallblankleft{
   width:400px;
   height:45px;
-  background-color: $yellow;
+  background-color: $cyanblue;
   color:white;
 }
+.smallblankright{
+  width:400px;
+  height:45px;
+  background-color: $lightpurple;
+  color:white;
+}
+
+
+
+
+
 .signup-signin{
   width:400px;
   height:130px;
-  background-color: $deepred;
+  background-color: black;
   h3{
     align: center;
     float:left;
@@ -156,8 +174,8 @@ body{
   .button.leftwelcome{
       border: 10px solid #E80C7A;
       border-radius: 25px;
-      background-color: #FF530D;
-      color:white;
+      // background-color: #FF530D;
+      // color:white;
     }
   
 }
@@ -170,6 +188,22 @@ margin-left: 35px;
 
 
 }
+// .custom-button-class {
+//   @include button(
+//     // $padding - Used to build padding for buttons Default: $button-med or rem-calc(12)
+//     //$padding,
+//     // Primary color set in settings file. Default: $primary-color.
+    
+//     // If true, set to button radius which is $global-radius or explicitly set radius amount in px (ex. $radius:10px). Default:false.
+//     // $radius,
+//     // // We can set $full-width:true to remove side padding extend width. Default:false
+//     // $full-width,
+//     // // We can set $disabled:true to create a disabled transparent button. Default:false
+//     // $disabled,
+//     // // $is-input - <input>s and <button>s take on strange padding. We added this to help fix that. Default:false
+//     // $is-input
+//   );
+// }
 
 // .foursquarerecommendedpanel{
 //   background:#7F0710;
@@ -239,8 +273,8 @@ $body-bg: white;
 // $default-float: left;
 
 // We use these as default colors throughout
-$primary-color: #7F0710;
-// $secondary-color: #e7e7e7;
+$primary-color: #FF005F;
+$secondary-color: #FFE800;
 // $alert-color: #f04124;
 // $success-color: #43AC6A;
 // $warning-color: #f08a24;
@@ -540,7 +574,7 @@ $primary-color: #7F0710;
 // We use these to control button border styles.
 // $button-border-width: 0px;
 // $button-border-style: solid;
-// $button-bg: $primary-color;
+ $button-bg: #FF005F;
 // $button-border-color: scale-color($bg, $lightness: $button-function-factor);
 
 // We use this to set the default radius used throughout the core.
