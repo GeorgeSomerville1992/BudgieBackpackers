@@ -375,7 +375,12 @@ function directRoute(position) {
 function createMarkerForhostel(hostel, lowrate){
     var latLng = new google.maps.LatLng(hostel.latitude,hostel.longitude);
     var lowRate = lowrate;
-   
+    var contentString = '<div>' + '<h3>' + hostel.name + '</h3>' +
+                    '<p>' + 'Price:' + ' ' + '<b>' + hostel.lowRate + '</b>' + '</p>' +
+                    '<p>' + 'Address:' + ' ' + hostel.address1 + '</p>' +
+                    '<p>' + 'Postcode:' + ' ' + hostel.postalCode + '</p>' +
+                    '<img src= http://images.travelnow.com/'+ hostel.thumbNailUrl + '>' +
+                    '<a id="directions" class="button tiny">Calculate Directions</a>' + '</div>'
     // var contentString =
     //   '<h3>' + hostel.name + '</h3>' +
     //   '<p>' + 'Price:' + ' ' + '<b>' + hostel.lowRate + '</b>' + '</p>' +
@@ -391,53 +396,73 @@ function createMarkerForhostel(hostel, lowrate){
         title: "hi",
         icon: hotelGreen
       });
-       google.maps.event.addListener(marker, 'click', function(){
-        console.log("hello")
-        var thisMarker = this;
-        console.log(thisMarker)
-
-      })
+         google.maps.event.addListener(marker, 'click', function(){
+          console.log("hello")
+          var thisMarker = this;
+          console.log(thisMarker)
+          infowindow.setContent(contentString);
+          infowindow.open(window.map,this);
+          $('a#directions').on('click', function(ev){
+            ev.preventDefault();
+              directRoute(thisMarker.position);
+          })
+        })
     }else if(hostel.lowRate <= 50){
       var marker = new google.maps.Marker({
       position: latLng,
       map: window.map,
       title: "hi",
       icon: hotelYellow
-      
       });
-      
+        google.maps.event.addListener(marker, 'click', function(){
+          console.log("hello")
+          var thisMarker = this;
+          console.log(thisMarker)
+          infowindow.setContent(contentString);
+          infowindow.open(window.map,this);
+          $('a#directions').on('click', function(ev){
+            ev.preventDefault();
+              directRoute(thisMarker.position); 
+          })
+        })
     }else if(hostel.lowRate <= 70){
       var marker = new google.maps.Marker({
       position: latLng,
       map: window.map,
       title: "hi",
       icon: hotelOrange
-     
       });
-       
+        google.maps.event.addListener(marker, 'click', function(){
+          console.log("hello")
+          var thisMarker = this;
+          console.log(thisMarker)
+          infowindow.setContent(contentString);
+          infowindow.open(window.map,this);
+          $('a#directions').on('click', function(ev){
+            ev.preventDefault();
+              directRoute(thisMarker.position);
+          })
+        })
      }else if(hostel.lowRate <= 90){
       var marker = new google.maps.Marker({
       position: latLng,
       map: window.map,
       title: "hi",
-      icon: hotelRed
+      icon: hotelRed,
+      info: contentString
       });
        google.maps.event.addListener(marker, 'click', function(){
         console.log("hello")
         var thisMarker = this;
         console.log(thisMarker)
-         var contentString = '<h3>' + hostel.name + '</h3>' +
-                    '<p>' + 'Price:' + ' ' + '<b>' + hostel.lowRate + '</b>' + '</p>' +
-                    '<p>' + 'Address:' + ' ' + hostel.address1 + '</p>' +
-                    '<p>' + 'Postcode:' + ' ' + hostel.postalCode + '</p>' +
-                    '<img src= http://images.travelnow.com/'+ hostel.thumbNailUrl + '>' +
-                    '<a id="directions" class="button tiny">Calculate Directions</a>'
-        infowindow.setContent(contentString);
+         
+        infowindow.setContent(this.info);
         infowindow.open(window.map,this);
-
-
+        $('a#directions').on('click', function(ev){
+          ev.preventDefault();
+            directRoute(thisMarker.position);
+        })
       })
-
     };     
   
 
