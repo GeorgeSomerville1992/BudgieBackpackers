@@ -67,6 +67,16 @@ background-color: $background
   color:$pinkish;
 }
 
+.flip-front-price{
+  width: 250px; height: 375px;
+
+
+}
+.flip-back-price{
+  width: 250px; height: 375px;
+
+
+}
 .flipfront200-350{
   width:230px;
   height:325px;
@@ -208,6 +218,34 @@ margin-left: 35px;
 }
 .dropdown{
   background-color: $bloodred;
+}
+#markerinfowindow{
+  width: 250px;
+  height: 250px;
+  text-align: center;
+  h3, p{
+    color: black;
+  }
+  a{
+    
+    margin:20px;
+  } 
+
+}
+#attractioninfowindow{
+  width: 250px;
+  height: 250px;
+  text-align: center;
+  h3, p{
+    color: black;
+  } 
+  
+}
+#buttonfoursquaretopics{
+  background-color: $cyanblue;
+  &.hover{
+
+  }
 }
 // .custom-button-class {
 //   @include button(
@@ -1078,7 +1116,7 @@ $panel-font-color: white;
 // $price-table-margin-bottom: rem-calc(20);
 
 // We use these to control the title styles
-// $price-title-bg: #333;
+ $price-title-bg: $pinkish;
 // $price-title-padding: rem-calc(15 20);
 // $price-title-align: center;
 // $price-title-color: #eee;

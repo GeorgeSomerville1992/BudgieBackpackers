@@ -375,11 +375,11 @@ function directRoute(position) {
 function createMarkerForhostel(hostel, lowrate){
     var latLng = new google.maps.LatLng(hostel.latitude,hostel.longitude);
     var lowRate = lowrate;
-    var contentString = '<div>' + '<h3>' + hostel.name + '</h3>' +
-                    '<p>' + 'Price:' + ' ' + '<b>' + hostel.lowRate + '</b>' + '</p>' +
+    var contentString = '<div id="markerinfowindow">' + '<h3>' + hostel.name + '</h3>' +
+                    '<p>' + 'Rate:' + ' ' + '<b>' + hostel.lowRate + '</b>' + '</p>' +
                     '<p>' + 'Address:' + ' ' + hostel.address1 + '</p>' +
                     '<p>' + 'Postcode:' + ' ' + hostel.postalCode + '</p>' +
-                    '<img src= http://images.travelnow.com/'+ hostel.thumbNailUrl + '>' +
+                    '<img width=100px, height=100px, src= http://images.travelnow.com/'+ hostel.thumbNailUrl + '>' + '<br/>' +
                     '<a id="directions" class="button tiny">Calculate Directions</a>' + '</div>'
     // var contentString =
     //   '<h3>' + hostel.name + '</h3>' +
@@ -618,13 +618,13 @@ function createMarkerForhostel(hostel, lowrate){
       google.maps.event.addListener(marker, 'click', function(){
       console.log(attractions_foursquare_items)
 
-      var contentStringAttraction =
+      var contentStringAttraction = '<div id="attractioninfowindow">' +
       '<h3>' + attractionDetails.name + '</h3>' +
       '<p>' + '<b>' + attractionDetails.location.address + '</b>' + '</p>'+
       '<p>' + attractionDetails.hereNow.summary + '</p>'+
       '<p>' + attractionDetails.likes.summary + '</p>'+
       '<p>' + "Avarage Rating:"+ attractionDetails.rating +  '</p>' +
-      '<a id="directionsattractions" class="button tiny">Calculate Directions</a>'
+      '<a id="directionsattractions" class="button tiny">Calculate Directions</a>' + '</div>'
 
       // '<p>' + hostel.address1 + '</p>' +
       // '<p>' + hostel.postalCode + '</p>' +
