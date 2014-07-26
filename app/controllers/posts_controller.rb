@@ -74,6 +74,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post = Post.find(params[:id])
+    authorize! :destroy, @post
     @post.destroy
 
     respond_to do |format|

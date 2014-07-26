@@ -81,12 +81,13 @@
                             = link_to "Sign in with Foursquare", user_omniauth_authorize_path(:foursquare)                          
                 %ul.left 
                   %li
-                    %img{src: "http://placehold.it/100x45&text=BUDGIEBACKPACKERS"}/         
+                    %img{src: "http://placehold.it/100x45&text=BUDGIEBACKPACKERS"}/
+                  %li 
+                    = link_to 'Home', root_path
                   %li
                     = link_to 'Hostels', hostels_path
                   %li 
-                    = link_to 'Home', root_path
-
+                    = link_to 'User Journals', posts_path  
             %section.right-small
               %a.right-off-canvas-toggle.menu-icon    
                 %span
