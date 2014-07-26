@@ -5,12 +5,11 @@ class Ability
 
      # Define abilities for the passed in user here.
      if user ||= User.new # guest user (not logged in)
-        can :manage, [Post]
+        can :read, [Post,Comment]
     # a signed-in user can do everything
-    if user_signed_in?
+    else
       can :manage, :all
     end
-
 
 
 

@@ -25,7 +25,7 @@ class PostsController < ApplicationController
   # GET /posts/new.json
   def new
     @post = Post.new
-
+    authorize! :new, @post
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @post }
@@ -35,7 +35,7 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
-    authorize! :new, @post
+    authorize! :edit, @post
   end
 
   # POST /posts
