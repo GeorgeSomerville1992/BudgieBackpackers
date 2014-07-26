@@ -1,7 +1,8 @@
 .container 
   .row
+    %h2 New post
+    %hr/
     .medium-6.columns
-      %h1 New post
       = form_for @post do |f|
         - if @post.errors.any?
           #error_explanation
@@ -10,24 +11,25 @@
               - @post.errors.full_messages.each do |msg|
                 %li= msg
 
-        .field
+        %div
           = f.label :title
+          %br/
           = f.text_field :title
-        .field
+        %div
           = f.label :name
+          %br/
           = f.text_field :name
-        .field
+        %div
           = f.label :body
+          %br/
           = f.text_area :body
-        .field
+        %div
           = f.label :date_created
+          %br/
           = f.date_select :date_created
-        .field
-          = f.label :date_edited
-          = f.date_select :date_edited
-        .field
+        %div
           = f.label :picture
           %br/
           = f.file_field :picture
-        .actions
-          = f.submit 'Save'
+          %br/        
+          %div= f.submit "Save", class: "button"
