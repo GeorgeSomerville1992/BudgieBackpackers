@@ -375,9 +375,13 @@ function directRoute(position) {
 function createMarkerForhostel(hostel, lowrate){
     var latLng = new google.maps.LatLng(hostel.latitude,hostel.longitude);
     var lowRate = lowrate;
-    console.log(latLng)
-    console.log(lowRate);
-
+    // var contentString =
+    //   '<h3>' + hostel.name + '</h3>' +
+    //   '<p>' + 'Price:' + ' ' + '<b>' + hostel.lowRate + '</b>' + '</p>' +
+    //   '<p>' + 'Address:' + ' ' + hostel.address1 + '</p>' +
+    //   '<p>' + 'Postcode:' + ' ' + hostel.postalCode + '</p>' +
+    //   '<img src= http://images.travelnow.com/'+ hostel.thumbNailUrl + '>' +
+    //   '<a id="directions" class="button tiny">Calculate Directions</a>'
     
     if(hostel.lowRate <= 40){
       var marker = new google.maps.Marker({
@@ -385,29 +389,33 @@ function createMarkerForhostel(hostel, lowrate){
         map: window.map,
         title: "hi",
         icon: hotelGreen
-      })
+      });
     }else if(hostel.lowRate <= 50){
       var marker = new google.maps.Marker({
       position: latLng,
       map: window.map,
       title: "hi",
       icon: hotelYellow
-      })
+      
+      });
+      
     }else if(hostel.lowRate <= 70){
       var marker = new google.maps.Marker({
       position: latLng,
       map: window.map,
       title: "hi",
       icon: hotelOrange
-      })
+     
+      });
+       
      }else if(hostel.lowRate <= 90){
       var marker = new google.maps.Marker({
       position: latLng,
       map: window.map,
       title: "hi",
       icon: hotelRed
-      })
-    }     
+      });
+    };     
 
 
     //dragNewHostels(mapcenter)
@@ -429,31 +437,30 @@ function createMarkerForhostel(hostel, lowrate){
 
     google.maps.event.addListener(marker, 'click', function(){
       console.log("hello")
-      // var contentString =
-      // '<h3>' + hostel.name + '</h3>' +
-      // '<p>' + 'Price:' + ' ' + '<b>' + hostel.lowRate + '</b>' + '</p>' +
-      // '<p>' + 'Address:' + ' ' + hostel.address1 + '</p>' +
-      // '<p>' + 'Postcode:' + ' ' + hostel.postalCode + '</p>' +
-      // '<img src= http://images.travelnow.com/'+ hostel.thumbNailUrl + '>' +
-      // '<a id="directions" class="button tiny">Calculate Directions</a>'
-        // var thisMarker = this;
+        var contentString = '<h3>' + hostel.name + '</h3>' +
+                    '<p>' + 'Price:' + ' ' + '<b>' + hostel.lowRate + '</b>' + '</p>' +
+                    '<p>' + 'Address:' + ' ' + hostel.address1 + '</p>' +
+                    '<p>' + 'Postcode:' + ' ' + hostel.postalCode + '</p>' +
+                    '<img src= http://images.travelnow.com/'+ hostel.thumbNailUrl + '>' +
+                    '<a id="directions" class="button tiny">Calculate Directions</a>'
+        var thisMarker = this;
 
-        // infowindow.setContent(this.info);
-        // infowindow.open(window.map,this);
-        // $('a#directions').on('click', function(ev){
-        //   ev.preventDefault();
+        infowindow.setContent("asjdnfasjkn");
+        infowindow.open(window.map,this);
+        $('a#directions').on('click', function(ev){
+          ev.preventDefault();
           
-        //     directRoute(thisMarker.position);
+            directRoute(thisMarker.position);
           
-        // })
-      // if(infowindow != undefined) infowindow.close()
-      // infowindow = new google.maps.InfoWindow({
-      //   content: "hello"
-      // })
+        })
+      if(infowindow != undefined) infowindow.close()
+      infowindow = new google.maps.InfoWindow({
+        content: "hello"
+      })
       // map_container.setCenter(new google.maps.LatLng((marker.position.lat()), marker.position.lng())); 
       // map_container.setZoom(18);
      
-    })
+     })
       // wtf is this???
       //camera_id: camera.i
 
