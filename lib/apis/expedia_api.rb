@@ -4,52 +4,6 @@ module Apis
 
     API_KEY = "m5zs97x99nkugvee8pmadv7c"
 
-<<<<<<< HEAD
-    def initialize(hostellatitude,hostellongitude,hostelarrivalDate,hosteldepartureDate, hosteldistance)
-      Expedia::Utils.logger = Rails.logger
-
-      Expedia.cid = 55505
-      Expedia.api_key = 'yg7cfr2k3xp3t5r22s3mhymd'
-      Expedia.shared_secret = '34EkxKBu'
-      Expedia.locale = 'en_GB'
-      Expedia.currency_code = 'GBP'
-      Expedia.minor_rev = 26
-      @api = Expedia::Api.new
-      @price_api = Expedia::Api.new
-      # @locations
-    end 
-
-    def get_hostels (hostellatitude,hostellongitude, hostelarrivalDate, hosteldepartureDate, hosteldistance)
-      
-      @api.get_list({ 
-                      :latitude => hostellatitude,
-                      :longitude => hostellongitude,
-                      :propertyCategory => 1,
-                      :arrivalDate => hostelarrivalDate.strftime("%m/%d/%Y"),
-                      :departureDate => hosteldepartureDate.strftime("%m/%d/%Y"),
-                      :RoomGroup => :true,
-
-                      :searchRadius => hosteldistance,
-                      :sort => "PRICE"
-
-                       }).body
-      #show error handling!!!
-      # if result? APIError
-    end
-
-    def get_hostels_prices(hostellatitude,hostellongitude, hostelarrivalDate, hosteldepartureDate, hosteldistance)
-       @price_api.get_list({ 
-                      :latitude => hostellatitude,
-                      :longitude => hostellongitude,
-                      :propertyCategory => 1,
-                      :arrivalDate => hostelarrivalDate.strftime("%m/%d/%Y"),
-                      :departureDate => hosteldepartureDate.strftime("%m/%d/%Y"),
-                      :searchRadius => hosteldistance,
-                      :sort => "PRICE"
-
-                       }).body
-    end    
-=======
       def initialize(hostellatitude,hostellongitude,hostelarrivalDate,hosteldepartureDate, hosteldistance)
         Expedia::Utils.logger = Rails.logger
 
@@ -104,7 +58,7 @@ module Apis
       #   error(500, method_specific_error_code, "it all done broke")
       #   ## additional error notifications here if necessary.
       # end
->>>>>>> feature/homepage
+
 
 
 

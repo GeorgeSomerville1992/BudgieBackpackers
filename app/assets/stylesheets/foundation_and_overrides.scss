@@ -1,25 +1,50 @@
 
 $background: url(/assets/backgroundhome.JPG);
-$red: #7F0710;
-$background-color: $red;
+
+// $background-color: $red;
+$black: black;
+$white: white;
+
 $brown: #654222;
 $light: #E2D4A5;
-$lighterRed: #FF2F0D;
-$darkerRed: #E80C0E;
-$salmonpPink: #FF0082;
-$lightPurple: #E70CE8;
-$darkerPurple: #BC0DFF;
+$themered: #7F0710;
+
+$cyanblue: #00ADF1;
+$lightpurple: #FF27F9;
+$lightgreen: #25FF14;
+$bloodred: #E80C0E;
+
+// the below variabels are for a well matched theme however dont really stand out
+$yellow: #FFD102;
+$lightOrange: #FF9100;
+$darkOrange: #E8640C;
+$red: #FF3B00;
+$deepred: #E81406;
+$pinkish:#FF005F;
 .row {
 background-color: $background
 
 }
-body{
-  background-color: black;
-
+.maincanvaswrap{
+  background-color: $black;
 }
-.span{
+.panel{
+  .pink{
+    background-color  : $pinkish;
+  }
+}
+.maincontainer{
+  height: 100%;
+  width: 100%;
   background-color: black;
+  color:$white;
+  h1, h2, h3, h4, h5, h6, a, a:visited, label{
+    color: $white;
+  }
+  a:hover{
+    color: $pinkish;
 
+  }
 }
 
 .textcontainerflip{
@@ -31,7 +56,8 @@ body{
       padding: 5px 5px 5px 7px;
       
     }
-    p, li{
+    li,p{
+
       padding: 5px 5px 5px 7px;    
     }
 
@@ -40,39 +66,39 @@ body{
 .flipfront200-350{
   width:230px;
   height:325px;
-  background-color: $brown;
+  background-color: $cyanblue;
 
 }
 .flipback200-350{
   width:230px;
   height:325px;
-  background-color: $red;
+  background-color: $lightpurple;
 
 }
 .flipfront400-270{
   width:400px;
   height:270px;
-  background-color:$red;
+  background-color: $lightgreen
 
 }
 .flipback400-270{
   width:400px;
   height:270px;
-  background-color: $brown;
+  background-color: $bloodred;
 
 }
 
 .flipfront400-150{
   width:400px;
   height:200px;
-  background-color:$red;
+  background-color:$lightpurple
 
 
 }
 .flipback400-150{
   width:400px;
   height:200px;
-  background-color: $brown;
+  background-color: $lightgreen
 
 
 }
@@ -124,24 +150,35 @@ body{
 .copyright{
   width:400px;
   height:45px;
-  background-color: $brown;
+  background-color: $bloodred;
   color: white;
 }
-.smallblank{
+.smallblankleft{
   width:400px;
   height:45px;
-  background-color:  $brown;
+  background-color: $cyanblue;
   color:white;
 }
+.smallblankright{
+  width:400px;
+  height:45px;
+  background-color: $lightpurple;
+  color:white;
+}
+
+
+
+
+
 .signup-signin{
   width:400px;
-  height:175px;
+  height:130px;
   background-color: black;
   h3{
     align: center;
     float:left;
     margin-left:50px;
-    margin-top: 70px;
+    margin-top: 30px;
     a{
       color:white;
     }
@@ -151,8 +188,8 @@ body{
   .button.leftwelcome{
       border: 10px solid #E80C7A;
       border-radius: 25px;
-      background-color: #FF530D;
-      color:white;
+      // background-color: #FF530D;
+      // color:white;
     }
   
 }
@@ -165,6 +202,25 @@ margin-left: 35px;
 
 
 }
+.dropdown{
+  background-color: $bloodred;
+}
+// .custom-button-class {
+//   @include button(
+//     // $padding - Used to build padding for buttons Default: $button-med or rem-calc(12)
+//     //$padding,
+//     // Primary color set in settings file. Default: $primary-color.
+    
+//     // If true, set to button radius which is $global-radius or explicitly set radius amount in px (ex. $radius:10px). Default:false.
+//     // $radius,
+//     // // We can set $full-width:true to remove side padding extend width. Default:false
+//     // $full-width,
+//     // // We can set $disabled:true to create a disabled transparent button. Default:false
+//     // $disabled,
+//     // // $is-input - <input>s and <button>s take on strange padding. We added this to help fix that. Default:false
+//     // $is-input
+//   );
+// }
 
 // .foursquarerecommendedpanel{
 //   background:#7F0710;
@@ -219,8 +275,8 @@ $row-width: rem-calc(1000);
 // Global
 
 // We use these to control various global styles
-$body-bg: white;
-// $body-font-color: #222;
+$body-bg: white; 
+$body-font-color: white;
 // $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
@@ -234,8 +290,8 @@ $body-bg: white;
 // $default-float: left;
 
 // We use these as default colors throughout
-$primary-color: #7F0710;
-// $secondary-color: #e7e7e7;
+$primary-color: #FF005F;
+$secondary-color: #FFE800;
 // $alert-color: #f04124;
 // $success-color: #43AC6A;
 // $warning-color: #f08a24;
@@ -535,7 +591,7 @@ $primary-color: #7F0710;
 // We use these to control button border styles.
 // $button-border-width: 0px;
 // $button-border-style: solid;
-// $button-bg: $primary-color;
+ $button-bg: #FF005F;
 // $button-border-color: scale-color($bg, $lightness: $button-function-factor);
 
 // We use this to set the default radius used throughout the core.
@@ -573,7 +629,7 @@ $primary-color: #7F0710;
 
 // We use these to style captions
 // $clearing-caption-font-color: #ccc;
-// $clearing-caption-font-size: 0.875em;
+// $clearing-caption-font-size: 0.875
 // $clearing-caption-padding: 10px 30px 20px;
 
 // We use these to make the image and carousel height and style
@@ -604,7 +660,7 @@ $primary-color: #7F0710;
 // $f-dropdown-margin-bottom: $f-dropdown-margin-top;
 
 // We use this to control the background color
-// $f-dropdown-bg: #fff;
+ $f-dropdown-bg: $bloodred;
 
 // We use this to set the border styles for dropdowns.
 // $f-dropdown-border-style: solid;
@@ -864,7 +920,7 @@ $primary-color: #7F0710;
 
 // Off Canvas Menu Variables
 // $off-canvas-width: rem-calc(250);
-// $off-canvas-bg: #333;
+$off-canvas-bg: $cyanblue;
 
 // Off Canvas Menu List Variables
 // $off-canvas-label-padding: 0.3rem rem-calc(15);
@@ -988,9 +1044,9 @@ $primary-color: #7F0710;
 // $include-html-panel-classes: $include-html-classes;
 
 // We use these to control the background and border styles
-// $panel-bg: scale-color(#fff, $lightness: -5%);
-// $panel-border-style: solid;
-// $panel-border-size: 1px;
+ $panel-bg: scale-color(#fff, $lightness: -5%);
+ $panel-border-style: solid;
+ $panel-border-size: 0px;
 
 // We use this % to control how much we darken things on hover
 // $panel-function-factor: -11%;
@@ -1001,7 +1057,7 @@ $primary-color: #7F0710;
 // $panel-padding: rem-calc(20);
 
 // We use these to set default font colors
-// $panel-font-color: #333;
+$panel-font-color: white;
 // $panel-font-color-alt: #fff;
 
 // $panel-header-adjust: true;
@@ -1339,6 +1395,7 @@ $primary-color: #7F0710;
 // $tooltip-font-size: rem-calc(14);
 // $tooltip-font-weight: $font-weight-normal;
 // $tooltip-font-color: #fff;
+
 // $tooltip-line-height: 1.3;
 // $tooltip-close-font-size: rem-calc(10);
 // $tooltip-close-font-weight: $font-weight-normal;
@@ -1355,7 +1412,7 @@ $primary-color: #7F0710;
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-// $topbar-bg-color: #333;
+ $topbar-bg-color: $cyanblue;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
