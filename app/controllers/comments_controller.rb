@@ -44,7 +44,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(params[:comment].merge(user: current_user))
     redirect_to @post
-    
+    authorize! :manage, @comment
   end
 
   # PUT /comments/1
