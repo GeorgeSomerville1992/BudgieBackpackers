@@ -244,9 +244,17 @@
 / = link_to 'Back', hostels_path
 .large-12.columns
   .large-6.columns
-    #map-canvas{:style => "width: 100%; height: 350px"}
+    #map-canvas{:style => "width: 100%; height: 350px; "}
+    .flip 
+      %h1 Tap an icon to get directions
+      #directions-panel-front{:style => "width: 100%; height: 300px; overflow-y:scroll;"}
+          
+      
+
+      
+
   .large-6.columns  
-    .accordioncontainer{:style => "width: 100%; height: 350px"}
+    .accordioncontainer{:style => "width: 100%; height: 700px"}
       #hostelResults  
 
 
