@@ -199,13 +199,13 @@ background-color: $background
 
   }
   .button.leftwelcome{
-      border: 10px solid #E80C7A;
+      border: 10px solid $cyanblue;
       border-radius: 25px;
       // background-color: #FF530D;
       // color:white;
     }
   .button.rightwelcome{
-    border: 10px solid $cyanblue;
+    border: 0px solid $cyanblue;
     border-radius: 25px;
 
   }
@@ -253,9 +253,15 @@ margin-left: 35px;
   -moz-transition: all .25s ease-in;
   -o-transition: all .25s ease-in;
   transition: all .25s ease-in;
-    &.hover{
+    &:hover{
     opacity: .7;
   }
+}
+#buttoncyan{
+  &:hover{
+    color:$cyanblue;
+  }
+
 }
 // .custom-button-class {
 //   @include button(
