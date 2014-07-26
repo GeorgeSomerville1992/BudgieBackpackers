@@ -41,7 +41,10 @@
             Created by 
             = post.name
           %td
-    = link_to 'new post', new_post_path      
+    = link_to 'new post', new_post_path   
+    %h3 foursquare
+    = @foursquareFriends
+
   / - @attractions.each do |attraction|
   /   %tr
   /     %td= attraction.address

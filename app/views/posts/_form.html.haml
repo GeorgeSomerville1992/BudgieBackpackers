@@ -1,28 +1,32 @@
-= form_for @post do |f|
-  - if @post.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
-      %ul
-        - @post.errors.full_messages.each do |msg|
-          %li= msg
+.container 
+  .row
+    .medium-6.columns
+      %h1 New post
+      = form_for @post do |f|
+        - if @post.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
+            %ul
+              - @post.errors.full_messages.each do |msg|
+                %li= msg
 
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :body
-    = f.text_area :body
-  .field
-    = f.label :date_created
-    = f.date_select :date_created
-  .field
-    = f.label :date_edited
-    = f.date_select :date_edited
-  .field
-    = f.label :picture
-    = f.text_area :picture
-  .actions
-    = f.submit 'Save'
+        .field
+          = f.label :title
+          = f.text_field :title
+        .field
+          = f.label :name
+          = f.text_field :name
+        .field
+          = f.label :body
+          = f.text_area :body
+        .field
+          = f.label :date_created
+          = f.date_select :date_created
+        .field
+          = f.label :date_edited
+          = f.date_select :date_edited
+        .field
+          = f.label :picture
+          = f.text_area :picture
+        .actions
+          = f.submit 'Save'

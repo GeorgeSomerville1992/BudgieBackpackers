@@ -31,7 +31,7 @@
     /     = content_tag :div, msg, :id => "flash_#{name}"
     #hi
     .off-canvas-wrap{"data-offcanvas" => ""}
-      .inner-wrap
+      .inner-wrap.maincanvaswrap
         / OFF CANVAS MENU BAR
         %nav.tab-bar
           %section.left-small
@@ -45,23 +45,31 @@
                 %ul.right
                   %li.has-dropdown
                     - if user_signed_in?
-                      %li.has-dropdown
-                        / - if current_user.image? && current_user.name?
-                        /   = image_tag current_user.image, class: "small-avatar"
-                        /   %b= current_user.name
-                        %a{href:"#"}= current_user.email
-                        %ul.dropdown
-                          %li
-                            = link_to 'Logout', destroy_user_session_path, method: 'delete'
-                          %li
-                            = link_to 'Edit Profile', edit_user_registration_path  
+                      - if current_user.image? && current_user.name?
+                        %li.has-dropdown 
+                          %b.imgmoveleft= image_tag current_user.image, class: "small-avatar"
+                          %b.imgmoveleft= current_user.name
+                          %ul.dropdown
+                            %li
+                              = link_to 'Logout', destroy_user_session_path, method: 'delete'
+                            %li
+                              = link_to 'Edit Profile', edit_user_registration_path   
+                      - else    
+                        %li.has-dropdown
+                          %a{href:"#"}= current_user.email
+                          %ul.dropdown
+                            %li
+                              = link_to 'Logout', destroy_user_session_path, method: 'delete'
+                            %li
+                              = link_to 'Edit Profile', edit_user_registration_path  
                     - else
-                      %li
+                      %li.has-dropdown
                         = link_to 'Login', new_user_session_path
-                      %li 
-                        = link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2)
-                      %li 
-                        = link_to "Sign in with twitter", user_omniauth_authorize_path(:twitter)     
+                        %ul.dropdown  
+                          %li 
+                            = link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2)
+                          %li 
+                            = link_to "Sign in with twitter", user_omniauth_authorize_path(:twitter)     
                       %li.active.has-dropdown.red
                         = link_to 'Sign Up', new_user_registration_path          
                         %ul.dropdown
@@ -125,12 +133,12 @@
               %img{src: "/assets/panoramicview.png"}: other
               %br 
               %h4 Local Weather
-            %div{align: "center" ,style: "background-color: black"}>  
+            %div{align: "center" }>  
               %script{src: "http://www.weatherforecastmap.com/weather2.php?zona=#{@hostel.address}"}
           - else  
             %p you need to sign in!     
-             
-        = yield           
+        .maincontainer       
+          = yield           
       .row
         .container    
           -flash.each do |name, message|

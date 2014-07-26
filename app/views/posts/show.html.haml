@@ -1,24 +1,41 @@
-%p#notice= notice
+.container 
+  .row
+    .medium-6.columns
+      %p#notice= notice
 
-%p
-  %b Title:
-  = @post.title
-%p
-  %b Name:
-  = @post.name
-%p
-  %b Body:
-  = @post.body
-%p
-  %b Datecreated:
-  = @post.date_created
-%p
-  %b Dateedited:
-  = @post.date_edited
-%p
-  %b Picture:
-  = @post.picture
+      %p
+        %b Title:
+        = @post.title
+      %p
+        %b Name:
+        = @post.name
+      %p
+        %b Body:
+        = @post.body
+      %p
+        %b Datecreated:
+        = @post.date_created
+      %p
+        %b Dateedited:
+        = @post.date_edited
+      %p
+        %b Picture:
+        = @post.picture
+      - @post.comments.each do |comment|
+        %p
+          = comment.body
+        %p
+          = time_ago_in_words comment.created_at
+          ago
+          by 
+          = comment.name
+      = form_for [@post, @post.comments.new] do |f|
+        %p= f.text_area :body, :size => '40x10'
+        %p= f.label :name
+        %p= f.text_field :name 
 
-= link_to 'Edit', edit_post_path(@post)
-\|
-= link_to 'Back', posts_path
+        %p= f.submit "Post Comment"
+
+      = link_to 'Edit', edit_post_path(@post)
+      \|
+      = link_to 'Back', posts_path

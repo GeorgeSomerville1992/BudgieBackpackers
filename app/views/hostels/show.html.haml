@@ -21,7 +21,7 @@
             #panel2-2.content
               %p Max room Occupancy: <%= RoomRateDetailsList.RoomRateDetails.maxRoomOccupancy %>
               %p Room Description: <%= RoomRateDetailsList.RoomRateDetails.roomDescription %>
-              %p Features: <%= RoomRateDetailsList.RoomRateDetails.ValueAdds['ValueAdd'].description %>
+              %p Features: 
              
 
             #panel2-3.content
@@ -39,9 +39,11 @@
             %li.price <%= lowRate %>
             %li.bullet-item Address: <%= address1 %>
             %li.bullet-item Postcode: <%= postalCode %>
-            %li.bullet-item
+            %li.bullet-item  
               :plain
                 <img src="http://images.travelnow.com/<%= thumbNailUrl %>" />
+              
+               
             // what does plain do???
         .flip-back  
           %ul.pricing-table{"data-equalizer-watch" => ""} 
@@ -49,6 +51,15 @@
             %li.cta-button
               %a.button{href: "#"} Buy Now
               %p contact number unavailable 
+              :plain
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.expedia.co.uk/" data-text="Wow I have just found this amazing deal!!! for <%= lowRate %> per night at <%= name %> in <%= city %> #deals"  counturl= data-lang="en">Tweet</a> 
+
+              :javascript
+                !function(d,s,id){
+                var js,fjs=d.getElementsByTagName(s)[0];
+                if(!d.getElementById(id)){
+                js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
     
 
   %script#attraction-foursquare-template{type: "text/template"}
@@ -98,7 +109,7 @@
     /           %p Fourth panel content goes here...
   %script#attraction-foursquare-topPics-template{type: "text/template"} 
     .large-5.columns 
-      .panel
+      .panel{style: "background-color: #FF005F"}
         %h4 <%= venue.name %>
         %p <%= venue.hereNow.count %> <%= venue.hereNow.summry %> people are here 
         %p <%= tips[0].text %>
@@ -106,7 +117,7 @@
         %p <%= tips[0].user.firstName %> <%= tips[0].user.lastName %>
         %p <%= tips[0].url %>
     .large-3.columns
-      .panel.foursquarerecommendedpanel
+      .panel.foursquarerecommendedpanel{style: "background-color: #25FF14"}
         %p
           :plain
               <img src="<%= venue['photos']['groups'][0]['items'][0].prefix %>400x400<%= venue['photos']['groups'][0]['items'][0].suffix %>" />
@@ -114,7 +125,7 @@
     .large-4.columns 
       .flip{style: "width: 300px; height: 200px;"}
         .flip-front.flip-front300-200
-          .panel.panellist
+          .panel.panellist{style: "background-color:#00ADF1"}
             %h4 Contact details
             %p Address: <%= venue.location.address %> , <%= venue.location.crossStreet %>        
             %P City: <%= venue.location.city %>
@@ -124,7 +135,7 @@
           
             
         .flip-back.flip-back300-200
-          .panel 
+          .panel{style: "background-color:#00ADF1"}
             %h3 Book now!
             %p Website: <%= venue.url %>
             %li Mobile: <%= venue.contact.phone %>
@@ -134,20 +145,20 @@
       #showfoursquare-toppics-template-odd          
   %script#attraction-foursquare-topPics-template-odd{type: "text/template"}                
     .large-3.columns
-      .panel.foursquarerecommendedpanel
+      .panel.foursquarerecommendedpanel{style: "background-color: #FF27F9"}
         %p
           :plain
               <img src="<%= venue['photos']['groups'][0]['items'][0].prefix %>400x400<%= venue['photos']['groups'][0]['items'][0].suffix %>" />
     .large-3.columns 
       .flip{style: "width: 300px; height: 200px;"}
         .flip-front.flip-front300-200
-          .panel.panellist.foursquarerecommendedpanel
+          .panel.panellist.foursquarerecommendedpanel{style: "background-color:#00ADF1"}
             %h4 Contact details
             %p Address: <%= venue.location.address %> , <%= venue.location.crossStreet %>        
             %P City: <%= venue.location.city %>
             %p PostelCode: <%= venue.location.postalCode %>
         .flip-back.flip-back300-200
-          .panel 
+          .panel{style: "background-color:#00ADF1"}
             %h3 Book now!
             %p Website: <%= venue.url %>
             %li Mobile: <%= venue.contact.phone %>
@@ -155,7 +166,7 @@
             %li Facebook: <%= venue.contact.facebook %>
             
     .large-6.columns 
-      .panel.panellist.foursquarerecommendedpanel
+      .panel.panellist.foursquarerecommendedpanel{style: "background-color: #FF005F"}
         %h4 <%= venue.name %> 
         %p <%= venue.hereNow.count %> <%= venue.hereNow.summry %> people are here
         %p <%= tips[0].text %>
@@ -166,27 +177,27 @@
       #showfoursquare-toppics-template-third
   %script#attraction-foursquare-topPics-template-third{type: "text/template"} 
     .large-6.columns 
-      .panel.foursquarerecommendedpanel
+      .panel.foursquarerecommendedpanel{style: "background-color: #FF005F"}
         %h4 <%= venue.name %>
         %p <%= venue.hereNow.count %> <%= venue.hereNow.summry %> people are here
         %p <%= tips[0].text %>
         %p <%= tips[0].user.firstName %> <%= tips[0].user.lastName %>
-        %p <%= tips[0].url %>
+        %p <%= tips[0].url %> 
     .large-3.columns
-      .panel.foursquarerecommendedpanel
+      .panel.foursquarerecommendedpanel{style: "background-color: #25FF14"}
         %p
           :plain
               <img src="<%= venue['photos']['groups'][0]['items'][0].prefix %>400x400<%= venue['photos']['groups'][0]['items'][0].suffix %>" />
     .large-3.columns 
       .flip{style: "width: 300px; height: 200px;"}
         .flip-front.flip-front300-200
-          .panel.panellist.foursquarerecommendedpanel
+          .panel.panellist.foursquarerecommendedpanel{style: "background-color:#00ADF1"}
             %h4 Contact details
             %p Address: <%= venue.location.address %> , <%= venue.location.crossStreet %>        
             %P City: <%= venue.location.city %>
             %p PostelCode: <%= venue.location.postalCode %>
         .flip-back.flip-back300-200
-          .panel 
+          .panel{style: "background-color:#00ADF1"}
             %h3 Book now!
             %p Website: <%= venue.url %>
             %li Mobile: <%= venue.contact.phone %>

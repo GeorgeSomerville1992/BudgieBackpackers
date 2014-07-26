@@ -39,10 +39,10 @@ $(function(){
           hostel.postalCode = "not applicable"
         }
 
-        // if (typeof hostel.RoomRateDetailsList.RoomRateDetails.ValueAdds['ValueAdd'].description == "undefined") {
-        //   hostel.RoomRateDetailsList.RoomRateDetails.ValueAdds['ValueAdd'].description = "Nothing cool about this hotel!"
+        // if (typeof hostel.RoomRateDetailsList.RoomRateDetails.ValueAdds.ValueAdd.description == "undefined") {
+        //   hostel.RoomRateDetailsList.RoomRateDetails.ValueAdds.ValueAdd.description = "Nothing cool about this hotel!"
         // }
-
+        //<%= RoomRateDetailsList.RoomRateDetails.ValueAdds['ValueAdd'].description %>
 
 
         
@@ -253,8 +253,11 @@ var map;
 var map_container;
 var infowindow;
 var directionsDisplay;
-
+var directionsDisplayAttraction;
+var directionsRenderer = new google.maps.DirectionsRenderer();
 var directionsService = new google.maps.DirectionsService();
+var directionsRendererAttraction = new google.maps.DirectionsRenderer();
+var directionsServiceAttraction = new google.maps.DirectionsService();
 var hotelRed = new google.maps.MarkerImage('/assets/hotel_0star_red.png');
 var hotelGreen = new google.maps.MarkerImage('/assets/hotel_0star_green.png')
 var hotelYellow = new google.maps.MarkerImage('/assets/hotel_0star_yellow.png')
@@ -328,22 +331,47 @@ var beer = new google.maps.MarkerImage('/assets/beer.png')
 // }
 
 
-function calcRoute(marker,hostel) {
-  var end = new google.maps.LatLng(hostel.latitude,hostel.longitude);
+// function calcRoute(marker,hostel) {
+//   var end = new google.maps.LatLng(hostel.latitude,hostel.longitude);
+//   var start = $("#address").data('hostels');
+//   console.log(end)
+//   var request = {
+//       origin:start,
+//       destination:end,
+//       travelMode: google.maps.TravelMode.DRIVING
+//   };
+//   directionsService.route(request, function(response, status) {
+//     if (status == google.maps.DirectionsStatus.OK) {
+//       directionsDisplay.setDirections(response);
+//     }
+//   });
+// }
+function directRoute(position) {
   var start = $("#address").data('hostels');
-  console.log(end)
-  var request = {
-      origin:start,
-      destination:end,
-      travelMode: google.maps.TravelMode.DRIVING
+  console.log(start)
+  directionsRenderer.setMap();
+  var directionsRequest = {
+    origin: start,
+    destination: position,
+    travelMode: google.maps.DirectionsTravelMode.WALKING,
+    unitSystem: google.maps.UnitSystem.METRIC
   };
-  directionsService.route(request, function(response, status) {
+   directionsService.route(directionsRequest,function(response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
+        directionsRenderer.setMap(window.map)
+        directionsDisplay.setDirections(response);
+        directions = directionsDisplay.setDirections(response);
+        console.log(directions);
+        //directionsRenderer.setDirections(response)
+        //directionsRenderer.setPanel(document.getElementById('directions-panel'));
+        //$('#directions').click();
     }
-  });
-}
+    else
+      $("#error").append("Unable to retrieve your route<br />");
+      }
+    );
 
+}
 function createMarkerForhostel(hostel, lowrate,mapcenter){
     var latLng = new google.maps.LatLng(hostel.latitude,hostel.longitude);
     var lowRate = lowrate;
@@ -406,12 +434,18 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
       '<p>' + 'Price:' + ' ' + '<b>' + hostel.lowRate + '</b>' + '</p>' +
       '<p>' + 'Address:' + ' ' + hostel.address1 + '</p>' +
       '<p>' + 'Postcode:' + ' ' + hostel.postalCode + '</p>' +
-      '<img src= http://images.travelnow.com/'+ hostel.thumbNailUrl + '>'
+      '<img src= http://images.travelnow.com/'+ hostel.thumbNailUrl + '>' +
+      '<a id="directions" class="button tiny">Calculate Directions</a>'
         var thisMarker = this;
 
         infowindow.setContent(contentString);
         infowindow.open(window.map,this);
-
+        $('a#directions').on('click', function(ev){
+          ev.preventDefault();
+          
+            directRoute(thisMarker.position);
+          
+        })
       // if(infowindow != undefined) infowindow.close()
       // infowindow = new google.maps.InfoWindow({
       //   content: "hello"
@@ -423,7 +457,7 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
       // wtf is this???
       //camera_id: camera.i
 
-    calcRoute(marker,hostel)
+    //calcRoute(marker,hostel)
     console.log(mapcenter.B)
     // call mapoattractions
     //addInfoWindowForHostel(marker, hostel)
@@ -455,7 +489,33 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
       
     // });
 }
-  
+  function directRouteAttraction(position) {
+  var start = $("#address").data('hostels');
+  console.log(start)
+  directionsRenderer.setMap();
+  var directionsRequest = {
+    origin: start,
+    destination: position,
+    travelMode: google.maps.DirectionsTravelMode.WALKING,
+    unitSystem: google.maps.UnitSystem.METRIC
+  };
+  console.log("this is working")
+   directionsService.route(directionsRequest,function(response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+        directionsRenderer.setMap(window.mapAttraction)
+        directionsDisplay.setDirections(response);
+        directions = directionsDisplay.setDirections(response);
+        console.log(directions)
+        //directionsRenderer.setDirections(response)
+        //directionsRenderer.setPanel(document.getElementById('directions-panel'));
+        //$('#directions').click();
+    }
+    else
+      $("#error").append("Unable to retrieve your route<br />");
+      }
+    );
+
+}
   function createMarkerForAttraction(attraction, attraction_catagory, locationLat, locationLong,attractionDetails){
     var attractionCatagory = attraction_catagory
     var latLng = new google.maps.LatLng(locationLat,locationLong);  
@@ -508,7 +568,8 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
       '<p>' + '<b>' + attractionDetails.location.address + '</b>' + '</p>'+
       '<p>' + attractionDetails.hereNow.summary + '</p>'+
       '<p>' + attractionDetails.likes.summary + '</p>'+
-      '<p>' + "Avarage Rating:"+ attractionDetails.rating +  '</p>'
+      '<p>' + "Avarage Rating:"+ attractionDetails.rating +  '</p>' +
+      '<a id="directionsattractions" class="button tiny">Calculate Directions</a>'
 
       // '<p>' + hostel.address1 + '</p>' +
       // '<p>' + hostel.postalCode + '</p>' +
@@ -517,6 +578,12 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
 
         infowindow.setContent(contentStringAttraction);
         infowindow.open(window.mapAttraction,this);
+        $('a#directionsattractions').on('click', function(ev){
+          ev.preventDefault();
+          
+            directRouteAttraction(thisMarker.position);
+          
+        })
 
       // if(infowindow != undefined) infowindow.close()
       // infowindow = new google.maps.InfoWindow({
@@ -528,52 +595,48 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
     })
 
 
-      google.maps.event.addListener(window.mapAttraction, 'dragend',function() { 
-        var newCoordsAttraction = window.mapAttraction.getCenter();
+    //   google.maps.event.addListener(window.mapAttraction, 'dragend',function() { 
+    //     var newCoordsAttraction = window.mapAttraction.getCenter();
         
 
-        var mapOptions = {
-          zoom: 12,                     // hostel based on what user has typed in
-          center: new google.maps.LatLng(newCoordsAttraction.k, newCoordsAttraction.B),
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        }
-        map_container_attraction = document.getElementById('map-attraction-canvas')
-        if(map_container_attraction != undefined){
-        window.mapAttraction = new google.maps.Map(map_container_attraction, mapOptions) 
-        var clientId = "PJOVUMNXMNMSCGSYVETRKZ23WN2LUR31M0AD04AMKTJAKI5I"
-        var clientSecret = "3GG355R0B5D4KMH1J1UIUFXH2ZZCFH4ISOW5WTNYV11JJTDV"
-        var api_Version = '20120610'
-        var query = $("#hotel_attraction").data('hostels');
-        var requestUrl = 'https://api.foursquare.com/v2/venues/explore?ll='+ newCoordsAttraction.k+','+newCoordsAttraction.B +'&query='+ query + '&price=1&venuePhotos=true&client_id='+ clientId + '&client_secret='+ clientSecret+'&v='+ api_Version
-        //console.log(requestUrl)
-        //attractions_foursquare = 
-        //https://api.foursquare.com/v2/venues/search?ll=40.7,-74&client_id=CLIENT_ID&client_secret=CLIENT_SECRET&v=YYYYMMDD
-        $.ajax({
-          url: requestUrl,
-          dataType: "json",
-          complete: showAttractionAjax
-        });
-        function showAttractionAjax(response){
-          raw_data = response.responseText
+    //     var mapOptions = {
+    //       zoom: 12,                     // hostel based on what user has typed in
+    //       center: new google.maps.LatLng(newCoordsAttraction.k, newCoordsAttraction.B),
+    //       mapTypeId: google.maps.MapTypeId.ROADMAP
+    //     }
+    //     map_container_attraction = document.getElementById('map-attraction-canvas')
+    //     if(map_container_attraction != undefined){
+    //     window.mapAttraction = new google.maps.Map(map_container_attraction, mapOptions) 
+    //     var clientId = "PJOVUMNXMNMSCGSYVETRKZ23WN2LUR31M0AD04AMKTJAKI5I"
+    //     var clientSecret = "3GG355R0B5D4KMH1J1UIUFXH2ZZCFH4ISOW5WTNYV11JJTDV"
+    //     var api_Version = '20120610'
+    //     var query = $("#hotel_attraction").data('hostels');
+    //     var requestUrl = 'https://api.foursquare.com/v2/venues/explore?ll='+ newCoordsAttraction.k+','+newCoordsAttraction.B +'&query='+ query + '&price=1&venuePhotos=true&client_id='+ clientId + '&client_secret='+ clientSecret+'&v='+ api_Version
+    //     //console.log(requestUrl)
+    //     //attractions_foursquare = 
+    //     //https://api.foursquare.com/v2/venues/search?ll=40.7,-74&client_id=CLIENT_ID&client_secret=CLIENT_SECRET&v=YYYYMMDD
+    //     $.ajax({
+    //       url: requestUrl,
+    //       dataType: "json",
+    //       complete: showAttractionAjax
+    //     });
+    //     function showAttractionAjax(response){
+    //       raw_data = response.responseText
           
-          var format = JSON.parse(raw_data);
-          var groups = format.response['groups']
-          //console.log(groups)
-          attractions_foursquare = groups
-          mapattractions(attractions_foursquare)
+    //       var format = JSON.parse(raw_data);
+    //       var groups = format.response['groups']
+    //       //console.log(groups)
+    //       attractions_foursquare = groups
+    //       mapattractions(attractions_foursquare)
 
-        }
+    //     }
+    //     // gon.hostels is was messing everything up
+    //     //infowindow = new google.maps.InfoWindow(); 
+    //   }
 
-
-        
-       
-        // gon.hostels is was messing everything up
-        //infowindow = new google.maps.InfoWindow(); 
-      }
-
-    // maphostels(hostel,mapcenter)
+    // // maphostels(hostel,mapcenter)
       
-    });
+    // });
 
 
 
@@ -597,10 +660,10 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
     
     $.each(attractions_foursquare[0]['items'], function(i,attraction){
 
-        console.log(attraction);
-        console.log(attraction['venue']);
-        console.log(attraction['venue']['categories']);
-        console.log(attraction['venue']['categories']['0']);
+        // console.log(attraction);
+        // console.log(attraction['venue']);
+        // console.log(attraction['venue']['categories']);
+        // console.log(attraction['venue']['categories']['0']);
         var locationLat = attraction['venue']['location']['lat']
         var locationLong = attraction['venue']['location']['lng']
         var categoryName = attraction['venue']['categories']['0']['name']
