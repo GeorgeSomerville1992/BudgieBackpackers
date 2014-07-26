@@ -12,7 +12,7 @@
             %dd
               %a{href: "#panel2-3"} Trip advisor rating
           
-          .tabs-content
+          .tabs-content#pinkfont
             #panel2-1.content.active
               %p Description: <%= shortDescription %> ...
               %p Low Rate: <%= lowRate %> <%= rateCurrencyCode %>
@@ -32,20 +32,19 @@
               %p Fourth panel content goes here...
   %script#hostel-show-cheapest-hotels{type: "text/template"}
     .large-3.columns
-      .flip{style: "width: 200px; height: 350px;"}
-        .flip-front
+      .flip{style: "width: 250px; height: 375px;"}
+        .flip-front.flip-front-price
           %ul.pricing-table
             %li.title <%= name %>
             %li.price <%= lowRate %>
-            %li.bullet-item Address: <%= address1 %>
-            %li.bullet-item Postcode: <%= postalCode %>
+            %li.bullet-item Address: <%= address1 %> Postcode: <%= postalCode %>
             %li.bullet-item  
               :plain
-                <img src="http://images.travelnow.com/<%= thumbNailUrl %>" />
+                <img width=100px, height=100px, src="http://images.travelnow.com/<%= thumbNailUrl %>" />
               
                
             // what does plain do???
-        .flip-back  
+        .flip-back.flip-back-price
           %ul.pricing-table{"data-equalizer-watch" => ""} 
             %li.bullet-item
             %li.cta-button
@@ -76,7 +75,8 @@
         <%= stats.checkinsCount %> 
         Checkins ·
         <%= location.address %>,
-        <%= location.city %>
+        <%= location.city %> ·
+        Price: <%= price.message %>
 
       
 
@@ -115,7 +115,9 @@
         %p <%= tips[0].text %>
         %p <%= tips[0].createdAt %>
         %p <%= tips[0].user.firstName %> <%= tips[0].user.lastName %>
-        %p <%= tips[0].url %>
+        %button#buttonfoursquaretopics
+          %a{href: "<%= tips[0].url %>"} go to website
+        %p 
     .large-3.columns
       .panel.foursquarerecommendedpanel{style: "background-color: #25FF14"}
         %p
@@ -230,35 +232,35 @@
 
            
 
-.large-8.columns
+.row
   %h2
     Hostel results within 
     = @hostel.distance
     miles of 
     = @hostel.address
-.large-4.columns    
-  = link_to 'Edit', edit_hostel_path(@hostel)
-  \|
-  = link_to 'Back', hostels_path
+.large-2.columns    
+/ = link_to 'Edit', edit_hostel_path(@hostel)
+/ \|
+/ = link_to 'Back', hostels_path
 .large-12.columns
   .large-6.columns
     #map-canvas{:style => "width: 100%; height: 350px"}
   .large-6.columns  
     .accordioncontainer{:style => "width: 100%; height: 350px"}
       #hostelResults  
-#div{:style => "display:none"}        
-%a{name: "Hostels"}
-%h3{"data-magellan-destination" => "hostels"}    
-%br
-%br
-%br
 
 
 
 
 / = @hostel_attractions
-
+.row
+  %h2
+    Hostels showing lowest rates within
+    = @hostel.distance
+    miles of 
+    = @hostel.address
 .large-12.columns
+  
   #hotelOfferResults
 %br
 %br
@@ -269,17 +271,12 @@
 
 
 .row
-  .large-8.columns
+  .large-8.columns 
     %h2
       Showing 
       = @hostel.attraction_type 
-      s
       in 
       = @hostel.address
-%br
-%br
-%br
-%br
 
 .large-12.columns
   .large-8.columns
@@ -326,7 +323,7 @@
 
 
 / = @foursquare_topPics
-%h3 foursquare topics
+%h3 Our Recommended Attractions
 #showfoursquaretopPicdata
 
 
