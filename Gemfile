@@ -38,6 +38,7 @@ gem 'geocoder'
 gem 'gon'
 gem 'expedia'
 
+
 gem 'oauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
