@@ -10,7 +10,7 @@
       %ul
         - @hostel.errors.full_messages.each do |msg|
           %li= msg
-  %h3 Find me a hostel in...        
+  %h3 Find a new location        
   .field
     = f.text_field :address
   
@@ -21,9 +21,10 @@
     = f.label :departureDate
     = f.date_select :departureDate 
   .field   
-    = f.label :attraction_type
+  %h3 What would you like to be close to 
+  .field 
     = f.text_field :attraction_type
-  %h3 And limit my distance to....  
+  %h3 And limit your distance to... (Miles) 
   .field 
     = f.text_field :distance  
 

@@ -372,7 +372,7 @@ function directRoute(position) {
     );
 
 }
-function createMarkerForhostel(hostel, lowrate,mapcenter){
+function createMarkerForhostel(hostel, lowrate){
     var latLng = new google.maps.LatLng(hostel.latitude,hostel.longitude);
     var lowRate = lowrate;
     console.log(latLng)
@@ -429,23 +429,23 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
 
     google.maps.event.addListener(marker, 'click', function(){
       console.log("hello")
-      var contentString =
-      '<h3>' + hostel.name + '</h3>' +
-      '<p>' + 'Price:' + ' ' + '<b>' + hostel.lowRate + '</b>' + '</p>' +
-      '<p>' + 'Address:' + ' ' + hostel.address1 + '</p>' +
-      '<p>' + 'Postcode:' + ' ' + hostel.postalCode + '</p>' +
-      '<img src= http://images.travelnow.com/'+ hostel.thumbNailUrl + '>' +
-      '<a id="directions" class="button tiny">Calculate Directions</a>'
-        var thisMarker = this;
+      // var contentString =
+      // '<h3>' + hostel.name + '</h3>' +
+      // '<p>' + 'Price:' + ' ' + '<b>' + hostel.lowRate + '</b>' + '</p>' +
+      // '<p>' + 'Address:' + ' ' + hostel.address1 + '</p>' +
+      // '<p>' + 'Postcode:' + ' ' + hostel.postalCode + '</p>' +
+      // '<img src= http://images.travelnow.com/'+ hostel.thumbNailUrl + '>' +
+      // '<a id="directions" class="button tiny">Calculate Directions</a>'
+        // var thisMarker = this;
 
-        infowindow.setContent(contentString);
-        infowindow.open(window.map,this);
-        $('a#directions').on('click', function(ev){
-          ev.preventDefault();
+        // infowindow.setContent(this.info);
+        // infowindow.open(window.map,this);
+        // $('a#directions').on('click', function(ev){
+        //   ev.preventDefault();
           
-            directRoute(thisMarker.position);
+        //     directRoute(thisMarker.position);
           
-        })
+        // })
       // if(infowindow != undefined) infowindow.close()
       // infowindow = new google.maps.InfoWindow({
       //   content: "hello"
@@ -458,11 +458,11 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
       //camera_id: camera.i
 
     //calcRoute(marker,hostel)
-    console.log(mapcenter.B)
+    // console.log(mapcenter.B)
     // call mapoattractions
     //addInfoWindowForHostel(marker, hostel)
     
-    console.log(mapcenter)
+    // console.log(mapcenter)
     // google.maps.event.addListener(window.map, 'dragend',function() { 
     // var newCoords = window.map.getCenter(mapcenter);
     //   console.log(newCoords)
@@ -647,12 +647,12 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
 
 
   // what are we actualky passing into the attaction
-  function maphostels(hostels,mapcenter){
+  function maphostels(hostels){
     // _(attactions).each(createMarkerForAttraction)
     $.each(hostels,function(i,hostel){
-      console.log(mapcenter)
+      // console.log(mapcenter)
         //var hostelLowrate = gon.hostels.HotelListResponse.HotelList.HotelSummary[i].lowRate
-        createMarkerForhostel(hostel, hostelLowrate,mapcenter)
+        createMarkerForhostel(hostel, hostelLowrate)
           // add a specfic id to this marker
     })    //iterate through this marker 
   }       // then pass this marker back to the server end instead of the hotel marker itself. 
@@ -695,9 +695,9 @@ function createMarkerForhostel(hostel, lowrate,mapcenter){
     map_container = document.getElementById('map-canvas')
       if(map_container != undefined){
         window.map = new google.maps.Map(map_container, mapOptions) 
-        var mapcenter = window.map.getCenter();
-        console.log(mapcenter)
-        maphostels(hostels,mapcenter)
+        //var mapcenter = window.map.getCenter();
+        // console.log(mapcenter)
+        maphostels(hostels)
         // gon.hostels is was messing everything up
         //infowindow = new google.maps.InfoWindow(); 
       }

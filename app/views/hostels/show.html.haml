@@ -12,7 +12,7 @@
             %dd
               %a{href: "#panel2-3"} Trip advisor rating
           
-          .tabs-content
+          .tabs-content#pinkfont
             #panel2-1.content.active
               %p Description: <%= shortDescription %> ...
               %p Low Rate: <%= lowRate %> <%= rateCurrencyCode %>
@@ -76,7 +76,8 @@
         <%= stats.checkinsCount %> 
         Checkins ·
         <%= location.address %>,
-        <%= location.city %>
+        <%= location.city %>,
+        Price: <%= price.message %>
 
       
 
@@ -326,7 +327,7 @@
 
 
 / = @foursquare_topPics
-%h3 foursquare topics
+%h3 Our Recommended Attractions
 #showfoursquaretopPicdata
 
 
