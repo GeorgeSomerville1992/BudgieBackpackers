@@ -396,7 +396,8 @@ function createMarkerForhostel(hostel, lowrate){
         position: latLng,
         map: window.map,
         title: "hi",
-        icon: hotelGreen
+        icon: hotelGreen,
+        animation: google.maps.Animation.DROP
       });
          google.maps.event.addListener(marker, 'click', function(){
           console.log("hello")
@@ -415,7 +416,8 @@ function createMarkerForhostel(hostel, lowrate){
       position: latLng,
       map: window.map,
       title: "hi",
-      icon: hotelYellow
+      icon: hotelYellow,
+      animation: google.maps.Animation.DROP
       });
         google.maps.event.addListener(marker, 'click', function(){
           console.log("hello")
@@ -434,7 +436,8 @@ function createMarkerForhostel(hostel, lowrate){
       position: latLng,
       map: window.map,
       title: "hi",
-      icon: hotelOrange
+      icon: hotelOrange,
+      animation: google.maps.Animation.DROP
       });
         google.maps.event.addListener(marker, 'click', function(){
           console.log("hello")
@@ -454,7 +457,7 @@ function createMarkerForhostel(hostel, lowrate){
       map: window.map,
       title: "hi",
       icon: hotelRed,
-      info: contentString
+      animation: google.maps.Animation.DROP
       });
        google.maps.event.addListener(marker, 'click', function(){
         console.log("hello")
