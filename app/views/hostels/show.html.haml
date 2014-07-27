@@ -61,22 +61,29 @@
 
     
 
-  %script#attraction-foursquare-template{type: "text/template"}
+  %script#attraction-foursquare-template{type: "text/template"} 
     .large-4.columns
-      %p
-        :plain
-          <img src="<%= photos['groups'][0]['items'][0].prefix %>400x300<%= photos['groups'][0]['items'][0].suffix %>" />
-      %p 
-        
+      .flip{style: "width:303px;height:310px; padding:10px;"}
+        .flip-front.flipfrontfoursquare
+          %p
+            :plain
+              <img src="<%= photos['groups'][0]['items'][0].prefix %>400x300<%= photos['groups'][0]['items'][0].suffix %>" />
+          %p 
+            
 
-      %h6 <%= name %> 
-      %p 
-        <%= categories['0']['name'] %> ·
-        <%= stats.checkinsCount %> 
-        Checkins ·
-        <%= location.address %>,
-        <%= location.city %> ·
-        Price: <%= price.message %>
+          %h6 <%= name %> 
+          %p 
+            <%= categories['0']['name'] %> ·
+            <%= stats.checkinsCount %> 
+            Checkins ·
+            <%= location.address %>,
+            <%= location.city %> ·
+            Price: <%= price.message %>
+        .flip-back.flipbackfoursquare
+          %p Contact Number: <%= contact.formattedPhone %>
+          %p <%= hours.status %>     
+
+
 
       
 

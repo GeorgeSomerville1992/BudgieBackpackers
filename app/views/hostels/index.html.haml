@@ -5,7 +5,7 @@
     = current_user.name
   %hr/
   .large-12.columns
-    #map3dstyle{style: "height: 400px; width: 100%;"}
+    #map3d{style: "height: 400px; width: 100%;"}
     %br/
 .row    
   .large-6.columns
@@ -37,7 +37,13 @@
   .large-4.columns
     %h2 Your Journey
 
-    %table 
+    %table
+      %tr
+        %th Title
+        %th Location
+        %th Date Created
+        %th Date Edited
+        %th Created By 
       - @posts.each do |post|
         %tr 
           %td= post.title
@@ -48,7 +54,7 @@
             Created by 
             = post.name
           %td
-    = link_to 'new post', new_post_path   
+    = link_to 'New post', new_post_path, class: "button"
     
 
   / - @attractions.each do |attraction|
