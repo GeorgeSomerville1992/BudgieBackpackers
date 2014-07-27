@@ -288,6 +288,17 @@ margin-left: 35px;
   }
 
 }
+#foursquare-topics-bottons{
+  background-color:#00ADF1;
+  a{
+    color:white;
+  }
+  a:hover{
+    color:$pinkish;
+    background-color:$cyanblue;
+  }
+  
+}
 // .custom-button-class {
 //   @include button(
 //     // $padding - Used to build padding for buttons Default: $button-med or rem-calc(12)
