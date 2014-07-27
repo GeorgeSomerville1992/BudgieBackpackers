@@ -12,21 +12,25 @@
     
     %h2 Your Saved locations
     %br/
-    %table.responsive
+    %table#cyan.responsive
       %tr
         %th Address
         %th Arrival Date
         %th Departure date
-        %th
+        %th Actions
 
       - @hostels.each do |hostel|
         %tr
           %td= hostel.address
           %td= hostel.arrivalDate
           %td= hostel.departureDate
-          %td= link_to 'Show', hostel
-          %td= link_to 'Edit', edit_hostel_path(hostel)
-          %td= link_to 'Destroy', hostel, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          %td
+            %li
+              = link_to 'Show', hostel
+            %li
+              = link_to 'Edit', edit_hostel_path(hostel) 
+            %li
+              = link_to 'Destroy', hostel, :method => :delete, :data => { :confirm => 'Are you sure?' }  
     = link_to 'New hostel', new_hostel_path, class: "button", id: "buttoncyan"
 
 
@@ -37,7 +41,7 @@
       - @posts.each do |post|
         %tr 
           %td= post.title
-          %td= post.body
+          %td= post.location
           %td= post.date_created
           %td= post.date_edited
           %td 
@@ -45,8 +49,7 @@
             = post.name
           %td
     = link_to 'new post', new_post_path   
-    %h3 foursquare
-    = @foursquareFriends
+    
 
   / - @attractions.each do |attraction|
   /   %tr

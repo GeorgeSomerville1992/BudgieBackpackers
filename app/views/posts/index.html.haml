@@ -1,28 +1,30 @@
-%h1 Listing posts
+.row
+  %h2 Listing posts
+  %hr/
+  .large-12.columns{style: "width:100%; height:700px; overflow:scroll;"}
+    %table
+      %tr
+        %th Title
+        %th Name
+        %th Body
+        %th Datecreated
+        %th Dateedited
+        %th Picture
+        %th
+        %th
+        %th
 
-%table
-  %tr
-    %th Title
-    %th Name
-    %th Body
-    %th Datecreated
-    %th Dateedited
-    %th Picture
-    %th
-    %th
-    %th
-
-  - @posts.each do |post|
-    %tr
-      %td= post.title
-      %td= post.name
-      %td= post.body
-      %td= post.date_created
-      %td= post.date_edited
-      %td= post.picture
-      %td= link_to 'Show', post
-      %td= link_to 'Edit', edit_post_path(post)
-      %td= link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      - @posts.each do |post|
+        %tr
+          %td= post.title
+          %td= post.name
+          %td= post.body
+          %td= post.date_created
+          %td= post.date_edited
+          %td= post.picture
+          %td= link_to 'Show', post
+          %td= link_to 'Edit', edit_post_path(post)
+          %td= link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

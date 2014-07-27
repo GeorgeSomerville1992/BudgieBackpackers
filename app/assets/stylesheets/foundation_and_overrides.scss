@@ -9,6 +9,7 @@ $brown: #654222;
 $light: #E2D4A5;
 $themered: #7F0710;
 
+
 $cyanblue: #00ADF1;
 $lightpurple: #FF27F9;
 $lightgreen: #56FF5F;
@@ -39,13 +40,22 @@ background-color: $background
   width: 100%;
   background-color: black;
   color:$white;
-  h1, h2, h3, h4, h5, h6, a, a:visited, label{
+  h1, h2, h3, h4, h5, h6,  label{
     color: $white;
   }
-  a:hover{
-    color: $pinkish;
+  a{
+    color: $cyanblue;
 
   }
+
+  a:hover{
+    color: $pinkish;
+    background-color: none;
+  }
+  a:visited{
+     color: $cyanblue;
+  }
+
 }
 
 .textcontainerflip{
@@ -1380,8 +1390,8 @@ $panel-font-color: white;
 // $include-html-table-classes: $include-html-classes;
 
 // These control the background color for the table and even rows
-// $table-bg: #fff;
-// $table-even-row-bg: #f9f9f9  ;
+$table-bg: #fff;
+$table-even-row-bg: #f9f9f9  ;
 
 // These control the table cell border style
 // $table-border-style: solid;
@@ -1389,7 +1399,7 @@ $panel-font-color: white;
 // $table-border-color: #ddd;
 
 // These control the table head styles
-// $table-head-bg: #f5f5f5  ;
+$table-head-bg: #f5f5f5  ;
 // $table-head-font-size: rem-calc(14);
 // $table-head-font-color: #222;
 // $table-head-font-weight: $font-weight-bold;
@@ -1398,7 +1408,7 @@ $panel-font-color: white;
 // These control the row padding and font styles
 // $table-row-padding: rem-calc(9 10);
 // $table-row-font-size: rem-calc(14);
-// $table-row-font-color: #222;
+ $table-row-font-color: $cyanblue;
 // $table-line-height: rem-calc(18);
 
 // These are for controlling the display and margin of tables
