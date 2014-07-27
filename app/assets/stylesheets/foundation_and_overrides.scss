@@ -49,11 +49,11 @@ background-color: $background
   }
 
   a:hover{
-    color: $pinkish;
-    background-color: none;
+    color: white;
+    background-color: $pinkish;
   }
   a:visited{
-     color: $cyanblue;
+     color: white;
   }
 
 }
@@ -281,6 +281,9 @@ margin-left: 35px;
 #cyan{
   color:$cyanblue;  
   &:hover{
+    color:$pinkish;
+  }
+  &:visited{
     color:$pinkish;
   }
 

@@ -5,7 +5,7 @@
     = current_user.name
   %hr/
   .large-12.columns
-    #map3d{style: "height: 400px; width: 100%;"}
+    #map3dstyle{style: "height: 400px; width: 100%;"}
     %br/
 .row    
   .large-6.columns
@@ -24,14 +24,14 @@
           %td= hostel.address
           %td= hostel.arrivalDate
           %td= hostel.departureDate
-          %td
+          %td#cyan
             %li
               = link_to 'Show', hostel
             %li
-              = link_to 'Edit', edit_hostel_path(hostel) 
+              = link_to 'Edit', edit_hostel_path(hostel)
             %li
-              = link_to 'Destroy', hostel, :method => :delete, :data => { :confirm => 'Are you sure?' }  
-    = link_to 'New hostel', new_hostel_path, class: "button", id: "buttoncyan"
+              = link_to 'Destroy', hostel, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    = link_to 'New hostel', new_hostel_path, class: "button"
 
 
   .large-4.columns
