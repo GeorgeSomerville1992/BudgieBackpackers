@@ -274,6 +274,7 @@ margin-left: 35px;
   
 }
 #buttonfoursquaretopics{
+
   background-color: $cyanblue;
   animation-duration: 3s;
   animation-delay: 2s;
@@ -285,6 +286,7 @@ margin-left: 35px;
     &:hover{
     opacity: .7;
   }
+
 }
 #buttoncyan{
   &:hover{
@@ -304,6 +306,7 @@ margin-left: 35px;
 }
 #foursquare-topics-bottons{
   background-color:#00ADF1;
+ 
   a{
     color:white;
   }

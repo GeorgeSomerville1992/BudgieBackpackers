@@ -78,7 +78,9 @@
             Checkins ·
             <%= location.address %>,
             <%= location.city %> ·
-            Price: <%= price.message %>
+            Price: <%= price.currency %> ·
+            <%= price.message %> 
+
         .flip-back.flipbackfoursquare
           %p Contact Number: <%= contact.formattedPhone %>
           %p <%= hours.status %>     
@@ -124,7 +126,7 @@
         %p <%= tips[0].user.firstName %> <%= tips[0].user.lastName %>
         .button#foursquare-topics-bottons
           :plain
-             <a href="<%= tips[0].url %>"> go to website </a>
+             <a href="<%= venue.url %>"> go to website </a>
         %p 
     .large-3.columns
       .panel.foursquarerecommendedpanel{style: "background-color: #FF27F9"}
@@ -184,7 +186,7 @@
         %p <%= tips[0].user.firstName %> <%= tips[0].user.lastName %>
         .button#foursquare-topics-bottons
           :plain
-            <a href="<%= tips[0].url %>"> go to website </a>
+            <a href="<%= venue.url %>"> go to website </a>
         %p 
     .large-12.columns             
       #showfoursquare-toppics-template-third
