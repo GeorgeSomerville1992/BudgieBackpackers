@@ -1,6 +1,8 @@
 .container 
   .row
     .medium-6.columns
+      %h2 Your Journal
+      %hr/
       %p#notice= notice
 
       %p
@@ -21,6 +23,8 @@
       %p
         %b Picture:
         = @post.picture
+      %h3 Comments
+      %hr/  
       - @post.comments.each do |comment|
         %p
           = comment.body
@@ -29,12 +33,15 @@
           ago
           by 
           = comment.name
+    .medium-6.columns
+      %h2 Add Comment
+      %hr/     
       = form_for [@post, @post.comments.new] do |f|
         %p= f.text_area :body, :size => '40x10'
         %p= f.label :name
         %p= f.text_field :name 
 
-        %p= f.submit "Post Comment"
+        %div= f.submit "Post Comment", class: "button"
 
       = link_to 'Edit', edit_post_path(@post)
       \|

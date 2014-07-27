@@ -19,6 +19,11 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :comments
   
+
+  def set_default_role
+    self.role ||= Role.find_by_name('registered')
+  end
+  
     def self.find_for_google_oauth2(auth, signed_in_user=nil)
     if user = signed_in_user || User.find_by_email(auth.info.email)
       user.provider = auth.provider
@@ -98,6 +103,11 @@ def self.new_with_session(params,session)
       user.skip_confirmation!
     end 
   end #google this 
+
+
+
+
+
 end 
 
 

@@ -1,13 +1,17 @@
 = include_gon
 .row
+  %h2 
+    Welcome
+    = current_user.name
+  %hr/
   .large-12.columns
     #map3d{style: "height: 400px; width: 100%;"}
-    %hr/
+    %br/
 .row    
-  .large-4.columns
+  .large-6.columns
     
-    %h1 Your hostels
-
+    %h2 Your Saved locations
+    %br/
     %table.responsive
       %tr
         %th Address
@@ -23,12 +27,11 @@
           %td= link_to 'Show', hostel
           %td= link_to 'Edit', edit_hostel_path(hostel)
           %td= link_to 'Destroy', hostel, :method => :delete, :data => { :confirm => 'Are you sure?' }
-    = link_to 'New hostel', new_hostel_path
+    = link_to 'New hostel', new_hostel_path, class: "button", id: "buttoncyan"
 
 
   .large-4.columns
-    %h1 Your Journey
-    %h4 coming soon!!!
+    %h2 Your Journey
 
     %table 
       - @posts.each do |post|

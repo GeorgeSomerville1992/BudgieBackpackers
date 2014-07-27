@@ -1,32 +1,35 @@
 .row
+  %h2 New location
+  %hr/
   .large-12.columns
     #map3d{style: "height: 400px; width: 100%;"}
     %hr/
+.row  
+  %h3 Find a new location  
+  .large-6.columns         
+    = form_for @hostel do |f|
+      - if @hostel.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@hostel.errors.count, "error")} prohibited this hostel from being saved:"
+          %ul
+            - @hostel.errors.full_messages.each do |msg|
+              %li= msg
 
-= form_for @hostel do |f|
-  - if @hostel.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@hostel.errors.count, "error")} prohibited this hostel from being saved:"
-      %ul
-        - @hostel.errors.full_messages.each do |msg|
-          %li= msg
-  %h3 Find a new location        
-  .field
-    = f.text_field :address
-  
-  .field
-    = f.label :arrivaldate
-    = f.date_select :arrivalDate
-  .field
-    = f.label :departureDate
-    = f.date_select :departureDate 
-  .field   
-  %h3 What would you like to be close to 
-  .field 
-    = f.text_field :attraction_type
-  %h3 And limit your distance to... (Miles) 
-  .field 
-    = f.text_field :distance  
-
-  .actions
-    = f.submit 'Save'
+      
+      .field
+        = f.text_field :address, { :placeholder => 'e.g hanoi' }
+      .field
+        = f.label :arrivaldate
+        = f.date_select :arrivalDate
+      .field
+        = f.label :departureDate
+        = f.date_select :departureDate 
+      %h3 What would you like to be close to 
+      .field 
+        = f.text_field :attraction_type, { :placeholder => 'e.g pub, restaurant' }
+      %h3 And limit your distance to... (Miles) 
+      .field 
+        = f.text_field :distance    
+      .actions
+        %div= f.submit "Find", class: "button" 
+        

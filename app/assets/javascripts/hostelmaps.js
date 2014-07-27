@@ -360,8 +360,10 @@ function directRoute(position) {
     if (status == google.maps.DirectionsStatus.OK) {
         directionsRenderer.setMap(window.map)
         directionsDisplay.setDirections(response);
+        directionsDisplay.setPanel(document.getElementById('directions-panel-front'));
         directions = directionsDisplay.setDirections(response);
-        console.log(directions);
+        $('#directions').click();
+        // console.log(directions);
         //directionsRenderer.setDirections(response)
         //directionsRenderer.setPanel(document.getElementById('directions-panel'));
         //$('#directions').click();
@@ -405,6 +407,7 @@ function createMarkerForhostel(hostel, lowrate){
           $('a#directions').on('click', function(ev){
             ev.preventDefault();
               directRoute(thisMarker.position);
+              infowindow.close(); 
           })
         })
     }else if(hostel.lowRate <= 50){
@@ -423,6 +426,7 @@ function createMarkerForhostel(hostel, lowrate){
           $('a#directions').on('click', function(ev){
             ev.preventDefault();
               directRoute(thisMarker.position); 
+              infowindow.close(); 
           })
         })
     }else if(hostel.lowRate <= 70){
@@ -441,6 +445,7 @@ function createMarkerForhostel(hostel, lowrate){
           $('a#directions').on('click', function(ev){
             ev.preventDefault();
               directRoute(thisMarker.position);
+              infowindow.close(); 
           })
         })
      }else if(hostel.lowRate <= 90){
@@ -461,6 +466,7 @@ function createMarkerForhostel(hostel, lowrate){
         $('a#directions').on('click', function(ev){
           ev.preventDefault();
             directRoute(thisMarker.position);
+             infowindow.close(); 
         })
       })
     };     

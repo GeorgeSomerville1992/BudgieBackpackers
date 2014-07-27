@@ -29,6 +29,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @comment }
+      authorize! :create, @comment
     end
   end
 
@@ -40,7 +41,6 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(params[:comment].merge(user: current_user))
     redirect_to @post
