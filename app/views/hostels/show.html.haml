@@ -2,7 +2,7 @@
   %script#hostel-show-template{type: "text/template"}
     %dl.accordion{"data-accordion" => ""}
       %dd.accordion-navigation
-        %a{href: "#panel1"} <%= indx %> <%= name %> <%= proximityDistance %> away
+        %a#cyan{href: "#panel1"} <%= indx %> <%= name %> <%= proximityDistance %> away
         #panel1.content
           %dl.tabs{"data-tab" => ""}
             %dd.active
@@ -48,7 +48,7 @@
           %ul.pricing-table{"data-equalizer-watch" => ""} 
             %li.bullet-item
             %li.cta-button
-              %a.button{href: "#"} Buy Now
+              %a.button{href: "#"} Book now!
               %p contact number unavailable 
               :plain
                 <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.expedia.co.uk/" data-text="Wow I have just found this amazing deal!!! for <%= lowRate %> per night at <%= name %> in <%= city %> #deals"  counturl= data-lang="en">Tweet</a> 
@@ -119,7 +119,7 @@
           %a{href: "<%= tips[0].url %>"} go to website
         %p 
     .large-3.columns
-      .panel.foursquarerecommendedpanel{style: "background-color: #25FF14"}
+      .panel.foursquarerecommendedpanel{style: "background-color: #FF27F9"}
         %p
           :plain
               <img src="<%= venue['photos']['groups'][0]['items'][0].prefix %>400x400<%= venue['photos']['groups'][0]['items'][0].suffix %>" />
@@ -147,7 +147,7 @@
       #showfoursquare-toppics-template-odd          
   %script#attraction-foursquare-topPics-template-odd{type: "text/template"}                
     .large-3.columns
-      .panel.foursquarerecommendedpanel{style: "background-color: #FF27F9"}
+      .panel.foursquarerecommendedpanel{style: "background-color: #56FF5F"}
         %p
           :plain
               <img src="<%= venue['photos']['groups'][0]['items'][0].prefix %>400x400<%= venue['photos']['groups'][0]['items'][0].suffix %>" />
@@ -186,7 +186,7 @@
         %p <%= tips[0].user.firstName %> <%= tips[0].user.lastName %>
         %p <%= tips[0].url %> 
     .large-3.columns
-      .panel.foursquarerecommendedpanel{style: "background-color: #25FF14"}
+      .panel.foursquarerecommendedpanel{style: "background-color: #FF27F9"}
         %p
           :plain
               <img src="<%= venue['photos']['groups'][0]['items'][0].prefix %>400x400<%= venue['photos']['groups'][0]['items'][0].suffix %>" />
@@ -232,12 +232,13 @@
 
            
 
-.row
-  %h2
-    Hostel results within 
-    = @hostel.distance
-    miles of 
-    = @hostel.address
+
+%h2
+  Hostel results within 
+  = @hostel.distance
+  miles of 
+  = @hostel.address
+%hr/  
 .large-2.columns    
 / = link_to 'Edit', edit_hostel_path(@hostel)
 / \|
@@ -246,7 +247,9 @@
   .large-6.columns
     #map-canvas{:style => "width: 100%; height: 350px; "}
     .flip 
-      %h1 Tap an icon to get directions
+      %h2 Tap an icon to get directions
+      %p
+        %b Tap that burger menu on the right for a guide
       #directions-panel-front{:style => "width: 100%; height: 300px; overflow-y:scroll;"}
           
       
@@ -254,19 +257,20 @@
       
 
   .large-6.columns  
-    .accordioncontainer{:style => "width: 100%; height: 700px"}
+    .accordioncontainer{:style => "width: 100%; height: 740px"}
       #hostelResults  
 
 
 
 
 / = @hostel_attractions
-.row
-  %h2
-    Hostels showing lowest rates within
-    = @hostel.distance
-    miles of 
-    = @hostel.address
+
+%h2
+  Hostels showing lowest rates within
+  = @hostel.distance
+  miles of 
+  = @hostel.address 
+%hr/  
 .large-12.columns
   
   #hotelOfferResults
@@ -274,18 +278,19 @@
 %br
 %br
 %br
-%hr
 
 
 
-.row
-  .large-8.columns 
-    %h2
-      Showing 
-      = @hostel.attraction_type 
-      in 
-      = @hostel.address
 
+
+%h2
+  Showing 
+  = @hostel.attraction_type 
+  in 
+  = @hostel.address
+%hr/ 
+.large-8.columns 
+     
 .large-12.columns
   .large-8.columns
     .foursquareimagecontainer
@@ -331,7 +336,8 @@
 
 
 / = @foursquare_topPics
-%h3 Our Recommended Attractions
+%h2 Our Recommended Attractions
+%hr/
 #showfoursquaretopPicdata
 
 
