@@ -2,15 +2,15 @@
   %ul.example-orbit.orbit-slides-container{"data-orbit" => ""}
     %li
       %img{alt: "slide 1", src: "/assets/backgroundhome.jpg"}/
-      .orbit-caption
+      .orbit-caption{style: "background-color: #FF27F9"}
         Caption One.
     %li.active
       %img{alt: "slide 1", src: "/assets/backgroundhome.jpg"}/
-      .orbit-caption
+      .orbit-caption{style: "background-color: #FF27F9"}
         
     %li
       %img{alt: "slide 2", src: "/assets/traveltwo.png"}/
-      .orbit-caption
+      .orbit-caption{style: "background-color: #FF27F9"}
         Caption Three.
      
   
@@ -18,7 +18,7 @@
   #container
 
     .box.col2 
-      %img{src: "/assets/backpacker1.jpeg", style: "width:200px; height: 200px" }/
+      %img{src: "/assets/backpacker1.jpeg.png", style: "width:200px; height: 200px" }/
 
     .box.col2
       %img{src: "/assets/backpacker6.jpeg", style: "width:200px; height: 200px"}/
@@ -36,7 +36,7 @@
     .box.col2
       %img{src: "/assets/backpacker3.jpeg", style: "width:200px; height: 200px"}/
     .box.col2
-      %img{src: "/assets/backpacker4.jpeg", style: "width:200px; height: 200px"}/
+      %img{src: "/assets/backpacker4.jpeg.png", style: "width:200px; height: 200px"}/
     .box.col2
       .flip
         .textcontainerflip{style: "width:400px; height:200px"}
@@ -49,8 +49,8 @@
 
 
     .box.col2
-      .flip
-        .textcontainerflip{style: "width: 220px; height: 325px;"}
+      .flip 
+        .textcontainerflip{style: "width: 220px; height:280px"}
           .flip-front.flipfront200-350
             %h3 
               %i.fa.fa-camera &nbsp; See
@@ -79,10 +79,10 @@
     .box.col2
       .smallblankleft       
     .box.col2
-      %img{src: "http://www.placehold.it/200x120"}/
+      %img{src: "/assets/logobig.png"}/
     .box.col2
       .copyright
-        @George Somerville Test Project WDI-London-2014
+        %p @George Somerville Test Project WDI-London-2014
     .box.col2
       .smallblankright
              

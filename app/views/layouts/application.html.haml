@@ -37,7 +37,7 @@
           %section.left-small
             %a.left-off-canvas-toggle.menu-icon
               %span
-          %section.right.tab-bar-section
+          %section.right.tab-bar-section{style: "padding:0px;"}
             %nav.top-bar{data:{topbar:""}}
               
               %section.top-bar-section
@@ -81,7 +81,8 @@
                             = link_to "Sign in with Foursquare", user_omniauth_authorize_path(:foursquare)                          
                 %ul.left 
                   %li
-                    %img{src: "http://placehold.it/100x45&text=BUDGIEBACKPACKERS"}/
+                    %div{style: "width:50px; height:45px; background-color: #00ADF1"}
+                      %img{src: "/assets/logo.png", style: "padding: 5px; margin-bottom:2px;"}/
                   %li 
                     = link_to 'Home', root_path
                   %li

@@ -102,12 +102,12 @@ background-color: $background
 .flipfront400-270{
   width:400px;
   height:270px;
-  background-color: $bloodred;
+  background-color: $pinkish;
 }
 .flipback400-270{
   width:400px;
   height:270px;
-  background-color: $bloodred;
+  background-color: $cyanblue;
 
 }
 
@@ -173,8 +173,13 @@ background-color: $background
 .copyright{
   width:400px;
   height:45px;
-  background-color: $bloodred;
+  background-color: $pinkish;
   color: white;
+  p {
+     padding:14px 10px 0px 10px ;
+     
+  }
+ 
 }
 .smallblankleft{
   width:400px;
@@ -185,7 +190,7 @@ background-color: $background
 .smallblankright{
   width:400px;
   height:45px;
-  background-color: $lightpurple;
+  background-color: $lightgreen;
   color:white;
 }
 
@@ -217,7 +222,7 @@ background-color: $background
   .button.rightwelcome{
     border: 0px solid $cyanblue;
     border-radius: 25px;
-
+    margin-top: 10px;
   }
 }
 
