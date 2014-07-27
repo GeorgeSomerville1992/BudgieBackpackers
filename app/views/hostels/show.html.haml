@@ -51,7 +51,7 @@
               %a.button{href: "#"} Book now!
               %p contact number unavailable 
               :plain
-                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.expedia.co.uk/" data-text="Wow I have just found this amazing deal!!! for <%= lowRate %> per night at <%= name %> in <%= city %> #deals"  counturl= data-lang="en">Tweet</a> 
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.expedia.co.uk/" data-text="Wow I have just found this amazing deal!!! for <%= lowRate %> per night at <%= name %> in <%= city %> #deals" data-size="large"  counturl= data-lang="en">Tweet</a> 
 
               :javascript
                 !function(d,s,id){
@@ -61,22 +61,31 @@
 
     
 
-  %script#attraction-foursquare-template{type: "text/template"}
+  %script#attraction-foursquare-template{type: "text/template"} 
     .large-4.columns
-      %p
-        :plain
-          <img src="<%= photos['groups'][0]['items'][0].prefix %>400x300<%= photos['groups'][0]['items'][0].suffix %>" />
-      %p 
-        
+      .flip{style: "width:303px;height:310px; padding:10px;"}
+        .flip-front.flipfrontfoursquare
+          %p
+            :plain
+              <img src="<%= photos['groups'][0]['items'][0].prefix %>400x300<%= photos['groups'][0]['items'][0].suffix %>" />
+          %p 
+            
 
-      %h6 <%= name %> 
-      %p 
-        <%= categories['0']['name'] %> ·
-        <%= stats.checkinsCount %> 
-        Checkins ·
-        <%= location.address %>,
-        <%= location.city %> ·
-        Price: <%= price.message %>
+          %h6 <%= name %> 
+          %p 
+            <%= categories['0']['name'] %> ·
+            <%= stats.checkinsCount %> 
+            Checkins ·
+            <%= location.address %>,
+            <%= location.city %> ·
+            Price: <%= price.currency %> ·
+            <%= price.message %> 
+
+        .flip-back.flipbackfoursquare
+          %p Contact Number: <%= contact.formattedPhone %>
+          %p <%= hours.status %>     
+
+
 
       
 
@@ -115,8 +124,9 @@
         %p <%= tips[0].text %>
         %p <%= tips[0].createdAt %>
         %p <%= tips[0].user.firstName %> <%= tips[0].user.lastName %>
-        %button{style: "background-color:#00ADF1"}
-          %a{href: "<%= tips[0].url %>"} go to website
+        .button#foursquare-topics-bottons
+          :plain
+             <a href="<%= venue.url %>"> go to website </a>
         %p 
     .large-3.columns
       .panel.foursquarerecommendedpanel{style: "background-color: #FF27F9"}
@@ -174,7 +184,10 @@
         %p <%= tips[0].text %>
         %p <%= tips[0].createdAt %>
         %p <%= tips[0].user.firstName %> <%= tips[0].user.lastName %>
-        %p <%= tips[0].url %>
+        .button#foursquare-topics-bottons
+          :plain
+            <a href="<%= venue.url %>"> go to website </a>
+        %p 
     .large-12.columns             
       #showfoursquare-toppics-template-third
   %script#attraction-foursquare-topPics-template-third{type: "text/template"} 
@@ -184,7 +197,11 @@
         %p <%= venue.hereNow.count %> <%= venue.hereNow.summry %> people are here
         %p <%= tips[0].text %>
         %p <%= tips[0].user.firstName %> <%= tips[0].user.lastName %>
-        %p <%= tips[0].url %> 
+        .button#foursquare-topics-bottons
+          :plain
+            <a href="<%= venue.url %>"> go to website </a>
+          
+        %p 
     .large-3.columns
       .panel.foursquarerecommendedpanel{style: "background-color: #FF27F9"}
         %p

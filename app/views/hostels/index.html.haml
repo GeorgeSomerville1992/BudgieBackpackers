@@ -24,20 +24,26 @@
           %td= hostel.address
           %td= hostel.arrivalDate
           %td= hostel.departureDate
-          %td
+          %td#cyan
             %li
               = link_to 'Show', hostel
             %li
-              = link_to 'Edit', edit_hostel_path(hostel) 
+              = link_to 'Edit', edit_hostel_path(hostel)
             %li
-              = link_to 'Destroy', hostel, :method => :delete, :data => { :confirm => 'Are you sure?' }  
-    = link_to 'New hostel', new_hostel_path, class: "button", id: "buttoncyan"
+              = link_to 'Destroy', hostel, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    = link_to 'New hostel', new_hostel_path, class: "button"
 
 
   .large-4.columns
     %h2 Your Journey
 
-    %table 
+    %table
+      %tr
+        %th Title
+        %th Location
+        %th Date Created
+        %th Date Edited
+        %th Created By 
       - @posts.each do |post|
         %tr 
           %td= post.title
@@ -48,7 +54,7 @@
             Created by 
             = post.name
           %td
-    = link_to 'new post', new_post_path   
+    = link_to 'New post', new_post_path, class: "button"
     
 
   / - @attractions.each do |attraction|
