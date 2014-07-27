@@ -25,7 +25,7 @@ group :development do
 gem 'pry-rails'
   gem 'pry-byebug'
   gem 'letter_opener'
-  
+  gem 'carrierwave'
 end 
 
 group :production do
