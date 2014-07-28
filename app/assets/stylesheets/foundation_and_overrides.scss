@@ -316,6 +316,17 @@ margin-left: 35px;
   }
   
 }
+ #panel {
+        width: 100%;
+        height: 100%;
+        
+        // z-index: 5;
+        background-color: $cyanblue;
+        padding: 5px;
+        border: 1px solid #999;
+
+}
+
 // .custom-button-class {
 //   @include button(
 //     // $padding - Used to build padding for buttons Default: $button-med or rem-calc(12)

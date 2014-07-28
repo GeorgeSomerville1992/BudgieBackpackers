@@ -132,7 +132,10 @@ $(function(){
         if (typeof item.venue.price == "undefined") {
           item.venue.price = "not applicable"
         }
-
+        // <%= hours.status %> 
+        if (typeof item.venue.hours == "undefined") {
+          item.venue.hours = "unavailable"
+        }
 
 
         $('#showfoursquaredata').append(attractions_foursquare_template(item.venue))
