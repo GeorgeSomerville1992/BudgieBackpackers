@@ -101,16 +101,12 @@
             %li
               %label Navigation
             %li
+              = link_to 'Home', root_path  
+            %li
               = link_to 'Hostels', hostels_path
-          %ul.off-canvas-list
-            %li.has-dropdown
-              %a{href: "#"} Journal
-              %ul.off-canvas-list
-                %li
-                  %a{href: "blog.html"} Friends
-                %li
-
-                  %a{href: "post.html"} Other
+            %li
+              = link_to 'User Journals', posts_path
+                     
         %aside.right-off-canvas-menu 
           - if @hostel
             #keycontainer
