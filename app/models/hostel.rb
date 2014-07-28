@@ -6,7 +6,7 @@ class Hostel < ActiveRecord::Base
   validates :arrivalDate, date: true
   validates :distance, :numericality => {:only_integer => true}
   validates :departureDate,
-          date: { after: :arrivalDate, message: 'you departure before you have left!' }
+          date: { after: :arrivalDate, message: 'you have set the departure before you have left!' }
 
 
   geocoded_by :address
