@@ -316,15 +316,30 @@ margin-left: 35px;
   }
   
 }
- #panel {
+ #directions-panel-front {
         width: 100%;
-        height: 100%;
-        
+        height: 300px;
+        overflow-y:scroll;
         // z-index: 5;
-        background-color: $cyanblue;
-        padding: 5px;
-        border: 1px solid #999;
+        // background-color: $cyanblue;
+        // padding: 5px;
+        // border: 1px solid #999;
 
+}
+.adp{
+  background-color: $cyanblue;
+  .warnbox-content{
+    display:none;
+  }
+  .adp-summary{
+
+   span{
+    color:white
+   } 
+  }
+}
+.adp-directions{
+  width:100%;
 }
 
 // .custom-button-class {
