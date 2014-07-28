@@ -4,11 +4,13 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end
 
+  rescue_from Foursquare2::APIError, with: :render_500
+
    if Rails.env.production?
     unless Rails.application.config.consider_all_requests_local
       rescue_from Exception, with: :render_500
       rescue_from Exception, with: :render_504
-      rescue_from Foursquare2::APIError, with: :render_500
+      
       rescue_from ActionController::RoutingError, with: :render_404
       rescue_from ActionController::UnknownController, with: :render_404
       rescue_from ActionController::UnknownAction, with: :render_404
