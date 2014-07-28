@@ -1,0 +1,39 @@
+@keyframes animatedBird {
+  0% { background-position: 0 25%; }
+  100% { background-position: 100% 0; }
+}
+@-moz-keyframes animatedBird {
+  0% { background-position: 0 25%; }
+  100% { background-position: 100% 0; }
+}
+@-webkit-keyframes animatedBird {
+  0% { background-position: 0 25%; }
+  100% { background-position: 100% 0; }
+}
+@-ms-keyframes animatedBird {
+  0% { background-position: 0 25%; }
+  100% { background-position: 100% 0; }
+}
+@-o-keyframes animatedBird {
+  0% { background-position: 0 25%; }
+  100% { background-position: 100% 0; }
+}
+
+
+
+
+#bird{
+  
+    width: 100%; 
+    height: 100%; 
+    position: absolute;
+    top: -30px;
+    background-image: url("/assets/bird.gif");
+    background-repeat: no-repeat;
+    z-index: 5;
+    animation: animatedBird 10s linear infinite;
+    -moz-animation: animatedBird 10s linear infinite;
+    -webkit-animation: animatedBird 10s linear infinite;
+    -ms-animation: animatedBird 10s linear infinite;
+    -o-animation: animatedBird 10s linear infinite;
+}
