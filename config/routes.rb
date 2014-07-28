@@ -20,9 +20,6 @@ BudgieBackpackers::Application.routes.draw do
   get "/masonry" => "homes#masonry"
   devise_for :users
 
-  resources :attractions
-
-
   resources :hostels
 
  
