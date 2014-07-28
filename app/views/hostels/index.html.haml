@@ -34,7 +34,7 @@
     = link_to 'New hostel', new_hostel_path, class: "button"
 
 
-  .large-4.columns
+  .large-6.columns
     %h2 Your Journey
 
     %table
@@ -42,18 +42,24 @@
         %th Title
         %th Location
         %th Date Created
-        %th Date Edited
         %th Created By 
+        %th Action
       - @posts.each do |post|
         %tr 
           %td= post.title
           %td= post.location
           %td= post.date_created
-          %td= post.date_edited
           %td 
             Created by 
             = post.name
-          %td
+          %td#cyan
+            %li
+              = link_to 'Show', post
+            %li
+              = link_to 'Edit', edit_post_path(post)
+            %li
+              = link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    
     = link_to 'New post', new_post_path, class: "button"
     
 
