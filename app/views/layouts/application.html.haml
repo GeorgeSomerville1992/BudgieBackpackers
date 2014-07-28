@@ -138,12 +138,12 @@
             %p you need to sign in!     
         .maincontainer       
           = yield           
-      .row
-        .container    
-          -flash.each do |name, message|
-            %div{class: "alert alert-info alert-dismissable"}
-              %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"} &#215;
-              = message  
+          .row
+            .container    
+              -flash.each do |name, message|
+                %div{class: "alert alert-info alert-dismissable"}
+                  %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"} &#215;
+                  = message  
     / = javascript_include_tag "foundation.offcanvas"        
     = javascript_include_tag "application" 
     
