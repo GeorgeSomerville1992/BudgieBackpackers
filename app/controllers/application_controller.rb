@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from Foursquare2::APIError, with: :render_500
 
+  rescue_from Expedia::APIError, with: :render_500
    if Rails.env.production?
     unless Rails.application.config.consider_all_requests_local
       rescue_from Exception, with: :render_500
