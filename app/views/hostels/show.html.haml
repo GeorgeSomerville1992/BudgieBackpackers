@@ -117,8 +117,8 @@
     /         #panel2-4.content
     /           %p Fourth panel content goes here...
   %script#attraction-foursquare-topPics-template{type: "text/template"} 
-    .large-5.columns 
-      .panel{style: "background-color: #FF005F"}
+    .large-6.columns 
+      .panel.panellist{style: "background-color: #FF005F"}
         %h4 <%= venue.name %>
         %p <%= venue.hereNow.count %> <%= venue.hereNow.summry %> people are here 
         %p <%= tips[0].text %>
@@ -129,24 +129,20 @@
              <a href="<%= venue.url %>"> go to website </a>
         %p 
     .large-3.columns
-      .panel.foursquarerecommendedpanel{style: "background-color: #FF27F9"}
+      .panel.panelpurple.imageanimate.animated{style: "background-color: #FF27F9"}
         %p
           :plain
               <img src="<%= venue['photos']['groups'][0]['items'][0].prefix %>400x400<%= venue['photos']['groups'][0]['items'][0].suffix %>" />
 
-    .large-4.columns 
+    .large-3.columns 
       .flip{style: "width: 300px; height: 200px;"}
-        .flip-front.flip-front300-200
+        .flip-front.flip-front300-200.panelblue
           .panel.panellist{style: "background-color:#00ADF1"}
             %h4 Contact details
             %p Address: <%= venue.location.address %> , <%= venue.location.crossStreet %>        
             %P City: <%= venue.location.city %>
-            %p PostelCode: <%= venue.location.postalCode %>
-
-            
-          
-            
-        .flip-back.flip-back300-200
+            %p PostelCode: <%= venue.location.postalCode %>   
+        .flip-back.flip-back300-200.panelblue
           .panel{style: "background-color:#00ADF1"}
             %h3 Book now!
             %p Website: <%= venue.url %>
@@ -157,20 +153,20 @@
       #showfoursquare-toppics-template-odd          
   %script#attraction-foursquare-topPics-template-odd{type: "text/template"}                
     .large-3.columns
-      .panel.foursquarerecommendedpanel{style: "background-color: #56FF5F"}
+      .panel.panelgreen.imageanimate.animated{style: "background-color: #56FF5F"}
         %p
           :plain
               <img src="<%= venue['photos']['groups'][0]['items'][0].prefix %>400x400<%= venue['photos']['groups'][0]['items'][0].suffix %>" />
     .large-3.columns 
       .flip{style: "width: 300px; height: 200px;"}
         .flip-front.flip-front300-200
-          .panel.panellist.foursquarerecommendedpanel{style: "background-color:#00ADF1"}
+          .panel.panellist.panelblue{style: "background-color:#00ADF1"}
             %h4 Contact details
             %p Address: <%= venue.location.address %> , <%= venue.location.crossStreet %>        
             %P City: <%= venue.location.city %>
             %p PostelCode: <%= venue.location.postalCode %>
         .flip-back.flip-back300-200
-          .panel{style: "background-color:#00ADF1"}
+          .panel.panelblue{style: "background-color:#00ADF1"}
             %h3 Book now!
             %p Website: <%= venue.url %>
             %li Mobile: <%= venue.contact.phone %>
@@ -178,7 +174,7 @@
             %li Facebook: <%= venue.contact.facebook %>
             
     .large-6.columns 
-      .panel.panellist.foursquarerecommendedpanel{style: "background-color: #FF005F"}
+      .panel.panellist{style: "background-color: #FF005F"}
         %h4 <%= venue.name %> 
         %p <%= venue.hereNow.count %> <%= venue.hereNow.summry %> people are here
         %p <%= tips[0].text %>
@@ -192,7 +188,7 @@
       #showfoursquare-toppics-template-third
   %script#attraction-foursquare-topPics-template-third{type: "text/template"} 
     .large-6.columns 
-      .panel.foursquarerecommendedpanel{style: "background-color: #FF005F"}
+      .panel{style: "background-color: #FF005F"}
         %h4 <%= venue.name %>
         %p <%= venue.hereNow.count %> <%= venue.hereNow.summry %> people are here
         %p <%= tips[0].text %>
@@ -203,19 +199,19 @@
           
         %p 
     .large-3.columns
-      .panel.foursquarerecommendedpanel{style: "background-color: #FF27F9"}
+      .panel.panelpurple.imageanimate.animated{style: "background-color: #FF27F9"}
         %p
           :plain
               <img src="<%= venue['photos']['groups'][0]['items'][0].prefix %>400x400<%= venue['photos']['groups'][0]['items'][0].suffix %>" />
     .large-3.columns 
       .flip{style: "width: 300px; height: 200px;"}
-        .flip-front.flip-front300-200
-          .panel.panellist.foursquarerecommendedpanel{style: "background-color:#00ADF1"}
+        .flip-front.flip-front300-200.panelblue
+          .panel.panellist{style: "background-color:#00ADF1"}
             %h4 Contact details
             %p Address: <%= venue.location.address %> , <%= venue.location.crossStreet %>        
             %P City: <%= venue.location.city %>
             %p PostelCode: <%= venue.location.postalCode %>
-        .flip-back.flip-back300-200
+        .flip-back.flip-back300-200.panelblue
           .panel{style: "background-color:#00ADF1"}
             %h3 Book now!
             %p Website: <%= venue.url %>
@@ -361,54 +357,3 @@
 
 
 
-/ %h3 nearby saved hostels
-/ - for hostel in @hostel.nearbys(10)
-/   %li = link_to hostel.address, hostel (hostel.distance.round(10) miles)
-
-
-
-/ %dl.accordion{"data-accordion" => ""}
-/   %dd.accordion-navigation
-/     %a{href: "#panel1"} Accordion 1
-/     #panel1.content.active
-/       %dl.tabs{"data-tab" => ""}
-/         %dd.active
-/           %a{href: "#panel2-1"} Tab 1
-/         %dd
-/           %a{href: "#panel2-2"} Tab 2
-/         %dd
-/           %a{href: "#panel2-3"} Tab 3
-/         %dd
-/           %a{href: "#panel2-4"} Tab 4
-/       .tabs-content
-/         #panel2-1.content.active
-/           #hostelResults
-/         #panel2-2.content
-/           %p Second panel content goes here...
-/         #panel2-3.content
-/           %p Third panel content goes here...
-/         #panel2-4.content
-/           %p Fourth panel content goes here...
-/   %dd.accordion-navigation
-/     %a{href: "#panel2"} Accordion 2
-/     #panel2.content
-/       Panel 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-/   %dd.accordion-navigation
-/     %a{href: "#panel3"} Accordion 3
-/     #panel3.content
-/       Panel 3. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-/ .row{"data-equalizer" => ""}
-/   .large-6.columns
-/     %ul.pricing-table{"data-equalizer-watch" => ""}
-/       \...
-/       %li.cta-button
-/         %a.button{href: "#"} Buy Now
-/   .large-6.columns
-/     %ul.pricing-table{"data-equalizer-watch" => ""}
-/       \...
-/       %li.cta-button
-/         %a.button{href: "#"} Buy Now    
-
-
-
-// cheapest three hotels using foundation eqlizier - include price - room avliblty and book now!!!
