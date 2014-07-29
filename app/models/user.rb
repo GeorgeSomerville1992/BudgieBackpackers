@@ -9,9 +9,9 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
 
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me ,:name, :image, :provider, :uid
+  attr_accessible :email, :password, :password_confirmation, :remember_me ,:name, :image, :provider, :uid, :profileImage
   validates :name, presence: true
-  mount_uploader :image, ImageUploader
+  mount_uploader :profileImage, ProfileImageUploader
   # attr_accessible :title, :body
 
   has_many :hostels
