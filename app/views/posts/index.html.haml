@@ -8,12 +8,7 @@
         %th Name
         %th Body
         %th Datecreated
-        %th Dateedited
-        %th Picture
-        %th
-        %th
-        %th
-
+        %th actions
       - @posts.each do |post|
         %tr
           %td= post.title
@@ -21,7 +16,6 @@
           %td= post.body
           %td= post.date_created
           %td= post.date_edited
-          %td= post.picture
           %td= link_to 'Show', post
           %td= link_to 'Edit', edit_post_path(post)
           %td= link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }
