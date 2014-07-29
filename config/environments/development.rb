@@ -32,10 +32,10 @@ BudgieBackpackers::Application.configure do
   # Do not compress assets
   config.assets.compress = false
 # http://budgie-backpackers-1992.herokuapp.com/
-  config.action_mailer.default_url_options = { host: 'budgie-backpackers-1992.herokuapp.com/' }
+  config.action_mailer.default_url_options = { host: 'http://budgie-backpackers-1992.herokuapp.com/' }
   config.action_mailer.delivery_method = :letter_opener
   #not sure about the one below 
-  #config.assets.initialize_on_precompile = false
+  config.assets.initialize_on_precompile = false
 
   # Expands the lines which load the assets
 
