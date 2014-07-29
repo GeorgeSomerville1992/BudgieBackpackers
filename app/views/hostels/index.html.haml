@@ -17,27 +17,25 @@
         %th Address
         %th Arrival Date
         %th Departure date
-        %th Actions
+        %th{colspan:"3"} Actions
 
       - @hostels.each do |hostel|
         %tr
           %td= hostel.address
           %td= hostel.arrivalDate
           %td= hostel.departureDate
-          %td#cyan
-            %li
-              = link_to 'Show', hostel
-            %li
-              = link_to 'Edit', edit_hostel_path(hostel)
-            %li
-              = link_to 'Destroy', hostel, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          %td= link_to 'Show', hostel
+          %td= link_to 'Edit', edit_hostel_path(hostel)
+          %td= link_to 'Destroy', hostel, :method => :delete, :data => { :confirm => 'Are you sure?' }
+            
+              
     = link_to 'New hostel', new_hostel_path, class: "button"
 
 
   .large-6.columns
     %h2 Your Journey
-
-    %table
+    %br/
+    %table#cyan.responsive
       %tr
         %th Title
         %th Location
@@ -52,13 +50,10 @@
           %td 
             Created by 
             = post.name
-          %td#cyan
-            %li
-              = link_to 'Show', post
-            %li
-              = link_to 'Edit', edit_post_path(post)
-            %li
-              = link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          %td= link_to 'Show', post
+          %td= link_to 'Edit', edit_post_path(post)
+          %td= link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }
+             
     
     = link_to 'New post', new_post_path, class: "button"
     
