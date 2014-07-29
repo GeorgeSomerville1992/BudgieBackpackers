@@ -38,7 +38,7 @@ gem 'devise'
 gem 'geocoder'
 gem 'gon'
 gem 'expedia'
-# gem 'carrierwave', "0.9.0"
+gem 'carrierwave', "0.9.0"
 
 gem 'oauth'
 gem 'omniauth-google-oauth2'
