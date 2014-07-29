@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me ,:name, :image, :provider, :uid
   validates :name, presence: true
- 
+  mount_uploader :image, ImageUploader
   # attr_accessible :title, :body
 
   has_many :hostels

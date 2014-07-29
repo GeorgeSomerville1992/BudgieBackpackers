@@ -3,6 +3,8 @@
   %h2 
     Welcome
     = current_user.name
+    = image_tag current_user.image, class: "large-avatar"
+
   %hr/
   .large-12.columns
     #map3d{style: "height: 400px; width: 100%;"}
