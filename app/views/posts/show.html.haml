@@ -24,7 +24,8 @@
         = @post.date_edited
       %p
         %b Picture:
-        = @post.picture
+        %img{src: @post.picture, style: "width:100px; height:100px;"}
+        
       %h3 Comments
       %hr/  
       - @post.comments.each do |comment|

@@ -145,11 +145,15 @@ background-color: $background
   margin-left: 20px;
   color: white;
   h3{
-    color:white;
+    color:white; 
   }
   h4{
-      color:silver;
+      color:white;
     }
+
+
+
+
 }
 .box-item {
     margin: 0px;
@@ -353,7 +357,23 @@ margin-left: 35px;
   }
 
 }
-
+#weatherwiget{
+  color:$pinkish;
+}
+.panelpurple{
+  background-color:$lightpurple;
+  &:hover{
+    box-shadow: 0 0 20px 5px darken($lightpurple, 10%);
+    
+  }
+}
+.panelgreen{
+  background-color:$lightgreen;
+  &:hover{
+    box-shadow: 0 0 20px 5px darken($lightgreen, 10%);
+    
+  }
+}
 
 
 // .custom-button-class {
