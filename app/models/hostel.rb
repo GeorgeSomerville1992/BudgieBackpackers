@@ -7,7 +7,8 @@ class Hostel < ActiveRecord::Base
   validates :distance, :numericality => {:only_integer => true}
   validates :departureDate,
           date: { after: :arrivalDate, message: 'you have set the departure before you have left!' }
-
+  validates :departureDate,
+          date: { before: Proc.new { Time.now + 1.month }, message: 'Im sorry but thats to far away, my api will crash - try a week :)' }
 
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
