@@ -1,39 +1,40 @@
-.container 
-  .row
-    %h2 New post
-    %hr/
-    .medium-6.columns
-      = form_for @post do |f|
-        - if @post.errors.any?
-          #error_explanation
-            %h2= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
-            %ul
-              - @post.errors.full_messages.each do |msg|
-                %li= msg
 
-        %div
-          = f.label :title
-          %br/
-          = f.text_field :title
-        %div
-          = f.label :name
-          %br/
-          = f.text_field :name
-        %div
-          = f.label :location
-          %br/
-          = f.text_field :location
-        %div
-          = f.label :body
-          %br/
-          = f.text_area :body
-        %div
-          = f.label :date_created
-          %br/
-          = f.date_select :date_created
-        %div
-          = f.label :picture
-          %br/
-          = f.file_field :picture
-          %br/        
-          %div= f.submit "Save", class: "button"
+%hr/
+.medium-6.columns
+  = form_for @post do |f|
+    - if @post.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
+        %ul
+          - @post.errors.full_messages.each do |msg|
+            %li= msg
+
+    %div
+      = f.label :title
+      %br/
+      = f.text_field :title
+    %div
+      = f.label :name
+      %br/
+      = f.text_field :name
+    %div
+      = f.label :location
+      %br/
+      = f.text_field :location
+    %div
+      = f.label :body
+      %br/
+      = f.text_area :body
+    %div
+      = f.label :date_created
+      %br/
+      = f.date_select :date_created
+    %div
+      = f.label :picture
+      %br/
+      = f.file_field :picture
+      %br/ 
+    .medium-3.columns           
+      %div= f.submit "Save", class: "button"
+    .medium-3.columns         
+      = link_to 'Back', posts_path, class: "button"
