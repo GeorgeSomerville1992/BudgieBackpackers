@@ -7,15 +7,14 @@
         %th Title
         %th Name
         %th Body
-        %th Datecreated
-        %th actions
+        %th Date created
+        %th{colspan:"3"} Actions
       - @posts.each do |post|
         %tr
           %td= post.title
           %td= post.name
           %td= post.body
           %td= post.date_created
-          %td= post.date_edited
           %td= link_to 'Show', post
           %td= link_to 'Edit', edit_post_path(post)
           %td= link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }
