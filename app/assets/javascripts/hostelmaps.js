@@ -617,7 +617,19 @@ function createMarkerForhostel(hostel, lowrate){
         icon: beer
       
         })
-      }else 
+      }else if(attractionCatagory == "Coffee"){
+      var marker = new google.maps.Marker({
+        position: latLng,
+        map: window.mapAttraction,
+        title: "hi",
+        icon: coffee
+      
+        })
+      }
+
+
+
+      else 
     
       var marker = new google.maps.Marker({
         position: latLng,
