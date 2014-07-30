@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140729194922) do
+ActiveRecord::Schema.define(:version => 20140730093652) do
 
   create_table "comments", :force => true do |t|
     t.string   "name"
@@ -27,13 +27,14 @@ ActiveRecord::Schema.define(:version => 20140729194922) do
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.integer  "user_id"
     t.date     "arrivalDate"
     t.date     "departureDate"
     t.integer  "distance"
     t.integer  "post_id"
+    t.string   "attraction_type"
   end
 
   create_table "posts", :force => true do |t|
