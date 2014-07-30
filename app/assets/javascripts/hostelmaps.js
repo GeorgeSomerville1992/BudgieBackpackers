@@ -466,8 +466,7 @@ function createMarkerForhostel(hostel, lowrate){
         console.log("hello")
         var thisMarker = this;
         console.log(thisMarker)
-         
-        infowindow.setContent(this.info);
+        infowindow.setContent(contentString);
         infowindow.open(window.map,this);
         $('a#directions').on('click', function(ev){
           ev.preventDefault();
