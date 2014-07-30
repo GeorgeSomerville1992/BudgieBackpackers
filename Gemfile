@@ -16,6 +16,8 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'foundation-rails'
   gem 'uglifier', '>= 1.0.3'
+  gem 'letter_opener'
+
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
@@ -31,8 +33,7 @@ end
 
 group :production do
   gem 'rails_12factor'
-  gem 'letter_opener'
-end
+  end
 
 
 gem 'haml-rails'
