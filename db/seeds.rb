@@ -14,3 +14,5 @@
 george = User.new(name: 'George', email: "george@ga.com", password: "password")
 james = User.new(name: 'James', email: "james@ga.com", password: "password")
 josh = User.new(name: 'Josh', email: "josh@ga.com", password: "password")
+
+[george,james,josh].each(&:skip_confirmation!).each(&:save!)
