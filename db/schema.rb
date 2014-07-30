@@ -13,16 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20140729194922) do
 
-  create_table "attractions", :force => true do |t|
-    t.string   "address"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-    t.integer  "user_id"
-    t.string   "attraction_type"
-  end
-
   create_table "comments", :force => true do |t|
     t.string   "name"
     t.string   "body"
@@ -37,12 +27,11 @@ ActiveRecord::Schema.define(:version => 20140729194922) do
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.integer  "user_id"
     t.date     "arrivalDate"
     t.date     "departureDate"
-    t.string   "attraction_type"
     t.integer  "distance"
     t.integer  "post_id"
   end
