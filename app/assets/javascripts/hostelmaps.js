@@ -45,34 +45,24 @@ $(function(){
       //     $('#hostelDetailedResults').append(hostelDetailedTemplate(hostel))
       //   })
       // }
-       
-
     }
+//  hotel price sort
     if (gon.hostel_price_sort){
       hostels_prices = gon.hostel_price_sort.HotelListResponse.HotelList.HotelSummary
       hostelOffers = hostels_prices.slice(0,4)
       hostelOfferTemplate = _.template($('#hostel-show-cheapest-hotels').text())
       $.each(hostelOffers, function(i, hostel){
-
         if (typeof hostel.postalCode == "undefined") {
           hostel.postalCode = "not applicable"
         }
-        
         $('#hotelOfferResults').append(hostelOfferTemplate(hostel))
       })
     }
-
+    // foursquare attractions, grab hash then render template
     if (gon.hostel_attraction_foursquare){
-
       attractions_foursquare = gon.hostel_attraction_foursquare.groups
       attractions_foursquare_items = attractions_foursquare[0].items 
       attractions_foursquare_template = _.template($('#attraction-foursquare-template').text())
-      attractions_foursquare_venues = attractions_foursquare[0]['items']
-
-     console.log(attractions_foursquare_items)
-      
-      a = attractions_foursquare[0].items
-      // debugger
       $.each(attractions_foursquare_items, function(i, item){ 
         if (typeof item.venue.rating == "undefined") {
           item.venue.rating = "not applicable"
@@ -93,11 +83,11 @@ $(function(){
         $('#showfoursquaredata').append(attractions_foursquare_template(item.venue))
         
       })
-      for(var i = 0; i < a.length; i ++) { 
+      // for(var i = 0; i < a.length; i ++) { 
         
-        $('#showfoursquaredata').append(a[i].venue.name)
+      //   $('#showfoursquaredata').append(a[i].venue.name)
         
-      }
+      // }
 
     }
 
