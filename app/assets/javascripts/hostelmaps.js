@@ -436,50 +436,20 @@ function createMarkerForhostel(hostel, lowrate){
         center: new google.maps.LatLng(fetchLatitude, fetchLongitude),
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
-
-      // google.maps.event.addListener(map, 'dragend', getPinsToMapBound);
-        // do i need ajax for this??? 
-      // $.ajax({
-      //   url: attractions,
-      //   dataType: "json",
-      //   success: mapattractions
-      // });
     map_container = document.getElementById('map-canvas')
       if(map_container != undefined){
         window.map = new google.maps.Map(map_container, mapOptions) 
-        //var mapcenter = window.map.getCenter();
-        // console.log(mapcenter)
-        maphostels(hostels)
-        // gon.hostels is was messing everything up
-        //infowindow = new google.maps.InfoWindow(); 
+        maphostels(hostels) 
       }
     map_container_attraction = document.getElementById('map-attraction-canvas')
       if(map_container_attraction != undefined){
         window.mapAttraction = new google.maps.Map(map_container_attraction, mapOptions) 
         mapattractions(attractions_foursquare)
-        // gon.hostels is was messing everything up
-        //infowindow = new google.maps.InfoWindow(); 
       }
     directionsDisplay.setMap(window.map)
-    
-
-
-
-    //window.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions) 
-    //maphostels(hostels)
-    
-    infowindow = new google.maps.InfoWindow(); // put informaiton from api in here??? create a new function from this
-     // built in service near by - calling function and request
+    infowindow = new google.maps.InfoWindow();
   }   
-
-
-
-
-
  google.maps.event.addDomListener(window, "load", initialize)
 })
-// <img src="http://images.travelnow.com//hotels/5000000/4650000/4646600/4646581/4646581_50_t.jpg/">
-
-// <img src="http://images.travelnow.com//hotels/3000000/2690000/2688900/2688875/2688875_30_t.jpg">
 
 
