@@ -3,54 +3,48 @@ $(function(){
     if (gon.hostels){
       hostels = gon.hostels.HotelListResponse.HotelList.HotelSummary
       hostellatitude = hostels.latitude
-
       hostellongitude = gon.hostels.HotelListResponse.HotelList.HotelSummary.longitude
       hostelLowrate = gon.hostels.HotelListResponse.HotelList.HotelSummary.lowRate
       hostelTemplate = _.template($('#hostel-show-template').text())
       hostelDetailedTemplate = _.template($('#hostel-show-detailed-template').text())
+      // iterated through each hotel within json hash
       $.each(hostels, function(i, hostel){
         hostel.proximityDistance = Math.round(hostel.proximityDistance*10)/10
         arrayIndex = i.toString()
-
+        // condition to check for empty data
         if (typeof hostel.tripAdvisorRatingUrl == "undefined") {
           hostel.tripAdvisorRatingUrl = "not applicable"
         }
         if (typeof hostel.tripAdvisorReviewCount == "undefined") {
           hostel.tripAdvisorReviewCount = "not applicable"
         }
-
-
-
         if (typeof hostel.postalCode == "undefined") {
           hostel.postalCode = "not applicable"
         }
         $('#hostelResults').append(hostelTemplate(hostel,i))
-
-        // how would you render erb into a string????? 
         console.log(hostel.postalCode)
       })
-            $('.hostel-info-button').on("click", function(hostelId){
-        //console.log("clicked hostel info button with hotelId: " + $(this).data("hotelId"))
-        hotelId = $(this).attr('data-hotelid');
-        console.log(hotelId);
+      //   $('.hostel-info-button').on("click", function(hostelId){
+      //   hotelId = $(this).attr('data-hotelid');
+      //   console.log(hotelId);
 
-        $.ajax({
-          url: "/hostels#show",
-          type: "GET",
-          data: hotelId, // admit sucessucion get 
-          dataType: "json",
-          success:function(){
-            displayDetailedResults();
-          }
-        })
-      })
-      displayDetailedResults = function(){
-        $.each(hostels, function(i, hostel){
-          var hostelId = gon.hostels.HotelListResponse.HotelList.HotelSummary[i].hotelId
-          console.log('ajax success')
-          $('#hostelDetailedResults').append(hostelDetailedTemplate(hostel))
-        })
-      }
+      //   $.ajax({
+      //     url: "/hostels#show",
+      //     type: "GET",
+      //     data: hotelId, // admit sucessucion get 
+      //     dataType: "json",
+      //     success:function(){
+      //       displayDetailedResults();
+      //     }
+      //   })
+      // })
+      // displayDetailedResults = function(){
+      //   $.each(hostels, function(i, hostel){
+      //     var hostelId = gon.hostels.HotelListResponse.HotelList.HotelSummary[i].hotelId
+      //     console.log('ajax success')
+      //     $('#hostelDetailedResults').append(hostelDetailedTemplate(hostel))
+      //   })
+      // }
        
 
     }
@@ -135,13 +129,8 @@ $(function(){
         if (typeof item.tips[0].url == "undefined") {
           item.tips[0].url = "Sorry, link to this article is not available"
         }
-
-
-
         $('#showfoursquaretopPicdata').append(attractions_foursquare_topPics_template(item))
-         
       })
-
       $.each(attractions_foursquare_topPics_odd_venues, function(i,item){
         if (typeof item.venue.contact.phone == "undefined") {
           item.venue.contact.phone = "not available"
@@ -179,11 +168,6 @@ $(function(){
         }
         $('#showfoursquare-toppics-template-third').append(attractions_foursquare_topPics_template_third(item))
       })
-
-
-
-
-
     }
 var fetchLatitude = $('#latitude').data('hostels') 
 var fetchLongitude = $('#longitude').data('hostels')
@@ -205,7 +189,6 @@ var restaurant = new google.maps.MarkerImage('/assets/restaurant.png')
 var coffee = new google.maps.MarkerImage('/assets/coffee.png')
 var general = new google.maps.MarkerImage('/assets/panoramicview.png')
 var beer = new google.maps.MarkerImage('/assets/beer.png')
-
 function directRoute(position) {
   var start = $("#address").data('hostels');
   console.log(start)
@@ -232,7 +215,6 @@ function directRoute(position) {
       $("#error").append("Unable to retrieve your route<br />");
       }
     );
-
 }
 function createMarkerForhostel(hostel, lowrate){
     var latLng = new google.maps.LatLng(hostel.latitude,hostel.longitude);
@@ -243,7 +225,6 @@ function createMarkerForhostel(hostel, lowrate){
                     '<p>' + 'Postcode:' + ' ' + hostel.postalCode + '</p>' +
                     '<img width=100px, height=100px, src= http://images.travelnow.com/'+ hostel.thumbNailUrl + '>' + '<br/>' +
                     '<a id="directions" class="button tiny">Calculate Directions</a>' + '</div>'
-    
     if(hostel.lowRate <= 40){
       var marker = new google.maps.Marker({
         position: latLng,
@@ -326,9 +307,6 @@ function createMarkerForhostel(hostel, lowrate){
         })
       })
     };     
-  
-
-   
 }
   function directRouteAttraction(position) {
   var start = $("#address").data('hostels');
@@ -355,7 +333,6 @@ function createMarkerForhostel(hostel, lowrate){
       $("#error").append("Unable to retrieve your route<br />");
       }
     );
-
 }
   function createMarkerForAttraction(attraction, attraction_catagory, locationLat, locationLong,attractionDetails){
     var attractionCatagory = attraction_catagory
@@ -365,8 +342,7 @@ function createMarkerForhostel(hostel, lowrate){
         position: latLng,
         map: window.mapAttraction,
         title: "hi",
-        icon: bar
-      
+        icon: bar  
       })
     } else if(attractionCatagory == "Cafe"){
         var marker = new google.maps.Marker({
@@ -381,20 +357,16 @@ function createMarkerForhostel(hostel, lowrate){
         map: window.mapAttraction,
         title: "hi",
         icon: beer
-      
         })
       }else 
-    
       var marker = new google.maps.Marker({
         position: latLng,
         map: window.mapAttraction,
         title:"Hello World!",
         icon: general 
       });
-
       google.maps.event.addListener(marker, 'click', function(){
       console.log(attractions_foursquare_items)
-
       var contentStringAttraction = '<div id="attractioninfowindow">' +
       '<h3>' + attractionDetails.name + '</h3>' +
       '<p>' + '<b>' + attractionDetails.location.address + '</b>' + '</p>'+
@@ -403,14 +375,11 @@ function createMarkerForhostel(hostel, lowrate){
       '<p>' + "Avarage Rating:"+ attractionDetails.rating +  '</p>' +
       '<a id="directionsattractions" class="button tiny">Calculate Directions</a>' + '</div>'
         var thisMarker = this;
-
         infowindow.setContent(contentStringAttraction);
         infowindow.open(window.mapAttraction,this);
         $('a#directionsattractions').on('click', function(ev){
           ev.preventDefault();
-          
             directRouteAttraction(thisMarker.position);
-          
         })     
     })
   }
@@ -420,7 +389,6 @@ function createMarkerForhostel(hostel, lowrate){
     })     
   }       
   function mapattractions(attractions_foursquare){
-    
     $.each(attractions_foursquare[0]['items'], function(i,attraction){
         var locationLat = attraction['venue']['location']['lat']
         var locationLong = attraction['venue']['location']['lng']
@@ -451,5 +419,3 @@ function createMarkerForhostel(hostel, lowrate){
   }   
  google.maps.event.addDomListener(window, "load", initialize)
 })
-
-
