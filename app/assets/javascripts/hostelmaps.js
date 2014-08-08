@@ -2,29 +2,15 @@ $(function(){
   
     if (gon.hostels){
       hostels = gon.hostels.HotelListResponse.HotelList.HotelSummary
-      // roomdetails = hostels.RoomRateDetailsList.RoomRateDetails.ValueAdds
-      // console.log(roomdetails)
       hostellatitude = hostels.latitude
+
       hostellongitude = gon.hostels.HotelListResponse.HotelList.HotelSummary.longitude
-      console.log(hostels)
-      console.log(hostellatitude)
-       //var hostelId = gon.hostels.HotelListResponse.HotelList.HotelSummary[i].hotelId
       hostelLowrate = gon.hostels.HotelListResponse.HotelList.HotelSummary.lowRate
-      
-      //distance_miles = gon.hostel_attractions.businesses.distance * 0.00062137
-      // hostelProximityRound = gon.hostels.HotelListResponse.HotelList.HotelSummary.proximityDistance * 1000
-      // for(i=0; i<20; i++){
-        // this will go in a window from google
-      // render into erb.....
       hostelTemplate = _.template($('#hostel-show-template').text())
       hostelDetailedTemplate = _.template($('#hostel-show-detailed-template').text())
-
-      
-
-      $.each(hostels, function(i, hostel){ // hidden form?  put this inside one then user submit - will this data be able to show???
+      $.each(hostels, function(i, hostel){
         hostel.proximityDistance = Math.round(hostel.proximityDistance*10)/10
         arrayIndex = i.toString()
-        // var tripAdvisorUrl = hostel[i].tripAdvisorRatingUrl
 
         if (typeof hostel.tripAdvisorRatingUrl == "undefined") {
           hostel.tripAdvisorRatingUrl = "not applicable"
@@ -38,16 +24,6 @@ $(function(){
         if (typeof hostel.postalCode == "undefined") {
           hostel.postalCode = "not applicable"
         }
-
-        // if (typeof hostel.RoomRateDetailsList.RoomRateDetails.ValueAdds.ValueAdd.description == "undefined") {
-        //   hostel.RoomRateDetailsList.RoomRateDetails.ValueAdds.ValueAdd.description = "Nothing cool about this hotel!"
-        // }
-        //<%= RoomRateDetailsList.RoomRateDetails.ValueAdds['ValueAdd'].description %>
-
-
-        
-
-
 
 
 
@@ -106,6 +82,7 @@ $(function(){
       attractions_foursquare_items = attractions_foursquare[0].items 
       attractions_foursquare_template = _.template($('#attraction-foursquare-template').text())
       attractions_foursquare_venues = attractions_foursquare[0]['items']
+      
      console.log(attractions_foursquare_items)
       
       a = attractions_foursquare[0].items
@@ -634,7 +611,7 @@ function createMarkerForhostel(hostel, lowrate){
       '<h3>' + attractionDetails.name + '</h3>' +
       '<p>' + '<b>' + attractionDetails.location.address + '</b>' + '</p>'+
       '<p>' + attractionDetails.hereNow.summary + '</p>'+
-      '<p>' + attractionDetails.likes.summary + '</p>'+
+      // '<p>' + attractionDetails.likes.summary + '</p>'+
       '<p>' + "Avarage Rating:"+ attractionDetails.rating +  '</p>' +
       '<a id="directionsattractions" class="button tiny">Calculate Directions</a>' + '</div>'
 
