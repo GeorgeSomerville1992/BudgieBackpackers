@@ -63,6 +63,7 @@ $(function(){
       attractions_foursquare = gon.hostel_attraction_foursquare.groups
       attractions_foursquare_items = attractions_foursquare[0].items 
       attractions_foursquare_template = _.template($('#attraction-foursquare-template').text())
+      // check blank fields.
       $.each(attractions_foursquare_items, function(i, item){ 
         if (typeof item.venue.rating == "undefined") {
           item.venue.rating = "not applicable"
@@ -78,21 +79,11 @@ $(function(){
         if (typeof item.venue.hours == "undefined") {
           item.venue.hours = "unavailable"
         }
-
-
         $('#showfoursquaredata').append(attractions_foursquare_template(item.venue))
-        
       })
-      // for(var i = 0; i < a.length; i ++) { 
-        
-      //   $('#showfoursquaredata').append(a[i].venue.name)
-        
-      // }
-
     }
 
     if (gon.hostel_attraction_foursquare_topPics){
-
       attractions_topPics = gon.hostel_attraction_foursquare_topPics.groups  
       attractions_topPics_items = attractions_topPics[0].items
       attractions_topPics_items_first = attractions_topPics_items.slice(0,1)
@@ -159,6 +150,7 @@ $(function(){
         $('#showfoursquare-toppics-template-third').append(attractions_foursquare_topPics_template_third(item))
       })
     }
+    // initalize map and marker variables
 var fetchLatitude = $('#latitude').data('hostels') 
 var fetchLongitude = $('#longitude').data('hostels')
 var map;
